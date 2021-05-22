@@ -12,8 +12,6 @@ export const router = createRouter({
     history:createWebHashHistory(),
     routes:(basicRoutes as unknown) as RouteRecordRaw[]
 });
-
-
 // // config router
 export function setupRouter(app: App<Element>) {
   app.use(router);

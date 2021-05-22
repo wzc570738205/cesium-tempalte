@@ -17,6 +17,18 @@ ref定义的数据访问的时候要多一个.value
  const state = reactive({
    data:{a:1}
  })
+ let obj = {
+   a:3,
+   b:2
+ }
+ let objProxy = new Proxy(obj,{
+   get(target,key){
+     return target[key]
+   }
+ })
+ objProxy.a=2;
+ console.log('obj :>> ', obj);
+  console.log('objProxy :>> ', objProxy);
  defineProps({
   msg:  {
       type: String,
