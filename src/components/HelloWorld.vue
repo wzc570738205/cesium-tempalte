@@ -1,4 +1,5 @@
 <template>
+{{$store.state.loginModule.permissionList.length}}
   <h1><a href="">{{ count }}</a></h1>
   <h1>{{state.data.a}}</h1>
   <button @click="count++">count ++</button>

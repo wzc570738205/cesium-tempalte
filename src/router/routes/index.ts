@@ -13,9 +13,6 @@ Object.keys(modules).forEach((key) => {
   routeModuleList.push(...modList);
 });
 
-// Basic routing without permission
-
-
 
 // Basic routing without permission
 export const basicRoutes:RouteRecordRaw[] =routeModuleList;

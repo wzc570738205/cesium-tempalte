@@ -1,7 +1,4 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
-  <button @click="goTest">去测试</button>
-  <HelloWorld/>
    <RouterView />
 </template>
 
