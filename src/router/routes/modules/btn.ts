@@ -1,11 +1,12 @@
-import { AppRouteModule } from "../../types";
+import { RouteRecordRaw } from "vue-router";
 
-const btn:AppRouteModule = {
+const btn:RouteRecordRaw = {
+    path:"/btn",
     name:"btn",
     meta:{
         title:"按钮"
     },
-    path:"/btn",
+   
     component: () => import('/@/views/btn.vue'),
 }
 

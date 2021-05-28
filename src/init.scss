@@ -1,0 +1,64 @@
+.fd,.aic,.jcc,.jcb,.jca,.fdc,.jcfend{
+    display: flex;
+}
+.aic{
+align-items: center;
+}
+.jcc{
+    justify-content: center;
+}
+.jcb{
+    justify-content: space-between; 
+}
+.jca{
+    justify-content: space-around; 
+}
+.jcfend{
+    justify-content: flex-end 
+}
+.fdc{
+    flex-direction: column;
+}
+.flex1{
+    flex: 1;
+}
+.mx30{
+    margin: 0 30px;
+}
+.mt30{
+    margin-top:30px ;
+}
+
+.p20{
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.w100{
+    width: 100%;
+}
+.w50{
+    width: 50%;
+}
+.h100{
+    height: 100%;
+}
+.mxauto{
+    margin: 0 auto;
+}
+.white{
+    color: white;
+  }
+*{
+    margin: 0;
+  }
+  
+  #app,html,body {
+    width: 100%;
+    height: 100%;
+    font-size: 14px;
+  }
+  .container{
+    max-width: 1600px;
+    min-width: 900px;
+  }
