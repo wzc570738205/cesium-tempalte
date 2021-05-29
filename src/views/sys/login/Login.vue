@@ -11,19 +11,20 @@
     </div>
   </div>
 </template>
-
-<script setup >
+<script setup lang="ts">
 import { ref, reactive, getCurrentInstance, onMounted } from "vue";
-import { key } from "/@/store";
+import { key } from "@ts/store/index";
 import { useStore } from "vuex";
 import { useRouter, useRoute } from "vue-router";
-import loginLeft from "./login-left.vue";
-import loginRight from "./login-right.vue";
+import loginLeft from "/@/views/sys/login/login-left.vue";
+import loginRight from "/@/views/sys/login//login-right.vue";
 const internalInstance = getCurrentInstance(); //获取当前实例
 // const route = internalInstance?.appContext.config.globalProperties.$route;
 const router = useRouter();
 const route = useRoute();
+
 const store = useStore(key);
+console.log(`key`, store)
 onMounted(() => {});
 /*
 基本数据类型

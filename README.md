@@ -1,7 +1,10 @@
 # Vue 3 + Typescript + Vite UI框架暂定
 
 This template should help get you started developing with Vue 3 and Typescript in Vite.
-
+package 这个 "build": "vue-tsc --noEmit && vite build",
+改成 "build": "vite build",
+==注意事项与问题去下面的博客查看==
+https://blog.csdn.net/BLUESKYHOST/article/details/117383481
 ## Recommended IDE Setup
 
 [VSCode](https://code.visualstudio.com/) + [Vetur](https://marketplace.visualstudio.com/items?itemName=octref.vetur). Make sure to enable `vetur.experimental.templateInterpolationService` in settings!

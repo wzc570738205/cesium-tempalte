@@ -1,13 +1,12 @@
 <template>
-{{$store.state.loginModule.permissionList.length}}
   <h1><a href="">{{ count }}</a></h1>
   <h1>{{state.data.a}}</h1>
   <button @click="count++">count ++</button>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import {ref,defineProps,reactive,watch } from 'vue';
-import {helloLog} from '/@/hooks/hello'
+import {helloLog} from '../hooks/hello'
 /*
 基本数据类型
 引用数据类型（复杂类型） 个人建议 ref初始化变量 
@@ -22,12 +21,7 @@ ref定义的数据访问的时候要多一个.value
    a:3,
    b:2
  }
- let objProxy = new Proxy(obj,{
-   get(target,key){
-     return target[key]
-   }
- })
- objProxy.a=2;
+
 //  console.log('obj :>> ', obj);
 //   console.log('objProxy :>> ', objProxy);
  defineProps({
@@ -39,7 +33,7 @@ ref定义的数据访问的时候要多一个.value
 watch(count,(e)=>{
 console.log('count变化了:>> ', e);
 })
-function name(params) {
+function name() {
   console.log('原始html用法 ',helloLog());
 }
 // 

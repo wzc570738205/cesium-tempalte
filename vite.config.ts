@@ -11,16 +11,16 @@ export default defineConfig({
     alias: [
       // /@/xxxx => src/xxxx
       {
-        find: /\/@\//,
+        find: /@\//,
         replacement: pathResolve('src') + '/',
       },
       // /#/xxxx => types/xxxx
       {
-        find: /\/#\//,
+        find: /#\//,
         replacement: pathResolve('types') + '/',
       },
       // ['@vue/compiler-sfc', '@vue/compiler-sfc/dist/compiler-sfc.esm-browser.js'],
-    ],
+    ]
   },
   plugins: [vue(),
     legacy({
