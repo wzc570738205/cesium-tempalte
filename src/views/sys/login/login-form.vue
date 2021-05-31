@@ -1,5 +1,5 @@
 <template>
-  <div class="login-form mxauto">
+  <div class="login-form mxauto white-bg">
       <h1 class="title">登录</h1>
       <el-form :model="state.loginValidateForm" :ref="loginValidateFormRef"
       class="ruleForm mt30">
@@ -10,16 +10,23 @@
       { required: true, message: '账户不能为空'},
     ]"
   >
-    <el-input type="age" v-model.number="state.loginValidateForm.username" autocomplete="off"></el-input>
+    <el-input type="text"
+        placeholder="输入账户"
+     v-model.number="state.loginValidateForm.username"
+     autocomplete="off"></el-input>
   </el-form-item>
     <el-form-item
        class="mt30"
     prop="password"
+
     :rules="[
-      { required: true, message: '账户不能为空'},
+      { required: true, message: '密码不能为空'},
     ]"
   >
-    <el-input type="age" v-model.number="state.loginValidateForm.password" autocomplete="off"></el-input>
+    <el-input 
+    show-password
+        placeholder="输入密码"
+     v-model.number="state.loginValidateForm.password" autocomplete="off"></el-input>
   </el-form-item>
   <div class="mt30 jcb aic">
         <el-checkbox label="记住我"></el-checkbox>
@@ -28,7 +35,9 @@
         
   </div>
   <el-form-item class="mt30">
-    <el-button type="primary" class="w100 " @click="submitForm">登录</el-button>
+    <el-button type="primary" class="w100 "
+    :loading="true"
+     @click="submitForm">登录</el-button>
 
   </el-form-item>
 </el-form>
@@ -80,6 +89,8 @@ ref定义的数据访问的时候要多一个.value
     width: 400px;
     position: relative;
     left: 0;top:100px;
+    padding: 34px;
+    border-radius: 7px;
     .title{
        
     }

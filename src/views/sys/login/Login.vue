@@ -1,14 +1,27 @@
 <template>
-  <div class="login-bg">
-    <div class="zIndex-2 login-box mxauto container aic">
-      <div class="w50">
-        <loginLeft />
+  <div class="h100 w100" >
+    <!-- 大屏 start -->
+    <div class="h100 w100 hidden-md-and-down">
+        <div class="login-bg ">
+        <div class="zIndex-2 login-box mxauto container aic">
+          <div class="flex1">
+            <loginLeft />
+          </div>
+          <div class="flex1 ">
+            <loginRight />
+          </div>
+        </div>
       </div>
-       <div class="w50">
-        <loginRight />
-      </div>
-      
     </div>
+      <!-- 大屏 end -->
+      <!-- 小屏 start-->
+       <div class="flex1  small-bg h100 w100 hidden-md-and-up1">
+         <div  class="positionCenterTop ">
+ <h1 class="white  login-box-title text-center animate__animated animate__bounceInRight">element-plus+vite+ts+script setup语法糖</h1>
+            <loginRight />
+         </div>
+       </div>
+      <!-- 小屏 end -->
   </div>
 </template>
 <script setup lang="ts">
@@ -64,4 +77,8 @@ const state = reactive({
   z-index: 2;
   position: relative;
 }
+.small-bg{
+  background-color: #293146;
+}
+
 </style>

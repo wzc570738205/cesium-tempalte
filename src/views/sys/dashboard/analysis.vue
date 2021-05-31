@@ -1,17 +1,18 @@
 <template>
-  <div class=" animate__animated animate__bounceInRight login-right ">
-    <div class="">
-       <loginForm /> 
-    </div>
+  <div>
+   123
   </div>
 </template>
 
 <script setup lang="ts">
-import {ref,defineProps,reactive,getCurrentInstance, } from 'vue';
+import {ref,reactive,getCurrentInstance,onMounted} from 'vue';
+import {useRouter,useRoute} from 'vue-router'
     const internalInstance = getCurrentInstance();//获取当前实例
-    const route = internalInstance?.appContext.config.globalProperties.$route;
-import loginForm from "/@/views/sys/login/login-form.vue";
-
+    // const route = internalInstance?.appContext.config.globalProperties.$route;
+   const router = useRouter()
+   const route = useRoute()
+    onMounted(()=>{
+    })
 /*
 基本数据类型
 引用数据类型（复杂类型） 个人建议 ref初始化变量 
@@ -23,17 +24,9 @@ ref定义的数据访问的时候要多一个.value
    data:{a:1}
  })
 
- defineProps({
-  msg:  {
-      type: String,
-      required: true
-    }
-})
 
 </script>
 
 <style  scoped lang="scss" >
-.login-right{
- 
-}
+
 </style>

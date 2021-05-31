@@ -1,10 +1,9 @@
 import  { App,getCurrentInstance } from 'vue';
 import type { RouteRecordRaw } from 'vue-router';
 import { createRouter, createWebHashHistory } from 'vue-router';
-import {store} from '../store';
-import { LoginState } from '../store/modules/login';
-import { FilterRouterArr, LOGIN } from './constant';
-import { basicRoutes } from './routes';
+import {store} from '/@ts/store';
+import { FilterRouterArr, LOGIN } from '/@ts/router/constant';
+import { basicRoutes } from '/@ts/router/routes';
 /**
  * 创建路由实例
  */

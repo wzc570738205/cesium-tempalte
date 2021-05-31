@@ -1,14 +1,10 @@
 
 
 import { RouteRecordRaw } from 'vue-router';
-import { ROOT_PAGE_NAME } from '../constant';
-import btn from './modules/btn';
-import LoginRoute from './modules/login';
-
+import { ROOT_PAGE_NAME } from '/@ts/router/constant';
+import routeMenuList from '/@ts/router/routes/menu';
 const modules = import.meta.globEager('./modules/**/*.ts');
-
 const routeModuleList: RouteRecordRaw[] = [];
-
 Object.keys(modules).forEach((key) => {
   const mod = modules[key].default || {};
   // console.log('mod :>> ', mod);
@@ -22,7 +18,8 @@ const root: RouteRecordRaw = {
   meta: {
     title: "首页",
   },
-  redirect:"/btn",
+  component: () => import('/@/layouts/index.vue'),
+  children:routeMenuList
 };
 routeModuleList.push(root)
 export const basicRoutes:RouteRecordRaw[] =routeModuleList;

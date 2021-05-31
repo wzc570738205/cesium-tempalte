@@ -820,9 +820,9 @@ duplexer3@^0.1.4:
   resolved "https://registry.npm.taobao.org/duplexer3/download/duplexer3-0.1.4.tgz#ee01dd1cac0ed3cbc7fdbea37dc0a8f1ce002ce2"
   integrity sha1-7gHdHKwO08vH/b6jfcCo8c4ALOI=
 
-element-plus@^1.0.2-beta.45:
+element-plus@^1.0.2-beta.44:
   version "1.0.2-beta.45"
-  resolved "https://registry.nlark.com/element-plus/download/element-plus-1.0.2-beta.45.tgz?cache=0&sync_timestamp=1622185872683&other_urls=https%3A%2F%2Fregistry.nlark.com%2Felement-plus%2Fdownload%2Felement-plus-1.0.2-beta.45.tgz#d7d84d284ead4f9de5aa7289b9a2af4b7f109a1e"
+  resolved "https://registry.nlark.com/element-plus/download/element-plus-1.0.2-beta.45.tgz#d7d84d284ead4f9de5aa7289b9a2af4b7f109a1e"
   integrity sha1-19hNKE6tT53lqnKJuaKvS38Qmh4=
   dependencies:
     "@popperjs/core" "^2.4.4"

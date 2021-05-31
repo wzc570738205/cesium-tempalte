@@ -1,7 +1,7 @@
 <template>
   <div class="login-left animate__animated animate__bounceInLeft">
-       <h1 class="white hidden-md-and-down login-box-title">element-plus+vite+ts+script setup语法糖</h1>
-       <div class="fdc jcc login-left-readme hidden-md-and-down ">
+       <h1 class="white  login-box-title">element-plus+vite+ts+script setup语法糖</h1>
+       <div class="fdc jcc login-left-readme  ">
            <img class="login-box-bg   " src="/src/assets/svg/login-box-bg.svg" alt="">
           <div class="white mt60 first">
               本产项目用于案例模板、教学规范

@@ -7,6 +7,9 @@ function pathResolve(dir: string) {
   return resolve(process.cwd(), '.', dir);
 }
 export default defineConfig({
+  server:{
+    host:"192.168.1.7"
+  },
   resolve: {
     alias: [
       // /@/xxxx => src/xxxx

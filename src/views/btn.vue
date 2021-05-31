@@ -1,7 +1,7 @@
 <template>
   <div>
    当前页面是btn页面
-   
+   123
   </div>
 </template>
 
@@ -10,6 +10,7 @@ import {ref,defineProps,reactive,getCurrentInstance } from 'vue';
     const internalInstance = getCurrentInstance();//获取当前实例
     const route = internalInstance?.appContext.config.globalProperties.$route;
 import HelloWorld from '/@/components/HelloWorld.vue'
+import LltMenu from '/@/layouts/components/menu.vue'
 /*
 基本数据类型
 引用数据类型（复杂类型） 个人建议 ref初始化变量 
