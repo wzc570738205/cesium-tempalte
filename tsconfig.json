@@ -16,7 +16,7 @@
       "vite/client"
     ],
     "paths": {
-      "@ts/*": [
+      "/@ts/*": [
         "./src/*"
       ]
     },

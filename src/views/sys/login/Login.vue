@@ -13,7 +13,7 @@
 </template>
 <script setup lang="ts">
 import { ref, reactive, getCurrentInstance, onMounted } from "vue";
-import { key } from "@ts/store/index";
+import { key } from "/@ts/store/index";
 import { useStore } from "vuex";
 import { useRouter, useRoute } from "vue-router";
 import loginLeft from "/@/views/sys/login/login-left.vue";
