@@ -1,6 +1,6 @@
 <template>
   <div class="w100 h100">
-    <div class="aic">
+    <div class="aic w100 h100">
       <div class="h100">
         <LltMenu :isCollapse="isCollapse" />
       </div>
@@ -8,12 +8,15 @@
         :class="
           isCollapse ? 'menu-logo-collapse-true' : 'menu-logo-collapse-false'
         "
-        class="aic w100"
+        class="aic fdc w100 h100"
       >
         <LltHeader @handleCollapse="handleCollapse"  :isCollapse="isCollapse"/>
+        <div class="llt-layouts-body">
+           <RouterView />
+        </div>
       </div>
     </div>
-    <RouterView />
+   
   </div>
 </template>
 
@@ -52,5 +55,14 @@ const handleCollapse = (e:boolean)=>{
 }
 .menu-logo-collapse-false {
   margin-left: 200px;
+}
+
+.llt-layouts-body{
+  width: 100%;
+  
+ height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background-color: #F0F2F5;
 }
 </style>

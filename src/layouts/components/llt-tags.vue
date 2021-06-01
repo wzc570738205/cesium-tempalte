@@ -13,11 +13,10 @@
       </span>
       <template #dropdown>
         <el-dropdown-menu>
-          <el-dropdown-item icon="el-icon-plus">黄金糕</el-dropdown-item>
-          <el-dropdown-item icon="el-icon-circle-plus">狮子头</el-dropdown-item>
-          <el-dropdown-item icon="el-icon-circle-plus-outline">螺蛳粉</el-dropdown-item>
-          <el-dropdown-item icon="el-icon-check">双皮奶</el-dropdown-item>
-          <el-dropdown-item icon="el-icon-circle-check">蚵仔煎</el-dropdown-item>
+          <el-dropdown-item >关闭当前页面</el-dropdown-item>
+          <el-dropdown-item disabled>关闭左边页面</el-dropdown-item>
+          <el-dropdown-item >关闭右边边页面</el-dropdown-item>
+          <el-dropdown-item >关闭其他页面</el-dropdown-item>
         </el-dropdown-menu>
       </template>
     </el-dropdown>
