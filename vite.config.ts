@@ -8,7 +8,7 @@ function pathResolve(dir: string) {
 }
 export default defineConfig({
   server:{
-    host:"192.168.1.7"
+   
   },
   resolve: {
     alias: [

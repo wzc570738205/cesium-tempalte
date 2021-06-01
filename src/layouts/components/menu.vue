@@ -1,20 +1,28 @@
 <template>
   <div class="h100 llt-menu-box">
     <!-- 缩小 -->
-    <div v-show="isCollapse" class="menu-logo-box-icon">icon</div>
+    <div v-show="isCollapse"  class="menu-logo-box-icon  aic jcc">
+      <img src="/src/assets/svg/login-box-bg.svg" alt="">
+    </div>
     <!-- 缩小 -->
-    <div v-show="!isCollapse" class="menu-logo-box">展开了</div>
-    <div v-show="!isCollapse" class="menu-logo-hidden-box"></div>
+    <div v-show="!isCollapse" class="menu-logo-box  aic jcc">
+        <img src="/src/assets/svg/login-box-bg.svg" alt="">
+        <div>
+          XXXXXX
+        </div>
+    </div>
+    <div v-show="!isCollapse" class="menu-logo-hidden-box " ></div>
     <el-menu
       :collapse-transition="false"
       default-active="1-4-1"
       class="el-menu-vertical-demo scroll-style"
       @open="handleOpen"
       @close="handleClose"
+      @select="handleSelect"
       background-color="#001529"
       :collapse="isCollapse"
     >
-      <el-submenu index="1">
+      <el-submenu index="导航一">
         <template #title>
           <i class="el-icon-location"></i>
           <span>导航一</span>
@@ -32,110 +40,6 @@
           <el-menu-item index="1-4-1">选项1</el-menu-item>
         </el-submenu>
       </el-submenu>
-      <el-submenu index="11">
-        <template #title>
-          <i class="el-icon-location"></i>
-          <span>导航一</span>
-        </template>
-        <el-menu-item-group>
-          <template #title>分组一</template>
-          <el-menu-item index="1-1">选项1</el-menu-item>
-          <el-menu-item index="1-2">选项2</el-menu-item>
-        </el-menu-item-group>
-        <el-menu-item-group title="分组2">
-          <el-menu-item index="1-3">选项3</el-menu-item>
-        </el-menu-item-group>
-        <el-submenu index="1-4">
-          <template #title>选项4</template>
-          <el-menu-item index="1-4-1">选项1</el-menu-item>
-        </el-submenu>
-      </el-submenu>
-      <el-submenu index="111">
-        <template #title>
-          <i class="el-icon-location"></i>
-          <span>导航一</span>
-        </template>
-        <el-menu-item-group>
-          <template #title>分组一</template>
-          <el-menu-item index="1-1">选项1</el-menu-item>
-          <el-menu-item index="1-2">选项2</el-menu-item>
-        </el-menu-item-group>
-        <el-menu-item-group title="分组2">
-          <el-menu-item index="1-3">选项3</el-menu-item>
-        </el-menu-item-group>
-        <el-submenu index="1-4">
-          <template #title>选项4</template>
-          <el-menu-item index="1-4-1">选项1</el-menu-item>
-        </el-submenu>
-      </el-submenu>
-      <el-submenu index="1111">
-        <template #title>
-          <i class="el-icon-location"></i>
-          <span>导航一</span>
-        </template>
-        <el-menu-item-group>
-          <template #title>分组一</template>
-          <el-menu-item index="1-1">选项1</el-menu-item>
-          <el-menu-item index="1-2">选项2</el-menu-item>
-        </el-menu-item-group>
-        <el-menu-item-group title="分组2">
-          <el-menu-item index="1-3">选项3</el-menu-item>
-        </el-menu-item-group>
-        <el-submenu index="1-4">
-          <template #title>选项4</template>
-          <el-menu-item index="1-4-1">选项1</el-menu-item>
-        </el-submenu>
-      </el-submenu>
-      <el-submenu index="11111">
-        <template #title>
-          <i class="el-icon-location"></i>
-          <span>导航一</span>
-        </template>
-        <el-menu-item-group>
-          <template #title>分组一</template>
-          <el-menu-item index="1-1">选项1</el-menu-item>
-          <el-menu-item index="1-2">选项2</el-menu-item>
-        </el-menu-item-group>
-        <el-menu-item-group title="分组2">
-          <el-menu-item index="1-3">选项3</el-menu-item>
-        </el-menu-item-group>
-        <el-submenu index="1-4">
-          <template #title>选项4</template>
-          <el-menu-item index="1-4-1">选项1</el-menu-item>
-        </el-submenu>
-      </el-submenu>
-      <el-menu-item index="2">
-        <i class="el-icon-menu"></i>
-        <template #title>导航二</template>
-      </el-menu-item>
-      <el-menu-item index="3" disabled>
-        <i class="el-icon-document"></i>
-        <template #title>导航三</template>
-      </el-menu-item>
-      <el-menu-item index="4">
-        <i class="el-icon-setting"></i>
-        <template #title>导航四</template>
-      </el-menu-item>
-      <el-menu-item index="5">
-        <i class="el-icon-setting"></i>
-        <template #title>导航四5</template>
-      </el-menu-item>
-      <el-menu-item index="2">
-        <i class="el-icon-menu"></i>
-        <template #title>导航二</template>
-      </el-menu-item>
-      <el-menu-item index="3" disabled>
-        <i class="el-icon-document"></i>
-        <template #title>导航三</template>
-      </el-menu-item>
-      <el-menu-item index="4">
-        <i class="el-icon-setting"></i>
-        <template #title>导航四</template>
-      </el-menu-item>
-      <el-menu-item index="5">
-        <i class="el-icon-setting"></i>
-        <template #title>导航四5</template>
-      </el-menu-item>
       <el-menu-item index="2">
         <i class="el-icon-menu"></i>
         <template #title>导航二</template>
@@ -178,6 +82,9 @@ const handleOpen = (key: string, keyPath: Array<string>) => {
 const handleClose = (key: string, keyPath: Array<string>) => {
   console.log(key, keyPath);
 };
+const handleSelect = (key: string, keyPath: Array<string>) => {
+  console.log(key, keyPath);
+};
 
 defineProps({
   isCollapse: {
@@ -192,14 +99,25 @@ defineProps({
   width: 64px;
   height: 64px;
   background-color: #001529;
-  border-bottom: 1px solid #fff;
   color: #fff;
+   img{
+    width: 45px;
+  }
 }
+
 .menu-logo-box {
-}
-.menu-logo-box {
-  height: 80px;
-  background-color: #c48;
+  height: 54px;
+  background-color: #001529;
+ 
+  img{
+    width: 45px;
+  }
+  div{
+    font-size: 22px;
+    color: #fff;
+    font-weight: bold;
+    margin-left: 15px;
+  }
 }
 .el-menu {
   border: none;

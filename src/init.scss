@@ -25,13 +25,29 @@ align-items: center;
 .mx30{
     margin: 0 30px;
 }
+.mx15{
+    margin: 0 15px;
+}
 .mt30{
     margin-top:30px ;
 }
-
+.p10{
+    padding: 10px;
+}
 .p20{
     padding: 20px;
     box-sizing: border-box;
+}
+.llt-icon-size{
+    font-size: 20px;
+    color: #111;
+    cursor: pointer;
+}
+.cP{
+    cursor: pointer;
+}
+.llt-icon-size:hover{
+background-color: #e4e4e7;
 }
 
 .w100{
@@ -59,11 +75,15 @@ align-items: center;
     transform: translateX(-50%);
 
 }
+.positionRelat{
+    position: relative;
+}
 .text-center{
     text-align: center;
 }
 *{
     margin: 0;
+    box-sizing: border-box;
   }
   
   #app,html,body {
@@ -78,14 +98,17 @@ align-items: center;
 .llt-row{
     margin: 0 !important;
 }
-
+.llt-default-font-color{
+    color: #333;
+    font-weight: 500;
+}
 
 
  /*定义滚动条高宽及背景 高宽分别对应横竖滚动条的尺寸*/
 ::-webkit-scrollbar
  {
      width: 8px !important;
-     // height: 8px;
+     height: 8px;
      background-color: transparent;
  }
  /*定义滚动条轨道 内阴影+圆角*/

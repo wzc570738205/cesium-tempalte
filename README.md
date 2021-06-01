@@ -1,5 +1,5 @@
 # Vue 3 + Typescript + Vite UI框架暂定
-
+# [animate动画网站](https://animate.style/) 
 This template should help get you started developing with Vue 3 and Typescript in Vite.
 package 这个 "build": "vue-tsc --noEmit && vite build",
 改成 "build": "vite build",
