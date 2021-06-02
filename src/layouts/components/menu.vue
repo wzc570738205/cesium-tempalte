@@ -68,10 +68,10 @@ ref 和 reactive 本质我们可以简单的理解为ref是对reactive的二次�
 ref定义的数据访问的时候要多一个.value
 */
 const activeIndex = ref(0);
+
 const state = reactive({
   data: { a: 1 },
 });
-console.log('menuRouter :>> ', menuRouter);
 const handleOpen = (key: string, keyPath: Array<string>) => {
   console.log(key, keyPath);
 };

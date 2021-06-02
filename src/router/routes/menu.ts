@@ -1,25 +1,26 @@
-import { AppRouteModule } from "/@ts/router/types";
+import { AppRouteModule, AppRouteRecordRaw } from "/@ts/router/types";
 // component: () => import('/@/layouts/index.vue'),
-const routeMenuList: AppRouteModule[] = [
-    {
-        path:"/dashboard",
-        name:"dashboard",
-        meta:{
-            title:"仪表盘",
-            icon:"el-icon-menu"
-        },
-        children:[
-            {
-                path:"/dashboard/analysis",
-                name:"dashboardAnalysis",
-                meta:{
-                    title:"分析页",
-                   
-                },
-                component: () => import('/@/views/sys/dashboard/analysis.vue'),
-            }
-        ]
+export const dashboard =  {
+    path:"/dashboard",
+    name:"dashboard",
+    meta:{
+        title:"仪表盘",
+        icon:"el-icon-menu"
     },
+    children:[
+        {
+            path:"/dashboard/analysis",
+            name:"dashboardAnalysis",
+            meta:{
+                title:"分析页",
+               
+            },
+            component: () => import('/@/views/sys/dashboard/analysis.vue'),
+        }
+    ]
+};
+const routeMenuList: AppRouteRecordRaw[] = [
+    dashboard,
     {
         path:"/README",
         name:"README",

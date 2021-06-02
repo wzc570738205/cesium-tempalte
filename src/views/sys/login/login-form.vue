@@ -65,7 +65,6 @@ ref定义的数据访问的时候要多一个.value
  let FormRef :any= "";
  const loginValidateFormRef = (el :any)=>FormRef=el
  const submitForm = () => {
-     console.log('FormRef :>> ', FormRef);
        FormRef.validate((valid: boolean) => {
           if (valid) {
             alert('submit!');
@@ -75,12 +74,7 @@ ref定义的数据访问的时候要多一个.value
           }
         });
       }
- defineProps({
-  msg:  {
-      type: String,
-      required: true
-    }
-})
+
 
 </script>
 

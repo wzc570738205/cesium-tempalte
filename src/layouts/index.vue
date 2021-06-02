@@ -30,11 +30,14 @@
 </template>
 
 <script setup lang="ts">
-import { ref, reactive, getCurrentInstance, onMounted, toRef, toRefs } from "vue";
+import { ref, reactive, getCurrentInstance, onMounted, toRef, toRefs, onBeforeMount } from "vue";
 import { useRouter, useRoute } from "vue-router";
 import LltMenu from "/@/layouts/components/menu.vue";
 import LltHeader from "/@/layouts/components/header.vue";
-
+import {store} from '/@ts/store';
+ onBeforeMount(()=>{
+  console.log('"object" :>> ', "页面刷新了");
+ })
 const internalInstance = getCurrentInstance(); //获取当前实例
 // const route = internalInstance?.appContext.config.globalProperties.$route;
 const router = useRouter();

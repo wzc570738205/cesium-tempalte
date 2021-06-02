@@ -32,7 +32,9 @@ router.afterEach((to,from)=>{
     }
   }
   store.commit('setBreadcrumbList',routerItme)
-
+  console.log('routerItme :>> ', routerItme);
+  // routerItme.includes(res=>res.)
+  console.log('store.state.tagPages :>> ', store.state.formatRouteMenuList);
 })
 // router.beforeEach((to,from,next)=>{
 //   store.commit('loginModule/isLogin')

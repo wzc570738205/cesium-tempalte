@@ -1,8 +1,8 @@
 Arguments: 
-  D:\webSystem\nodejs\node.exe C:\Users\admin\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js add optimizeDeps
+  D:\webSystem\nodejs\node.exe C:\Users\admin\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js
 
 PATH: 
-  C:\Users\admin\bin;D:\webSystem\Git\mingw64\bin;D:\webSystem\Git\usr\local\bin;D:\webSystem\Git\usr\bin;D:\webSystem\Git\usr\bin;D:\webSystem\Git\mingw64\bin;D:\webSystem\Git\usr\bin;C:\Users\admin\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0;C:\Windows\System32\OpenSSH;D:\webSystem\Microsoft VS Code\bin;D:\webSystem\nodejs;D:\webSystem\Git\cmd;C:\Program Files\Java\jdk1.8.0_271\bin;C:\Program Files\Java\jdk1.8.0_271\jre\bin;D:\webSystem\flutter\bin;C:\Users\admin\AppData\Local\Microsoft\WindowsApps;C:\Users\admin\AppData\Roaming\npm;D:\webSystem\Git\usr\bin\vendor_perl;D:\webSystem\Git\usr\bin\core_perl
+  C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;D:\webSystem\Microsoft VS Code\bin;D:\webSystem\nodejs\;D:\webSystem\Git\cmd;C:\Program Files\Java\jdk1.8.0_271\bin;C:\Program Files\Java\jdk1.8.0_271\jre\bin;D:\webSystem\flutter\bin;C:\Users\admin\AppData\Local\Microsoft\WindowsApps;C:\Users\admin\AppData\Roaming\npm
 
 Yarn version: 
   1.22.10
@@ -14,17 +14,7 @@ Platform:
   win32 x64
 
 Trace: 
-  Error: https://registry.npm.taobao.org/optimizeDeps: Not found
-      at Request.params.callback [as _callback] (C:\Users\admin\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:66988:18)
-      at Request.self.callback (C:\Users\admin\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:140662:22)
-      at Request.emit (events.js:315:20)
-      at Request.<anonymous> (C:\Users\admin\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:141634:10)
-      at Request.emit (events.js:315:20)
-      at IncomingMessage.<anonymous> (C:\Users\admin\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:141556:12)
-      at Object.onceWrapper (events.js:421:28)
-      at IncomingMessage.emit (events.js:327:22)
-      at endReadableNT (internal/streams/readable.js:1327:12)
-      at processTicksAndRejections (internal/process/task_queues.js:80:21)
+  Error: EPERM: operation not permitted, unlink 'D:\worker\study\vite\admin-tempalte\node_modules\esbuild\esbuild.exe'
 
 npm manifest: 
   {
@@ -880,9 +870,9 @@ Lockfile:
     resolved "https://registry.npm.taobao.org/duplexer3/download/duplexer3-0.1.4.tgz#ee01dd1cac0ed3cbc7fdbea37dc0a8f1ce002ce2"
     integrity sha1-7gHdHKwO08vH/b6jfcCo8c4ALOI=
   
-  element-plus@^1.0.2-beta.45:
+  element-plus@^1.0.2-beta.44:
     version "1.0.2-beta.45"
-    resolved "https://registry.nlark.com/element-plus/download/element-plus-1.0.2-beta.45.tgz?cache=0&sync_timestamp=1622185872683&other_urls=https%3A%2F%2Fregistry.nlark.com%2Felement-plus%2Fdownload%2Felement-plus-1.0.2-beta.45.tgz#d7d84d284ead4f9de5aa7289b9a2af4b7f109a1e"
+    resolved "https://registry.nlark.com/element-plus/download/element-plus-1.0.2-beta.45.tgz#d7d84d284ead4f9de5aa7289b9a2af4b7f109a1e"
     integrity sha1-19hNKE6tT53lqnKJuaKvS38Qmh4=
     dependencies:
       "@popperjs/core" "^2.4.4"

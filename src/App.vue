@@ -3,13 +3,11 @@
 </template>
 
 <script setup>
-import { defineComponent} from 'vue'
-import HelloWorld from '/@/components/HelloWorld.vue'
-import {useGoPage} from '/@/hooks/route'
-function goTest() {
-  useGoPage("/btn")
-}
+import { onBeforeMount} from 'vue'
 
+import {useGoPage} from '/@/hooks/route'
+
+// store
 </script>
 
 <style>

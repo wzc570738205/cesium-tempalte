@@ -35,9 +35,7 @@ const internalInstance = getCurrentInstance(); //获取当前实例
 // const route = internalInstance?.appContext.config.globalProperties.$route;
 const router = useRouter();
 const route = useRoute();
-
 const store = useStore(key);
-console.log(`key`, store)
 onMounted(() => {});
 /*
 基本数据类型

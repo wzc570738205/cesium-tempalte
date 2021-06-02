@@ -23,12 +23,7 @@ ref定义的数据访问的时候要多一个.value
    data:{a:1}
  })
 
- defineProps({
-  msg:  {
-      type: String,
-      required: true
-    }
-})
+
 
 </script>
 
