@@ -1,8 +1,9 @@
 
 import {  App, InjectionKey } from 'vue';
 import Vuex,{ createStore, Store,StoreOptions } from 'vuex';
-import {loginModule} from './modules/login';
-import { RootState } from './root-types';
+import { AppRouteModule } from '/@ts/router/types';
+import {loginModule} from '/@ts/store/modules/login';
+import { RootState } from '/@ts/store/root-types';
 interface State {
     count: number
   }
@@ -12,8 +13,14 @@ export const key: InjectionKey<Store<State>> = Symbol()
 export const store:Store<RootState> = createStore({
     state(){
      return {
-       
+       projectName:"llt-admin",
+       BreadcrumbList:[]
      }
+    },
+    mutations:{
+      setBreadcrumbList(state:RootState,value:AppRouteModule[]){
+        state.BreadcrumbList=value
+      }
     },
     modules:{
         loginModule

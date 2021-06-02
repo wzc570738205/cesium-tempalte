@@ -12,7 +12,16 @@
       >
         <LltHeader @handleCollapse="handleCollapse"  :isCollapse="isCollapse"/>
         <div class="llt-layouts-body">
-           <RouterView />
+           <!-- <RouterView /> -->
+             <!-- <transition >
+            <router-view/>
+          </transition> -->
+          <router-view v-slot="{ Component }">
+          <transition name="list" mode="out-in">
+            <component :is="Component" />
+          </transition>
+        </router-view>
+
         </div>
       </div>
     </div>
@@ -25,6 +34,7 @@ import { ref, reactive, getCurrentInstance, onMounted, toRef, toRefs } from "vue
 import { useRouter, useRoute } from "vue-router";
 import LltMenu from "/@/layouts/components/menu.vue";
 import LltHeader from "/@/layouts/components/header.vue";
+
 const internalInstance = getCurrentInstance(); //获取当前实例
 // const route = internalInstance?.appContext.config.globalProperties.$route;
 const router = useRouter();
@@ -64,5 +74,15 @@ const handleCollapse = (e:boolean)=>{
   overflow-y: auto;
   overflow-x: hidden;
   background-color: #F0F2F5;
+}
+// 路由切换动画
+.list-enter-active,
+.list-leave-active {
+  transition: all 0.5s ease;
+}
+.list-enter-from,
+.list-leave-to {
+  opacity: 0;
+  transform: translateY(30px);
 }
 </style>

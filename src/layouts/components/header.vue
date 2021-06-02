@@ -12,10 +12,12 @@
         </div>
         <div class="mx15">
           <el-breadcrumb separator-class="el-icon-arrow-right">
-            <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
-            <el-breadcrumb-item>活动管理</el-breadcrumb-item>
-            <el-breadcrumb-item>活动列表</el-breadcrumb-item>
-            <el-breadcrumb-item>活动详情</el-breadcrumb-item>
+            <!-- <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item> -->
+            <el-breadcrumb-item
+            v-for="(item,index) in $store.state.BreadcrumbList" :key="index"
+           
+            >{{item.meta.title}}</el-breadcrumb-item>
+            
           </el-breadcrumb>
         </div>
       </div>
@@ -120,16 +122,18 @@ import {
   reactive,
   getCurrentInstance,
   useContext,
+  watch,watchEffect
 } from "vue";
 import LltTags from '/@/layouts/components/llt-tags.vue'
 const internalInstance = getCurrentInstance(); //获取当前实例
-const route = internalInstance?.appContext.config.globalProperties;
+// const route = internalInstance?.appContext.config.globalProperties;
 const state = reactive({
   tagsData: [{ name: "工作台" },{ name: "分析页" }],
  
 });
 let currentTag = ref(0)
 const context = useContext();
+
 const props = defineProps({
   isCollapse: {
     type: Boolean,

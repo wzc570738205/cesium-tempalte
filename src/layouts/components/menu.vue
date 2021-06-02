@@ -7,14 +7,13 @@
     <!-- 缩小 -->
     <div v-show="!isCollapse" class="menu-logo-box  aic jcc">
         <img src="/src/assets/svg/login-box-bg.svg" alt="">
-        <div>
-          XXXXXX
+        <div class="">
+          {{$store.state.projectName}}
         </div>
     </div>
     <div v-show="!isCollapse" class="menu-logo-hidden-box " ></div>
     <el-menu
       :collapse-transition="false"
-      default-active="1-4-1"
       class="el-menu-vertical-demo scroll-style"
       @open="handleOpen"
       @close="handleClose"
@@ -22,48 +21,45 @@
       background-color="#001529"
       :collapse="isCollapse"
     >
-      <el-submenu index="导航一">
+    <div
+     v-for="(item,index) in routeMenuList"
+     :key="index"
+    >
+       <el-submenu :index="item.name"
+       v-if="item.children"
+       >
         <template #title>
-          <i class="el-icon-location"></i>
-          <span>导航一</span>
+            <i :class="item.meta.icon"></i>
+          <span>{{item.meta.title}}</span>
         </template>
-        <el-menu-item-group>
-          <template #title>分组一</template>
-          <el-menu-item index="1-1">选项1</el-menu-item>
-          <el-menu-item index="1-2">选项2</el-menu-item>
-        </el-menu-item-group>
-        <el-menu-item-group title="分组2">
-          <el-menu-item index="1-3">选项3</el-menu-item>
-        </el-menu-item-group>
-        <el-submenu index="1-4">
-          <template #title>选项4</template>
-          <el-menu-item index="1-4-1">选项1</el-menu-item>
-        </el-submenu>
+         
+        <el-menu-item
+            v-for="(childrenItem,childrenIndex) in item.children"
+     :key="childrenIndex"
+         :index="childrenItem.name">{{childrenItem.meta.title}}</el-menu-item>
+       
       </el-submenu>
-      <el-menu-item index="2">
-        <i class="el-icon-menu"></i>
-        <template #title>导航二</template>
-      </el-menu-item>
-      <el-menu-item index="3" disabled>
-        <i class="el-icon-document"></i>
-        <template #title>导航三</template>
-      </el-menu-item>
-      <el-menu-item index="4">
-        <i class="el-icon-setting"></i>
-        <template #title>导航四</template>
-      </el-menu-item>
-      <el-menu-item index="5">
-        <i class="el-icon-setting"></i>
-        <template #title>导航四5</template>
-      </el-menu-item>
+        <el-menu-item v-else
+         
+         :index="item.name">
+         
+          <i :class="item.meta.icon"></i>
+        <template #title>  {{item.meta.title}}</template>
+       </el-menu-item>
+    </div>
     </el-menu>
   </div>
 </template>
 
 <script setup lang="ts">
 import { ref, defineProps, reactive, getCurrentInstance } from "vue";
-const internalInstance = getCurrentInstance(); //获取当前实例
-const route = internalInstance?.appContext.config.globalProperties.$route;
+import { useRoute, useRouter } from "vue-router";
+import { menuRouter } from "/@ts/router/routes";
+import routeMenuList from '/@ts/router/routes/menu';
+  const router = useRouter()
+   const route = useRoute()
+// const internalInstance = getCurrentInstance(); //获取当前实例
+// const route = internalInstance?.appContext.config.globalProperties.$route;
 
 /*
 基本数据类型
@@ -75,7 +71,7 @@ const activeIndex = ref(0);
 const state = reactive({
   data: { a: 1 },
 });
-
+console.log('menuRouter :>> ', menuRouter);
 const handleOpen = (key: string, keyPath: Array<string>) => {
   console.log(key, keyPath);
 };
@@ -84,6 +80,7 @@ const handleClose = (key: string, keyPath: Array<string>) => {
 };
 const handleSelect = (key: string, keyPath: Array<string>) => {
   console.log(key, keyPath);
+  router.push({name:key})
 };
 
 defineProps({
@@ -123,10 +120,13 @@ defineProps({
   border: none;
 }
 .llt-menu-box {
+  width: 200px;
   position: fixed;
   left: 0;
   top: 0;
+	 
 }
+
 .el-menu-vertical-demo {
   height: 100%;
   overflow-y: auto;

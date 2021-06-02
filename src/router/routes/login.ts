@@ -1,6 +1,5 @@
 import { AppRouteModule } from "/@ts/router/types";
-import { LOGIN } from "../../constant";
-import btn from "./btn";
+import { LOGIN } from "/@ts/router/constant";
 const LoginRoute: AppRouteModule = {
     path: '/login',
     name: LOGIN,
