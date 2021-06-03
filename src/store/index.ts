@@ -45,6 +45,11 @@ export const store:Store<RootState> = createStore({
       setCloseTagPages(state:RootState,value:number){
         state.tagPages.splice(value,1)
         router.push({name:state.tagPages[state.tagPages.length-1].name})
+      },
+      //重新赋值标签页
+      MoreCloseTagPages(state:RootState,value:AppRouteModule[]){
+        state.tagPages=value
+        router.push({name:state.tagPages[state.tagPages.length-1].name})
       }
     },
     modules:{

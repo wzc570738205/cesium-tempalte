@@ -15,7 +15,16 @@ export const dashboard =  {
                 title:"分析页",
                
             },
-            component: () => import('/@/views/sys/dashboard/analysis.vue'),
+            component: () => import('/@/views/sys/dashboard/analysis/analysis.vue'),
+        },
+        {
+            path:"/dashboard/workbench",
+            name:"dashboardWorkbench",
+            meta:{
+                title:"工作台",
+               
+            },
+            component: () => import('/@/views/sys/dashboard/workbench/workbench.vue'),
         }
     ]
 };

@@ -368,6 +368,21 @@
   resolved "https://registry.nlark.com/@vue/shared/download/@vue/shared-3.0.11.tgz#20d22dd0da7d358bb21c17f9bde8628152642c77"
   integrity sha1-INIt0Np9NYuyHBf5vehigVJkLHc=
 
+"@vueuse/core@^4.11.2":
+  version "4.11.2"
+  resolved "https://registry.nlark.com/@vueuse/core/download/@vueuse/core-4.11.2.tgz#d4f54bd38e7c289c6f6357992c02423774cb26d9"
+  integrity sha1-1PVL0458KJxvY1eZLAJCN3TLJtk=
+  dependencies:
+    "@vueuse/shared" "4.11.2"
+    vue-demi "*"
+
+"@vueuse/shared@4.11.2":
+  version "4.11.2"
+  resolved "https://registry.nlark.com/@vueuse/shared/download/@vueuse/shared-4.11.2.tgz#1d56e08937600e3e65abf76f27cb4a1bc182adfd"
+  integrity sha1-HVbgiTdgDj5lq/dvJ8tKG8GCrf0=
+  dependencies:
+    vue-demi "*"
+
 acorn@^7.1.1:
   version "7.4.1"
   resolved "https://registry.nlark.com/acorn/download/acorn-7.4.1.tgz?cache=0&sync_timestamp=1620134258253&other_urls=https%3A%2F%2Fregistry.nlark.com%2Facorn%2Fdownload%2Facorn-7.4.1.tgz#feaed255973d2e77555b83dbc08851a6c63520fa"
@@ -2763,6 +2778,11 @@ vscode-vue-languageservice@0.25.12:
     vscode-languageserver-textdocument "^1.0.1"
     vscode-pug-languageservice "^0.25.4"
     vscode-typescript-languageservice "^0.25.12"
+
+vue-demi@*:
+  version "0.9.1"
+  resolved "https://registry.nlark.com/vue-demi/download/vue-demi-0.9.1.tgz?cache=0&sync_timestamp=1622101247356&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fvue-demi%2Fdownload%2Fvue-demi-0.9.1.tgz#25d6e1ebd4d4010757ff3571e2bf6a1d7bf3de82"
+  integrity sha1-Jdbh69TUAQdX/zVx4r9qHXvz3oI=
 
 vue-router@4.0.6:
   version "4.0.6"

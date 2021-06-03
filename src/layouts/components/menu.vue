@@ -74,13 +74,13 @@ const state = reactive({
   data: { a: 1 },
 });
 const handleOpen = (key: string, keyPath: Array<string>) => {
-  console.log(key, keyPath);
+  // console.log(key, keyPath);
 };
 const handleClose = (key: string, keyPath: Array<string>) => {
-  console.log(key, keyPath);
+  // console.log(key, keyPath);
 };
 const handleSelect = (key: string, keyPath: Array<string>) => {
-  console.log(key, keyPath);
+  // console.log(key, keyPath);
   router.push({name:key})
 };
 

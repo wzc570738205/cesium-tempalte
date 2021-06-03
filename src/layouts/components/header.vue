@@ -23,7 +23,7 @@
       <!-- 一级导航左边 end -->
       <!-- 二级导航左边 start -->
       <div class="aic">
-        <div>
+        <div class="">
           <el-tooltip
             class="item"
             effect="dark"
@@ -45,13 +45,14 @@
           <el-tooltip
             class="item"
             effect="dark"
-            content="全屏"
+            :content="!isFullscreen?'全屏':'退出全屏'"
             placement="bottom"
           >
-            <i class="el-icon-full-screen llt-icon-size p10"></i>
+            <i @click="toggle" v-if="!isFullscreen"  class="el-icon-full-screen llt-icon-size p10"></i>
+            <i @click="toggle" v-else class="el-icon-rank llt-icon-size p10"></i>
           </el-tooltip>
         </div>
-        <el-dropdown :hide-on-click="false" class="mx15 cP">
+        <el-dropdown trigger="hover" :show-timeout="0" class="mx15 cP">
           <span class="el-dropdown-link">
             <div class="aic">
               <el-avatar
@@ -63,11 +64,8 @@
           </span>
           <template #dropdown>
             <el-dropdown-menu>
-              <el-dropdown-item>黄金糕</el-dropdown-item>
-              <el-dropdown-item>狮子头</el-dropdown-item>
-              <el-dropdown-item>螺蛳粉</el-dropdown-item>
-              <el-dropdown-item disabled>双皮奶</el-dropdown-item>
-              <el-dropdown-item divided>蚵仔煎</el-dropdown-item>
+              <el-dropdown-item icon="el-icon-s-custom">个人中心</el-dropdown-item>
+              <el-dropdown-item icon="el-icon-s-release" divided>退出系统</el-dropdown-item>
             </el-dropdown-menu>
           </template>
         </el-dropdown>
@@ -77,7 +75,7 @@
           content="主题配置"
           placement="bottom"
         >
-          <i class="el-icon-setting llt-icon-size p10"></i>
+          <i  class="el-icon-setting llt-icon-size p10"></i>
         </el-tooltip>
       </div>
       <!-- 二级导航左边 end -->
@@ -97,18 +95,6 @@
             >
               <i class="el-icon-refresh llt-icon-size p10"></i>
             </el-tooltip>
-               <el-dropdown :hide-on-click="false" class="mx15 cP">
-           <i class="el-icon-arrow-down llt-icon-size p10"></i>
-          <template #dropdown>
-            <el-dropdown-menu>
-              <el-dropdown-item>黄金糕</el-dropdown-item>
-              <el-dropdown-item>狮子头</el-dropdown-item>
-              <el-dropdown-item>螺蛳粉</el-dropdown-item>
-              <el-dropdown-item disabled>双皮奶</el-dropdown-item>
-              <el-dropdown-item divided>蚵仔煎</el-dropdown-item>
-            </el-dropdown-menu>
-          </template>
-        </el-dropdown>
           </div>
     </div>
   </div>
@@ -122,10 +108,14 @@ import {
   useContext,
   watch,watchEffect
 } from "vue";
+import {
+  useFullscreen,
+} from "@vueuse/core";
 import {store} from '/@ts/store';
 import LltTags from '/@/layouts/components/llt-tags.vue';
 import type{ AppRouteModule } from '/@ts/router/types';
 import {useRouter } from "vue-router";
+const { isFullscreen, toggle } = useFullscreen();
 const router = useRouter()
 const internalInstance = getCurrentInstance(); //获取当前实例
 // const route = internalInstance?.appContext.config.globalProperties;
@@ -168,6 +158,7 @@ const handleSelect = () => {};
 <style  scoped lang="scss" >
 .llt-header {
   .top{
+    position: relative;z-index: 10000;
   border-top: solid 1px #e6e6e6;
   border-bottom: solid 1px #e6e6e6;
   padding: 5px 10px;
