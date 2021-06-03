@@ -5,5 +5,6 @@ export interface RootState {
     projectName:string,
     BreadcrumbList:Array<AppRouteModule>,
     tagPages:Array<AppRouteModule>,
-    formatRouteMenuList:AppRouteModule[]
+    currentTag:number,
+    menuActiveName:string
 }

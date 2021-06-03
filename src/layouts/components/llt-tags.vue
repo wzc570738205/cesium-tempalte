@@ -5,22 +5,24 @@
         :class="currentTag==index?' llt-tag-active':''"
         v-for="(item,index) in tagsData" :key="index">
          <el-dropdown trigger="contextmenu">
-      <span class="tag-font"  :style="{paddingRight:index==0?'8px':'4px'}">
-        {{item.name}}
-            <i @click="handleClose"  v-show="index!=0"
+      <span class="tag-font"  :style="{paddingRight:index==0?'8px':'4px'}"
+      @click="handleOpen(index,item)"
+      >
+        {{item.meta.title}}
+            <i @click="handleClose(index)"  v-show="index!=0"
            
              class="el-icon-close llt-tag-icon-close "></i>
       </span>
       <template #dropdown>
         <el-dropdown-menu>
-          <el-dropdown-item >关闭当前页面</el-dropdown-item>
-          <el-dropdown-item disabled>关闭左边页面</el-dropdown-item>
-          <el-dropdown-item >关闭右边边页面</el-dropdown-item>
-          <el-dropdown-item >关闭其他页面</el-dropdown-item>
+          <el-dropdown-item 
+          v-for="(item,index) in state.tagPageToolData"
+          :key="index"
+          >{{item.name}}</el-dropdown-item>
+         
         </el-dropdown-menu>
       </template>
-    </el-dropdown>
-           
+    </el-dropdown>       
         </div>
         <!-- 未选中 -->
   </div>
@@ -28,10 +30,11 @@
 
 <script setup lang="ts">
 import {ref,defineProps,reactive,getCurrentInstance, useContext } from 'vue';
+import type{ AppRouteModule } from '/@ts/router/types';
     const internalInstance = getCurrentInstance();//获取当前实例
     const route = internalInstance?.appContext.config.globalProperties.$route;
 const context = useContext();
-const props=  defineProps({
+const props = defineProps({
   currentTag:  {
       type: Number,
       default: 0
@@ -40,20 +43,42 @@ const props=  defineProps({
     type:Array,
      default: []
   },
-    //  name:{
-    //   type: String,
-    //   default: 0
-    // },
-    // to:{
-    //   type: String,
-    //   default: ""   
-    // }
 })
-const handleClose =()=>{
+
+interface TagPageTool {
+  disabled:boolean,
+  name:string
+}
+interface State {
+  tagPageToolData:Array<TagPageTool>
+}
+const state:State = reactive({
+tagPageToolData:[
+  {
+    name:"关闭当前页面",
+    disabled:false
+  },
+   {
+    name:"关闭左边页面",
+    disabled:false
+  },
+   {
+    name:"关闭右边边页面",
+    disabled:false
+  },
+   {
+    name:"关闭其他页面",
+    disabled:false
+  }
+]
+})
+const handleOpen =(index:number,routerItem:AppRouteModule)=>{
     // 删除数组指定索引后返回数据
-    let tagsData = JSON.parse(JSON.stringify( props.tagsData))
-    tagsData.splice(props.currentTag,1)
-    context.emit("handleClose",tagsData );
+    context.emit("handleOpen",{index,routerItem});
+}
+const handleClose =(index:Number)=>{
+    // 删除数组指定索引后返回数据
+    context.emit("handleClose",index);
 }
 </script>
 
@@ -74,10 +99,13 @@ const handleClose =()=>{
 }
 .llt-tag-icon-close{
    font-size: 12px;
+ 
 }
-.tag-font:hover .llt-tag-icon-close{
-   visibility: visible;
+.llt-tag-icon-close:hover{
+  background-color: rgba(0,0,0,0.3);
+  border-radius: 100%;
 }
+
 .llt-tag-item:hover{
     color:rgb(9, 96, 189) ;
 }

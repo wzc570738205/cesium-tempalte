@@ -5,6 +5,7 @@ import {store} from '/@ts/store';
 import { FilterRouterArr, LOGIN } from '/@ts/router/constant';
 import { basicRoutes } from '/@ts/router/routes';
 import routeMenuList from '/@ts/router/routes/menu';
+import { menuRouter } from "/@ts/router/routes";
 /**
  * 创建路由实例
  */
@@ -19,22 +20,30 @@ const getFilterRouterName=(name:string):boolean=>FilterRouterArr.includes(name);
 router.afterEach((to,from)=>{
   let name = to.name
   let routerItme=[]
+  /**
+   * 获取面包屑数据
+   */
   for (let index = 0; index < routeMenuList.length; index++) {
     const element = routeMenuList[index];
     if(element.name == name){
       routerItme.push(element)
+      break;
     }else if(element.children){
      let a = element.children.filter(res=>res.name==name)
      if(a.length!=0){
       routerItme.push(element)
       routerItme.push(a[0])
+      break;
      }
     }
   }
-  store.commit('setBreadcrumbList',routerItme)
-  console.log('routerItme :>> ', routerItme);
-  // routerItme.includes(res=>res.)
-  console.log('store.state.tagPages :>> ', store.state.formatRouteMenuList);
+  store.commit('setBreadcrumbList',routerItme)//更新面包屑
+  store.commit('setMenuActiveName',name)//激活菜单
+  menuRouter.forEach(element => {
+    if(element.name==name){
+      store.commit('setTagPages',element);//更新tab标签页
+    }
+  });
 })
 // router.beforeEach((to,from,next)=>{
 //   store.commit('loginModule/isLogin')

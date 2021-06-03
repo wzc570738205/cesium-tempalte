@@ -19,8 +19,6 @@ let formatRouteMenuList:AppRouteModule[]=[]
    if(element.children) formatRouteMenuList =formatRouteMenuList.concat(element.children)
    else formatRouteMenuList.push(element)
  }
- 
- store.commit('setFormatRouteMenuList',formatRouteMenuList)
 export const menuRouter = formatRouteMenuList;
 const root: AppRouteModule = {
   path: '/',

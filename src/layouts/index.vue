@@ -1,6 +1,6 @@
 <template>
   <div class="w100 h100">
-    <div class="aic w100 h100">
+    <div class="aic  h100">
       <div class="h100">
         <LltMenu :isCollapse="isCollapse" />
       </div>
@@ -52,7 +52,6 @@ ref定义的数据访问的时候要多一个.value
 let isCollapse = ref(false);
 const state = reactive({
   data: { a: 1 },
-  isCollapse:false
 });
 const handleCollapse = (e:boolean)=>{
   isCollapse.value=!e;
@@ -72,8 +71,7 @@ const handleCollapse = (e:boolean)=>{
 
 .llt-layouts-body{
   width: 100%;
-  
- height: 100%;
+   height: 100%;
   overflow-y: auto;
   overflow-x: hidden;
   background-color: #F0F2F5;

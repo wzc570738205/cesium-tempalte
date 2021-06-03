@@ -14,8 +14,9 @@
     <div v-show="!isCollapse" class="menu-logo-hidden-box " ></div>
     <el-menu
       :collapse-transition="false"
-      class="el-menu-vertical-demo scroll-style"
+      class="el-menu-vertical-demo"
       @open="handleOpen"
+      :default-active="$store.state.menuActiveName"
       @close="handleClose"
       @select="handleSelect"
       background-color="#001529"
@@ -120,21 +121,23 @@ defineProps({
   border: none;
 }
 .llt-menu-box {
-  width: 200px;
   position: fixed;
   left: 0;
   top: 0;
-	 
 }
-
 .el-menu-vertical-demo {
   height: 100%;
   overflow-y: auto;
   overflow-x: hidden;
 }
+  .el-menu-vertical-demo:not(.el-menu--collapse) {
+    width: 200px;
+    min-height: 400px;
+  }
 // 选中菜单
 .el-submenu__title {
   color: #fff !important;
+     
 }
 .el-menu-item {
   color: #b7bdc3;
@@ -146,5 +149,12 @@ defineProps({
 .el-menu-item.is-active {
   color: #fff;
   background-color: #006fe6 !important;
+}
+ .el-menu--collapse .el-submenu .el-submenu__title span{
+ height: 0  ;
+    width: 0  ;
+    overflow: hidden  ;
+    visibility: hidden;
+    display: inline-block  ;
 }
 </style>

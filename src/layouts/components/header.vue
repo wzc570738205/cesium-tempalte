@@ -4,9 +4,9 @@
       <!-- 一级导航左边 start -->
       <div class="aic">
         <div class="" @click="handleCollapse">
-          <i v-show="isCollapse" class="el-icon-s-fold llt-icon-size p10"></i>
+          <i v-show="!isCollapse" class="el-icon-s-fold llt-icon-size p10"></i>
           <i
-            v-show="!isCollapse"
+            v-show="isCollapse"
             class="el-icon-s-unfold llt-icon-size p10"
           ></i>
         </div>
@@ -14,10 +14,9 @@
           <el-breadcrumb separator-class="el-icon-arrow-right">
             <!-- <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item> -->
             <el-breadcrumb-item
-            v-for="(item,index) in $store.state.BreadcrumbList" :key="index"
-           
-            >{{item.meta.title}}</el-breadcrumb-item>
-            
+            v-for="(item,index) in $store.state.BreadcrumbList" :key="index">
+            {{item.meta.title}}
+            </el-breadcrumb-item>
           </el-breadcrumb>
         </div>
       </div>
@@ -83,12 +82,12 @@
       </div>
       <!-- 二级导航左边 end -->
     </div>
-   
     <!-- 上下分割线 -->
     <div class="bottom w100 jcb aic">
          <LltTags
          @handleClose="handleClose"
-          :currentTag="currentTag" :tagsData="state.tagsData" />
+         @handleOpen="handleOpen"
+          :currentTag="$store.state.currentTag" :tagsData="$store.state.tagPages" />
           <div class="aic">
           <el-tooltip
               class="item"
@@ -114,7 +113,6 @@
     </div>
   </div>
 </template>
-
 <script setup lang="ts">
 import {
   ref,
@@ -124,16 +122,14 @@ import {
   useContext,
   watch,watchEffect
 } from "vue";
-import LltTags from '/@/layouts/components/llt-tags.vue'
+import {store} from '/@ts/store';
+import LltTags from '/@/layouts/components/llt-tags.vue';
+import type{ AppRouteModule } from '/@ts/router/types';
+import {useRouter } from "vue-router";
+const router = useRouter()
 const internalInstance = getCurrentInstance(); //获取当前实例
 // const route = internalInstance?.appContext.config.globalProperties;
-const state = reactive({
-  tagsData: [{ name: "工作台" },{ name: "分析页" }],
- 
-});
-let currentTag = ref(0)
 const context = useContext();
-
 const props = defineProps({
   isCollapse: {
     type: Boolean,
@@ -143,24 +139,34 @@ const props = defineProps({
 const handleCollapse = () => {
   context.emit("handleCollapse", props.isCollapse);
 };
-const handleClose = (e:any) => {
- state.tagsData =e
+const handleClose = (e:number) => {
+  store.commit('setCloseTagPages',e)
+};
+interface LltTags {
+  index:number,
+  routerItem:AppRouteModule
+} 
+const handleOpen = (e:LltTags) => {
+  /**
+   * 1. 获取数据 对比是否是当前激活 标签
+   * 2. 如果是激活就不处理 不是激活标签就处理激活内容
+   */
+  store.commit('setMenuActiveName',e.routerItem.name)
+  if(store.state.currentTag==e.index)return
+  else store.commit('setCurrentTag',e.index);router.push({name:e.routerItem.name});
+  
 };
 
 /*
-基本数据类型
-引用数据类型（复杂类型） 个人建议 ref初始化变量 
+基本数据类型引用数据类型（复杂类型） 个人建议 ref初始化变量 
 ref 和 reactive 本质我们可以简单的理解为ref是对reactive的二次包装, 
 ref定义的数据访问的时候要多一个.value
 */
-const activeIndex = ref(0);
-
 const handleSelect = () => {};
 </script>
 
 <style  scoped lang="scss" >
 .llt-header {
-
   .top{
   border-top: solid 1px #e6e6e6;
   border-bottom: solid 1px #e6e6e6;
