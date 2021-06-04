@@ -12,7 +12,6 @@ import {useRouter,useRoute} from 'vue-router'
    const router = useRouter()
    const route = useRoute()
     onMounted(()=>{
-    console.log('context :>> ',router);
     })
 /*
 基本数据类型
@@ -22,7 +21,6 @@ ref定义的数据访问的时候要多一个.value
 */
  const count =ref(0);
  const state = reactive({
-   data:{a:1}
  })
 
 

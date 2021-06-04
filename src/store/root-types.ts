@@ -6,5 +6,6 @@ export interface RootState {
     BreadcrumbList:Array<AppRouteModule>,
     tagPages:Array<AppRouteModule>,
     currentTag:number,
-    menuActiveName:string
+    menuActiveName:string,
+    refresh:boolean
 }

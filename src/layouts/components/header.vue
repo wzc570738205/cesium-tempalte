@@ -30,7 +30,7 @@
             content="搜索菜单"
             placement="bottom"
           >
-            <i class="el-icon-search llt-icon-size p10"></i>
+            <i @click="handleSearch" class="el-icon-search llt-icon-size p10"></i>
           </el-tooltip>
           <el-tooltip
             class="item"
@@ -93,10 +93,11 @@
               content="刷新页面"
               placement="bottom"
             >
-              <i class="el-icon-refresh llt-icon-size p10"></i>
+              <i @click="handleRefresh" class="el-icon-refresh llt-icon-size p10"></i>
             </el-tooltip>
           </div>
     </div>
+    <Search @handleHide="handleHide" :show="searchBool" />
   </div>
 </template>
 <script setup lang="ts">
@@ -113,6 +114,7 @@ import {
 } from "@vueuse/core";
 import {store} from '/@ts/store';
 import LltTags from '/@/layouts/components/llt-tags.vue';
+import Search from '/@/components/search/search.vue';
 import type{ AppRouteModule } from '/@ts/router/types';
 import {useRouter } from "vue-router";
 const { isFullscreen, toggle } = useFullscreen();
@@ -126,6 +128,17 @@ const props = defineProps({
     required: true,
   },
 });
+let searchBool = ref(false)
+const handleHide = () =>{
+  searchBool.value = false
+}
+const handleRefresh = () => {
+ store.commit('setRefresh');
+
+};
+const handleSearch = () =>{
+  searchBool.value = true
+}
 const handleCollapse = () => {
   context.emit("handleCollapse", props.isCollapse);
 };

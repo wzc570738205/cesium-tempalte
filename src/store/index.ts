@@ -16,10 +16,17 @@ export const store:Store<RootState> = createStore({
        BreadcrumbList:[],
        tagPages:[dashboard.children[0]],
        currentTag:0,
-       menuActiveName:dashboard.children[0].name
+       menuActiveName:dashboard.children[0].name,
+       refresh:false
      }
     },
     mutations:{
+      setRefresh(state:RootState){
+        state.refresh = true;
+        setTimeout(() => {
+          state.refresh = false;
+        }, 100);
+      },
       setMenuActiveName(state:RootState,value:string){
         state.menuActiveName=value
       },

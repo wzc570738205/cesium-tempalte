@@ -15,7 +15,6 @@ ref定义的数据访问的时候要多一个.value
 */
  const count =ref(0);
  const state = reactive({
-   data:{a:1}
  })
 
  defineProps({

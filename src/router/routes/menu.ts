@@ -38,6 +38,6 @@ const routeMenuList: AppRouteRecordRaw[] = [
             icon:"el-icon-s-custom"
         },
         component: () => import('/@/views/sys/readme/readme.vue'),
-    }
+    },
 ];
 export default routeMenuList
