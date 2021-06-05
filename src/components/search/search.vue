@@ -16,7 +16,9 @@
     </template>
   </el-input>
   <el-scrollbar height="220px" class="scrollbar" v-if="state.routeMenuListdata">
-  <p class="item aic jcb cP " v-for="item,index in state.routeMenuListdata" :key="index">
+  <p class="item aic jcb cP " v-for="item,index in state.routeMenuListdata" :key="index"
+  @click="openUrl(item)"
+  >
       <div v-if="item.children" class="aic">
           <div :class="item.meta.icon" class="mx15"></div>
              <el-breadcrumb separator-class="el-icon-arrow-right">
@@ -54,9 +56,9 @@ import {
 import routeMenuList from "/@ts/router/routes/menu";
 import { useSearchTool } from "/@ts/components/search/data";
 import type { AppRouteRecordRaw } from "/@ts/router/types";
-const internalInstance = getCurrentInstance(); //获取当前实例
-const route = internalInstance?.appContext.config.globalProperties.$route;
+import { useRouter } from "vue-router";
 const context = useContext();
+const router = useRouter()
 const { searchChange } = useSearchTool(routeMenuList);
 /*
 基本数据类型
@@ -81,6 +83,17 @@ const props = defineProps({
 const handleHide = () => {
   context.emit("handleHide");
 };
+const openUrl = (item:AppRouteRecordRaw) => {
+ if(item.children!==undefined){
+router.push({name:item.children[0].name})
+
+ }else{
+router.push({name:item.name})
+
+ }
+ context.emit("handleHide");
+};
+
 const seacrh = () => {
   state.routeMenuListdata = searchChange(key.value);
 };

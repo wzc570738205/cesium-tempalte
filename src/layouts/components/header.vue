@@ -23,7 +23,7 @@
       <!-- 一级导航左边 end -->
       <!-- 二级导航左边 start -->
       <div class="aic">
-        <div class="">
+        <div class="aic">
           <el-tooltip
             class="item"
             effect="dark"
@@ -32,16 +32,35 @@
           >
             <i @click="handleSearch" class="el-icon-search llt-icon-size p10"></i>
           </el-tooltip>
-          <el-tooltip
-            class="item"
-            effect="dark"
-            content="消息"
-            placement="bottom"
-          >
-            <i class="el-icon-bell llt-icon-size p10 positionRelat">
+        <el-dropdown trigger="hover" :show-timeout="0" class="mx15 cP">
+           <span>
+              <i  class="el-icon-bell llt-icon-size p10 position-relative">
               <div class="llt-badge"></div>
             </i>
-          </el-tooltip>
+           </span>
+          <template #dropdown>
+            <el-dropdown-menu >
+              <el-tabs class="header-message-tabs p20"  v-model="activeName"
+               @tab-click="handleTagMessageClick">
+              <el-tab-pane label="通知(1)" name="first">
+                <el-scrollbar height="200px">
+                <p class="item" v-for="item in 20">
+                  <p>你收到了{{item+1}}的周报</p>
+                  <p class="time">
+                    2020-1-1
+                  </p>
+                </p>
+              </el-scrollbar>
+              </el-tab-pane>
+              <el-tab-pane label="代办(1)" name="third">
+                <el-scrollbar height="200px">
+                <p class="item" v-for="item in 20">{{ item }}</p>
+              </el-scrollbar>
+              </el-tab-pane>
+            </el-tabs>
+            </el-dropdown-menu>
+          </template>
+        </el-dropdown>
           <el-tooltip
             class="item"
             effect="dark"
@@ -75,7 +94,7 @@
           content="主题配置"
           placement="bottom"
         >
-          <i  class="el-icon-setting llt-icon-size p10"></i>
+          <i @click="openSetting" class="el-icon-setting llt-icon-size p10"></i>
         </el-tooltip>
       </div>
       <!-- 二级导航左边 end -->
@@ -98,6 +117,23 @@
           </div>
     </div>
     <Search @handleHide="handleHide" :show="searchBool" />
+   <el-drawer
+  title="项目配置"
+  v-model="drawerBool"
+ >
+  <div class="header-setting-drawer">
+     <el-divider content-position="center"><h4>设置主题颜色</h4></el-divider>
+
+     <div class="mt30 header-theme-color-box">
+        <div class="color-box-item" v-for="item,index in 3" :key="index">
+          <!-- top -->
+            <div class="color-box-item-top"></div>
+               <!-- left -->
+            <div class="color-box-item-left"></div>
+        </div>
+     </div>
+  </div>
+</el-drawer>
   </div>
 </template>
 <script setup lang="ts">
@@ -129,6 +165,16 @@ const props = defineProps({
   },
 });
 let searchBool = ref(false)
+let drawerBool = ref(false)
+
+let activeName = ref("first")
+const handleTagMessageClick = (e:any) =>{
+ activeName.value = e.paneName
+}
+
+const openSetting = () =>{
+ drawerBool.value =true
+}
 const handleHide = () =>{
   searchBool.value = false
 }
@@ -168,7 +214,18 @@ ref定义的数据访问的时候要多一个.value
 const handleSelect = () => {};
 </script>
 
-<style  scoped lang="scss" >
+<style   lang="scss" >
+.header-setting-drawer{
+  border-top: 1px solid #e6e6e6;
+  padding: 10px 30px;
+}
+.el-overlay{
+  z-index: 10001!important;
+}
+.header-message-tabs  .el-tabs__active-bar{
+  width: 44px  !important;
+}
+
 .llt-header {
   .top{
     position: relative;z-index: 10000;
@@ -190,5 +247,48 @@ const handleSelect = () => {};
   height: 6px;
   border-radius: 100%;
   background-color: red;
+}
+.header-message-tabs{
+  padding-top: 0;
+  width: 400px;
+
+  .item{
+        color: rgba(0, 0, 0, 0.9);
+          border-bottom:  1px solid rgba(0, 0, 0, 0.1);
+font-size: 14px;line-height: 2rem;
+  }
+  .time{
+    color: rgba(0, 0, 0, 0.45);
+font-size: 14px;
+line-height: 2rem;
+  }
+}
+.header-theme-color-box{
+  .color-box-item{
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+    width: 80px;
+     height: 60px; 
+    margin: 0 15px 15px 0;
+    background-color: #fff;
+    cursor: pointer;
+    font-size: 12px;
+    color: #666;
+    // padding: 5px;
+    // border:1px solid rgba(0, 0, 0, 0.1);
+    .color-box-item-top{
+      position: absolute;
+      width: 100%;
+      height: 20px;
+      background-color: #c48;
+    }
+    .color-box-item-left{
+     position: absolute;
+      width:20px;
+      height: 100%;
+      background-color: #141414;
+    }
+  } 
 }
 </style>
