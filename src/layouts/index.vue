@@ -1,5 +1,5 @@
 <template>
-  <div class="w100 h100">
+  <div class="w100 h100" ref="el">
     <div class="aic  h100">
       <div class="h100">
         <LltMenu :isCollapse="isCollapse" />
@@ -35,8 +35,11 @@ import { useRouter, useRoute } from "vue-router";
 import LltMenu from "/@/layouts/components/menu.vue";
 import LltHeader from "/@/layouts/components/header.vue";
 import {store} from '/@ts/store';
+import initTheme from '/@ts/hooks/theme';
+
  onBeforeMount(()=>{
   console.log('"object" :>> ', "页面刷新了");
+  initTheme()
  })
 const internalInstance = getCurrentInstance(); //获取当前实例
 // const route = internalInstance?.appContext.config.globalProperties.$route;
@@ -87,3 +90,4 @@ const handleCollapse = (e:boolean)=>{
   transform: translateY(30px);
 }
 </style>
+

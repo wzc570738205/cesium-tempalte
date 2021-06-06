@@ -15,7 +15,7 @@
       <el-button icon="el-icon-search"></el-button>
     </template>
   </el-input>
-  <el-scrollbar height="220px" class="scrollbar" v-if="state.routeMenuListdata">
+  <el-scrollbar height="220px" class="scrollbar" v-if="state.routeMenuListdata.length>0">
   <p class="item aic jcb cP " v-for="item,index in state.routeMenuListdata" :key="index"
   @click="openUrl(item)"
   >
@@ -30,7 +30,7 @@
                 </el-breadcrumb>
             </div>
       <div v-else class="aic">
-   <div :class="item.meta.icon" class="mx15"></div>
+         <div :class="item.meta.icon" class="mx15"></div>
          <el-breadcrumb separator-class="el-icon-arrow-right">
             <el-breadcrumb-item><span class="light"> {{item.meta.title}}</span></el-breadcrumb-item>
                 </el-breadcrumb>
@@ -58,7 +58,7 @@ import { useSearchTool } from "/@ts/components/search/data";
 import type { AppRouteRecordRaw } from "/@ts/router/types";
 import { useRouter } from "vue-router";
 const context = useContext();
-const router = useRouter()
+const router = useRouter();
 const { searchChange } = useSearchTool(routeMenuList);
 /*
 基本数据类型
@@ -83,15 +83,13 @@ const props = defineProps({
 const handleHide = () => {
   context.emit("handleHide");
 };
-const openUrl = (item:AppRouteRecordRaw) => {
- if(item.children!==undefined){
-router.push({name:item.children[0].name})
-
- }else{
-router.push({name:item.name})
-
- }
- context.emit("handleHide");
+const openUrl = (item: AppRouteRecordRaw) => {
+  if (item.children !== undefined) {
+    router.push({ name: item.children[0].name });
+  } else {
+    router.push({ name: item.name });
+  }
+  context.emit("handleHide");
 };
 
 const seacrh = () => {

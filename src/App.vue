@@ -1,11 +1,11 @@
 <template>
-   <RouterView />
+
+      <RouterView  />
+
+  
 </template>
 
-<script setup>
-import { onBeforeMount} from 'vue'
-
-import {useGoPage} from '/@/hooks/route'
+<script setup lang="ts">
 
 // store
 </script>

@@ -1,23 +1,33 @@
 <template>
-  <div class="llt-header w100">
+  <div class="llt-header w100" >
     <div class="aic jcb top w100">
       <!-- 一级导航左边 start -->
       <div class="aic">
-        <div class="" @click="handleCollapse">
-          <i v-show="!isCollapse" class="el-icon-s-fold llt-icon-size p10"></i>
+        <div class=""  @click="handleCollapse">
+          <i v-show="!isCollapse"
+          style="color: var(--navColorFont)"
+           class="el-icon-s-fold llt-icon-size p10"></i>
           <i
+          style="color: var(--navColorFont)"
             v-show="isCollapse"
             class="el-icon-s-unfold llt-icon-size p10"
           ></i>
         </div>
-        <div class="mx15">
-          <el-breadcrumb separator-class="el-icon-arrow-right">
-            <!-- <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item> -->
+        <div class="mx15 aic">
+          <!-- <el-breadcrumb style="color: var(--navColorFont)" separator-class="el-icon-arrow-right">
             <el-breadcrumb-item
             v-for="(item,index) in $store.state.BreadcrumbList" :key="index">
-            {{item.meta.title}}
+           <span  style="color: var(--navColorFont)"> {{item.meta.title}}</span>
             </el-breadcrumb-item>
-          </el-breadcrumb>
+          </el-breadcrumb> -->
+          <div style="color: var(--navColorFont)"
+            v-for="(item,index) in $store.state.BreadcrumbList" :key="index">
+            <span  > {{item.meta.title}}</span>
+            <i
+            v-if="index<$store.state.BreadcrumbList.length-1"
+            class="el-icon-arrow-right mx5"
+          ></i>
+          </div>
         </div>
       </div>
       <!-- 一级导航左边 end -->
@@ -30,11 +40,11 @@
             content="搜索菜单"
             placement="bottom"
           >
-            <i @click="handleSearch" class="el-icon-search llt-icon-size p10"></i>
+            <i style="color: var(--navColorFont)" @click="handleSearch" class="el-icon-search llt-icon-size p10"></i>
           </el-tooltip>
         <el-dropdown trigger="hover" :show-timeout="0" class="mx15 cP">
            <span>
-              <i  class="el-icon-bell llt-icon-size p10 position-relative">
+              <i style="color: var(--navColorFont)" class="el-icon-bell llt-icon-size p10 position-relative">
               <div class="llt-badge"></div>
             </i>
            </span>
@@ -44,7 +54,7 @@
                @tab-click="handleTagMessageClick">
               <el-tab-pane label="通知(1)" name="first">
                 <el-scrollbar height="200px">
-                <p class="item" v-for="item in 20">
+                <p class="item" v-for="item in 20" :key="item">
                   <p>你收到了{{item+1}}的周报</p>
                   <p class="time">
                     2020-1-1
@@ -54,7 +64,7 @@
               </el-tab-pane>
               <el-tab-pane label="代办(1)" name="third">
                 <el-scrollbar height="200px">
-                <p class="item" v-for="item in 20">{{ item }}</p>
+                <p class="item" v-for="item in 20" :key="item">{{ item }}</p>
               </el-scrollbar>
               </el-tab-pane>
             </el-tabs>
@@ -122,7 +132,7 @@
   v-model="drawerBool"
  >
   <div class="header-setting-drawer">
-     <el-divider content-position="center"><h4>设置主题颜色</h4></el-divider>
+     <el-divider content-position="center"><h4>顶栏主题颜色</h4></el-divider>
 
      <div class="mt30 header-theme-color-box">
         <div class="color-box-item" v-for="item,index in 3" :key="index">
@@ -154,6 +164,7 @@ import Search from '/@/components/search/search.vue';
 import type{ AppRouteModule } from '/@ts/router/types';
 import {useRouter } from "vue-router";
 const { isFullscreen, toggle } = useFullscreen();
+
 const router = useRouter()
 const internalInstance = getCurrentInstance(); //获取当前实例
 // const route = internalInstance?.appContext.config.globalProperties;
@@ -276,7 +287,8 @@ line-height: 2rem;
     font-size: 12px;
     color: #666;
     // padding: 5px;
-    // border:1px solid rgba(0, 0, 0, 0.1);
+    border:1px solid ;
+    transition: all 0.3s;
     .color-box-item-top{
       position: absolute;
       width: 100%;
@@ -288,6 +300,9 @@ line-height: 2rem;
       width:20px;
       height: 100%;
       background-color: #141414;
+    }
+    &:hover{
+        transform: scale(1.1);
     }
   } 
 }
