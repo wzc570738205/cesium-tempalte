@@ -216,10 +216,7 @@ const handleTagPageTool = (index: number) => {
 .llt-tag-item:hover {
   color: rgb(9, 96, 189);
 }
-.llt-tag-active .tag-font {
-  background-color: #0960bd;
-  color: white !important ;
-}
+
 .llt-tag-active:hover .tag-font {
   color: white !important ;
 }

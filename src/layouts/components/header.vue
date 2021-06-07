@@ -1,6 +1,6 @@
 <template>
   <div class="llt-header w100" >
-    <div class="aic jcb top w100">
+    <div class="aic jcb top w100" style="background:var(--navColorBg);">
       <!-- 一级导航左边 start -->
       <div class="aic">
         <div class=""  @click="handleCollapse">
@@ -9,17 +9,13 @@
            class="el-icon-s-fold llt-icon-size p10"></i>
           <i
           style="color: var(--navColorFont)"
+          @mouseenter="enterBg($event)"
+          @mouseout="outBg($event)"
             v-show="isCollapse"
             class="el-icon-s-unfold llt-icon-size p10"
           ></i>
         </div>
         <div class="mx15 aic">
-          <!-- <el-breadcrumb style="color: var(--navColorFont)" separator-class="el-icon-arrow-right">
-            <el-breadcrumb-item
-            v-for="(item,index) in $store.state.BreadcrumbList" :key="index">
-           <span  style="color: var(--navColorFont)"> {{item.meta.title}}</span>
-            </el-breadcrumb-item>
-          </el-breadcrumb> -->
           <div style="color: var(--navColorFont)"
             v-for="(item,index) in $store.state.BreadcrumbList" :key="index">
             <span  > {{item.meta.title}}</span>
@@ -77,8 +73,8 @@
             :content="!isFullscreen?'全屏':'退出全屏'"
             placement="bottom"
           >
-            <i @click="toggle" v-if="!isFullscreen"  class="el-icon-full-screen llt-icon-size p10"></i>
-            <i @click="toggle" v-else class="el-icon-rank llt-icon-size p10"></i>
+            <i  style="color: var(--navColorFont)" @click="toggle" v-if="!isFullscreen"  class="el-icon-full-screen llt-icon-size p10"></i>
+            <i  style="color: var(--navColorFont)" @click="toggle" v-else class="el-icon-rank llt-icon-size p10"></i>
           </el-tooltip>
         </div>
         <el-dropdown trigger="hover" :show-timeout="0" class="mx15 cP">
@@ -88,7 +84,7 @@
                 size="small"
                 src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"
               ></el-avatar>
-              <div class="llt-default-font-color mx15">刘蓝天</div>
+              <div  style="color: var(--navColorFont)" class="llt-default-font-color mx15">刘蓝天</div>
             </div>
           </span>
           <template #dropdown>
@@ -104,7 +100,7 @@
           content="主题配置"
           placement="bottom"
         >
-          <i @click="openSetting" class="el-icon-setting llt-icon-size p10"></i>
+          <i  style="color: var(--navColorFont)" @click="openSetting" class="el-icon-setting llt-icon-size p10"></i>
         </el-tooltip>
       </div>
       <!-- 二级导航左边 end -->
@@ -122,9 +118,10 @@
               content="刷新页面"
               placement="bottom"
             >
-              <i @click="handleRefresh" class="el-icon-refresh llt-icon-size p10"></i>
+              <i @click="handleRefresh"  style="color: var(--navColorFont)" class="el-icon-refresh llt-icon-size p10"></i>
             </el-tooltip>
           </div>
+          
     </div>
     <Search @handleHide="handleHide" :show="searchBool" />
    <el-drawer
@@ -132,16 +129,45 @@
   v-model="drawerBool"
  >
   <div class="header-setting-drawer">
+     <el-divider content-position="center"><h4>是否通栏</h4></el-divider>
+      <div class="aic jcc mt30">
+             <el-switch :model-value="$store.state.isFull"
+             @change="changeIsFull"
+              >
+</el-switch>
+      </div>
+         <el-divider content-position="center"><h4>主题颜色</h4></el-divider>
+      <div class="mt30 ">
+          <el-color-picker
+        popper-class="header-el-color-picker"
+           v-model="state.colors.primary" @change='changeThemeColor'></el-color-picker>
+           
+      </div>
      <el-divider content-position="center"><h4>顶栏主题颜色</h4></el-divider>
 
-     <div class="mt30 header-theme-color-box">
-        <div class="color-box-item" v-for="item,index in 3" :key="index">
-          <!-- top -->
-            <div class="color-box-item-top"></div>
-               <!-- left -->
-            <div class="color-box-item-left"></div>
+     <div class="mt30 header-theme-color-box aic">
+        <div class="header-theme-color-item aic jcc"
+        v-for="item,index in $store.state.theme.themeNav" :key="index"
+        @click="handleCurrentNavIndex(index)"
+         :style="{
+              background:item.ColorBg
+            }">
+         <i v-if="currentNavIndex==index" class="el-icon-check"></i>
         </div>
      </div>
+          <el-divider content-position="center"><h4>左侧菜单主题颜色</h4></el-divider>
+
+     <div class="mt30 header-theme-color-box aic">
+        <div class="header-theme-color-item aic jcc"
+        v-for="item,index in $store.state.theme.themeMenu" :key="index"
+        @click="handleCurrentMenuIndex(index)"
+         :style="{
+              background:item.ColorBg
+            }">
+         <i v-if="currentMenuIndex==index" class="el-icon-check"></i>
+        </div>
+     </div>
+      
   </div>
 </el-drawer>
   </div>
@@ -153,7 +179,7 @@ import {
   reactive,
   getCurrentInstance,
   useContext,
-  watch,watchEffect
+  watch,watchEffect, onMounted
 } from "vue";
 import {
   useFullscreen,
@@ -163,12 +189,21 @@ import LltTags from '/@/layouts/components/llt-tags.vue';
 import Search from '/@/components/search/search.vue';
 import type{ AppRouteModule } from '/@ts/router/types';
 import {useRouter } from "vue-router";
+import { switchColorMenu, switchColorNav } from "/@ts/hooks/theme";
 const { isFullscreen, toggle } = useFullscreen();
-
 const router = useRouter()
 const internalInstance = getCurrentInstance(); //获取当前实例
-// const route = internalInstance?.appContext.config.globalProperties;
+const globalProperties = internalInstance?.appContext.config.globalProperties;
 const context = useContext();
+interface HeaderColors {
+ [key: string]: string,
+}
+interface StateHeader {
+  colors: HeaderColors 
+}
+const state:StateHeader = reactive({
+  colors: {  primary: '#409eff'},
+});
 const props = defineProps({
   isCollapse: {
     type: Boolean,
@@ -177,10 +212,39 @@ const props = defineProps({
 });
 let searchBool = ref(false)
 let drawerBool = ref(false)
-
+/**
+ * 颜色选择索引值
+ */
+let currentMenuIndex = ref(Number(JSON.parse(localStorage.getItem("currentMenuIndex")||"0")))
+let currentNavIndex = ref(Number(JSON.parse(localStorage.getItem("currentNavIndex")||"0")))
+//当前导航主题配色索引值
+const handleCurrentNavIndex = (e:number) =>{
+  localStorage.setItem("currentNavIndex",String(e))
+ currentNavIndex.value = e;
+ switchColorNav(store.state.theme.themeNav[e])
+}
+//更换主题颜色
+const changeThemeColor = (e:string) =>{
+    
+     document.documentElement.style.setProperty('--theme-bg', e)
+}
+onMounted(() => {
+     let adat=  document.getElementsByClassName("header-el-color-picker")
+      console.log('document.querySelector(".header-el-color-picker").style :>> ',adat);
+})
+const handleCurrentMenuIndex = (e:number) =>{
+  localStorage.setItem("currentMenuIndex",String(e))
+ currentMenuIndex.value = e;
+ switchColorMenu(store.state.theme.themeMenu[e])
+}
+//消息 tabs start
 let activeName = ref("first")
 const handleTagMessageClick = (e:any) =>{
  activeName.value = e.paneName
+}
+//是否通栏
+const changeIsFull = (e:boolean) =>{
+ store.commit("setIsFull",e)
 }
 
 const openSetting = () =>{
@@ -231,7 +295,7 @@ const handleSelect = () => {};
   padding: 10px 30px;
 }
 .el-overlay{
-  z-index: 10001!important;
+  z-index: 3!important;
 }
 .header-message-tabs  .el-tabs__active-bar{
   width: 44px  !important;
@@ -239,14 +303,16 @@ const handleSelect = () => {};
 
 .llt-header {
   .top{
-    position: relative;z-index: 10000;
-  border-top: solid 1px #e6e6e6;
-  border-bottom: solid 1px #e6e6e6;
-  padding: 5px 10px;
+    position: relative;
+    // z-index: 10000;
+    z-index: 3;
+  border-top: solid 1px rgba(0, 0, 0, 0.1);//#e6e6e6
+  border-bottom: solid 1px rgba(0, 0, 0, 0.1);
   box-sizing: border-box;
+  height: 54px;
   }
   .bottom{
- border-bottom: solid 1px #e6e6e6;
+ border-bottom: solid 1px rgba(0, 0, 0, 0.1);
   }
 } 
 
@@ -274,36 +340,12 @@ font-size: 14px;
 line-height: 2rem;
   }
 }
-.header-theme-color-box{
-  .color-box-item{
-    position: relative;
-    display: inline-block;
-    vertical-align: top;
-    width: 80px;
-     height: 60px; 
-    margin: 0 15px 15px 0;
-    background-color: #fff;
-    cursor: pointer;
-    font-size: 12px;
-    color: #666;
-    // padding: 5px;
-    border:1px solid ;
-    transition: all 0.3s;
-    .color-box-item-top{
-      position: absolute;
-      width: 100%;
-      height: 20px;
-      background-color: #c48;
-    }
-    .color-box-item-left{
-     position: absolute;
-      width:20px;
-      height: 100%;
-      background-color: #141414;
-    }
-    &:hover{
-        transform: scale(1.1);
-    }
-  } 
+.header-theme-color-item{
+  width: 20px; height: 20px;
+  border: 1px solid #ddd;
+  color: #fff;margin-left: 10px;
+}
+#el-popper-3198{
+  z-index: 1000012 !important;
 }
 </style>

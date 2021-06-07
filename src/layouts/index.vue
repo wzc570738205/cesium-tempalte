@@ -66,7 +66,7 @@ const handleCollapse = (e:boolean)=>{
   min-width: 691px;
 }
 .menu-logo-collapse-true {
-  margin-left: 65px;
+  margin-left: 64px;
 }
 .menu-logo-collapse-false {
   margin-left: 200px;

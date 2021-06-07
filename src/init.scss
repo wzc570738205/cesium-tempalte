@@ -1,5 +1,15 @@
+html{
+    // --color-primary:#c48;
+    --color-red:0;
+    --color-green:111;
+    --color-blue:230;
+    // --color-red:64;
+    // --color-green:158;
+    // --color-blue:255;
+}
 .fd,.aic,.jcc,.jcb,.jca,.fdc,.jcfend{
     display: flex;
+  
 }
 .aic{
 align-items: center;
@@ -49,7 +59,7 @@ align-items: center;
     cursor: pointer;
 }
 .llt-icon-size:hover{
-background-color: #e4e4e7;
+background-color: rgba(0,0,0,.2);
 }
 
 .w100{
@@ -154,3 +164,35 @@ background-color: #e4e4e7;
 .animation-delay300{
     animation-delay:300ms
 }
+
+// 初始化 element-plus css start
+
+  .el-menu-item:hover {
+    background-color:rgba(var(--color-red), var(--color-green), var(--color-blue), 0.8)  !important;
+  }
+  .el-menu-item.is-active {
+    color: #fff!important;
+    background-color:rgba(var(--color-red), var(--color-green), var(--color-blue), 1) !important;
+  }
+  .el-tabs__item.is-active,.el-tabs__item:hover{
+    color: rgba(var(--color-red), var(--color-green), var(--color-blue), 1) !important;
+  }
+  .el-tabs__active-bar{
+    background-color:rgba(var(--color-red), var(--color-green), var(--color-blue), 1) !important;
+  }
+
+  .el-link.el-link--primary{
+    color:  rgba(var(--color-red), var(--color-green), var(--color-blue), 1) !important;
+
+  }
+
+  .el-button--primary{
+    border-color:rgba(var(--color-red), var(--color-green), var(--color-blue), 1) !important;
+    background-color:rgba(var(--color-red), var(--color-green), var(--color-blue), 1) !important;
+  }
+  .llt-tag-active .tag-font {
+    background-color: rgba(var(--color-red), var(--color-green), var(--color-blue), 1) !important;
+    color: white !important ;
+  }
+
+// 初始化 element-plus css end

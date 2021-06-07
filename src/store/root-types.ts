@@ -1,3 +1,5 @@
+import { Theme } from "./index";
+import { SwitchColor } from "../hooks/theme";
 import { AppRouteModule } from "../router/types";
 import { LoginState } from "./modules/login";
 
@@ -7,5 +9,10 @@ export interface RootState {
     tagPages:Array<AppRouteModule>,
     currentTag:number,
     menuActiveName:string,
-    refresh:boolean
+    refresh:boolean,
+    theme:Theme,
+    themeCurrentNavItem:SwitchColor,
+    themeCurrentMenuItem:SwitchColor,
+    isFull:boolean,//true 全屏
+
 }

@@ -29,7 +29,7 @@ export const useSearchTool = (params: AppRouteRecordRaw[]) => {
                         })
                         data = data.concat(dataInclude)
                     } else {
-                        console.log('element.name.indexOf(str) :>> ', element.meta.title.indexOf(str));
+                      
                         if (element.meta.title.indexOf(str) != -1) {
                             data.push(element)
                         }

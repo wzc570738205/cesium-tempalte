@@ -4,7 +4,7 @@ import LoginRoute from '/@ts/router/routes/login';
 import { ROOT_PAGE_NAME } from '/@ts/router/constant';
 import routeMenuList from '/@ts/router/routes/menu';
 import { AppRouteModule } from "/@ts/router/types";
-import {store} from '/@ts/store';
+
 const modules = import.meta.globEager('./modules/**/*.ts');
 const routeModuleList: AppRouteModule[] = [];
 Object.keys(modules).forEach((key) => {

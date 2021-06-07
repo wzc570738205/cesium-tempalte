@@ -5,9 +5,15 @@
       <img src="/src/assets/svg/login-box-bg.svg" alt="">
     </div>
     <!-- 缩小 -->
-    <div v-show="!isCollapse" class="menu-logo-box  aic jcc">
+    <div v-show="!isCollapse" class="menu-logo-box  aic jcc"
+    :style="{
+          background:$store.state.isFull?'var(--navColorBg)':$store.state.themeCurrentMenuItem.ColorBg
+          }"
+    >
         <img src="/src/assets/svg/login-box-bg.svg" alt="">
-        <div class="">
+        <div class=""  :style="{
+          color:$store.state.isFull?'var(--navColorFont)':$store.state.themeCurrentMenuItem.ColorFont
+          }">
           {{$store.state.projectName}}
         </div>
     </div>
@@ -19,7 +25,7 @@
       :default-active="$store.state.menuActiveName"
       @close="handleClose"
       @select="handleSelect"
-      background-color="#001529"
+      :background-color="$store.state.themeCurrentMenuItem.ColorBg"
       :collapse="isCollapse"
     >
     <div
@@ -142,14 +148,8 @@ defineProps({
 .el-menu-item {
   color: #b7bdc3;
 }
-.el-menu-item:hover {
-  color: #fff;
-  background-color: rgba($color: #006fe6, $alpha: 0.6) !important;
-}
-.el-menu-item.is-active {
-  color: #fff;
-  background-color: #006fe6 !important;
-}
+
+
  .el-menu--collapse .el-submenu .el-submenu__title span{
  height: 0  ;
     width: 0  ;

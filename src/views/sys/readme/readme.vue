@@ -3,7 +3,7 @@
     <div class="white-bg p20 animate__animated animate__fadeInUp animation-delay0">
       <h2>关于</h2>
       <p class="readme-content">
-        <el-link type="primary">{{ $store.state.projectName }}</el-link>
+        <el-link type="primary" :underline="false">{{ $store.state.projectName }}</el-link>
         是基于vite + ts + vue3.0 + script setup语法糖 +
         element-plus的后台解决方案，
         基于MIT开源协议。原则上不会限制任何代码用于商用。
@@ -21,12 +21,13 @@
           <el-descriptions-item>
             <template #label> 版本 </template>
 
-            <el-tag>1.0.0</el-tag>
+            <el-tag >1.0.0</el-tag>
           </el-descriptions-item>
           <el-descriptions-item>
             <template #label> gitee </template>
             <el-link
               type="primary"
+              :underline="false"
               target="_blank"
               href="https://gitee.com/blueskyliu/admin-tempalte"
             >
