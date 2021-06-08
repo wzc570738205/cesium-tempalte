@@ -80,7 +80,7 @@ interface State {
 import { ref, reactive, getCurrentInstance, onMounted } from "vue";
 import { useRouter, useRoute } from "vue-router";
 // import packageJson from '/@ts/views/sys/readme/data';
-import * as packageJson from "../../../../package.json";
+import * as packageJson from "../../../package.json";
 const internalInstance = getCurrentInstance(); //获取当前实例
 // const route = internalInstance?.appContext.config.globalProperties.$route;
 const router = useRouter();

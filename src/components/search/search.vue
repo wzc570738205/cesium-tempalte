@@ -50,13 +50,14 @@ import {
   ref,
   defineProps,
   reactive,
-  getCurrentInstance,
   useContext,
+  defineEmit
 } from "vue";
 import routeMenuList from "/@ts/router/routes/menu";
 import { useSearchTool } from "/@ts/components/search/data";
 import type { AppRouteRecordRaw } from "/@ts/router/types";
 import { useRouter } from "vue-router";
+
 const context = useContext();
 const router = useRouter();
 const { searchChange } = useSearchTool(routeMenuList);
@@ -80,6 +81,8 @@ const props = defineProps({
     required: true,
   },
 });
+defineEmit(['handleHide'])
+console.log('context :>> ', context);
 const handleHide = () => {
   context.emit("handleHide",props.show);
 };

@@ -118,7 +118,7 @@
               content="刷新页面"
               placement="bottom"
             >
-              <i @click="handleRefresh"  style="color: var(--navColorFont)" class="el-icon-refresh llt-icon-size p10"></i>
+              <i @click="handleRefresh"   class="el-icon-refresh llt-icon-size p10"></i>
             </el-tooltip>
           </div>
           
@@ -323,9 +323,7 @@ const handleSelect = () => {};
   border-top: 1px solid #e6e6e6;
   padding: 10px 30px;
 }
-.el-overlay {
-  z-index: 3 !important;
-}
+
 .header-message-tabs .el-tabs__active-bar {
   width: 44px !important;
 }

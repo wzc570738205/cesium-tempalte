@@ -12,16 +12,11 @@
       >
         <LltHeader @handleCollapse="handleCollapse"  :isCollapse="isCollapse"/>
         <div class="llt-layouts-body">
-           <!-- <RouterView /> -->
-             <!-- <transition >
-            <router-view/>
-          </transition> -->
           <router-view v-slot="{ Component }">
           <transition v-if="!$store.state.refresh" name="list" mode="out-in">
             <component :is="Component" />
           </transition>
         </router-view>
-
         </div>
       </div>
     </div>

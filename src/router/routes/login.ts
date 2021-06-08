@@ -3,7 +3,7 @@ import { LOGIN } from "/@ts/router/constant";
 const LoginRoute: AppRouteModule = {
     path: '/login',
     name: LOGIN,
-    component: () => import('/@/views/sys/login/Login.vue'),
+    component: () => import('/@/views/login/Login.vue'),
     meta: {
       title: "登录",
     }

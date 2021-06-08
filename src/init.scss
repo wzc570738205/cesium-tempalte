@@ -59,7 +59,11 @@ align-items: center;
 .llt-icon-size:hover{
 background-color: rgba(0,0,0,.2);
 }
-
+.llt-icon-size-21{
+    font-size: 20px;
+    color: #333;
+    cursor: pointer;
+}
 .w100{
     width: 100%;
 }
@@ -164,7 +168,9 @@ background-color: rgba(0,0,0,.2);
 }
 
 // 初始化 element-plus css start
-
+.el-overlay {//蒙版
+    z-index: 3 !important;
+  }
   .el-menu-item:hover {
     background-color:rgba(var(--color-red), var(--color-green), var(--color-blue), 0.8)  !important;
   }
@@ -184,11 +190,13 @@ background-color: rgba(0,0,0,.2);
 
   }
 
-  .el-button--primary{
+  .el-button--primary,
+  .el-checkbox__input.is-checked .el-checkbox__inner, .el-checkbox__input.is-indeterminate .el-checkbox__inner
+  {
     border-color:rgba(var(--color-red), var(--color-green), var(--color-blue), 1);
     background-color:rgba(var(--color-red), var(--color-green), var(--color-blue), 1) ;
   }
-  .el-button--primary:hover{
+  .el-button--primary:hover,.el-button--primary:focus{
     border-color:rgba(var(--color-red), var(--color-green), var(--color-blue), 0.8);
     background-color:rgba(var(--color-red), var(--color-green), var(--color-blue), 0.8) ;
   }
@@ -201,4 +209,5 @@ background-color: rgba(0,0,0,.2);
     border-color: rgba(var(--color-red), var(--color-green), var(--color-blue), .3);
     color:rgba(var(--color-red), var(--color-green), var(--color-blue), 1) ;
   }
+
 // 初始化 element-plus css end
