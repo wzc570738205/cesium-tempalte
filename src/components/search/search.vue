@@ -81,7 +81,7 @@ const props = defineProps({
   },
 });
 const handleHide = () => {
-  context.emit("handleHide");
+  context.emit("handleHide",props.show);
 };
 const openUrl = (item: AppRouteRecordRaw) => {
   if (item.children !== undefined) {
@@ -89,7 +89,7 @@ const openUrl = (item: AppRouteRecordRaw) => {
   } else {
     router.push({ name: item.name });
   }
-  context.emit("handleHide");
+  handleHide()
 };
 
 const seacrh = () => {

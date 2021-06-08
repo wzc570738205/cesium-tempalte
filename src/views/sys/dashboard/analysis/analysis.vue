@@ -1,10 +1,9 @@
 <template>
-  <div>
-   <h1>11111111111111111</h1> <h1>123</h1> <h1>123</h1> <h1>123</h1> <h1>123</h1> <h1>123</h1> <h1>123</h1> <h1>123</h1> <h1>123</h1> <h1>123</h1>
-    <h1>123</h1> <h1>123</h1> <h1>123</h1> <h1>123</h1> <h1>123</h1> <h1>123</h1> <h1>123</h1>
-
-      <h1>123</h1> <h1>123</h1> <h1>123</h1> <h1>123</h1> <h1>123</h1> <h1>123</h1> <h1>123</h1> <h1>123</h1> <h1>123</h1> <h1>123</h1>
-    <h1>123</h1> <h1>123</h1> <h1>123</h1> <h1>123</h1> <h1>123</h1> <h1>123</h1> <h1>3333333</h1>
+  <div class="analysis">
+    <router-link to="/login" class="mx15">
+        <el-button type="success">登录页</el-button>
+    </router-link>
+   
   </div>
 </template>
 
@@ -32,5 +31,7 @@ ref定义的数据访问的时候要多一个.value
 </script>
 
 <style  scoped lang="scss" >
-
+.analysis{
+  margin: 20px;
+}
 </style>

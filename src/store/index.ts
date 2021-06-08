@@ -14,7 +14,7 @@ export interface Theme {
   themeNav:SwitchColor[],
   themeMenu:SwitchColor[],
 }
-let theme:Theme = {
+export const theme:Theme = {
   themeNav:[
     {
       ColorFont:"#333",
@@ -56,7 +56,7 @@ let theme:Theme = {
    },
   ]
 }
-
+export const themeColor:string[] = ["9","96","189"]
 export const store:Store<RootState> = createStore({
     state(){
      return {
@@ -70,9 +70,17 @@ export const store:Store<RootState> = createStore({
        theme:theme,//主题配色
        themeCurrentMenuItem:theme.themeMenu[1],
        themeCurrentNavItem:theme.themeNav[0],//当前导航主题配色
+       themeColor:themeColor,//这里的初始化的值与 init.scss HTML的值保持一直
      }
     },
     mutations:{
+      setThemeColor(state:RootState,value:string[]){
+        state.themeColor = value
+        document.documentElement.style.setProperty("--color-red", value[0]);
+        document.documentElement.style.setProperty("--color-green", value[1]);
+        document.documentElement.style.setProperty("--color-blue", value[2]);
+        localStorage.setItem("themeColor",JSON.stringify(value))
+      },
       setIsFull(state:RootState,value:boolean){
         state.isFull=value;
         localStorage.setItem("isFull",JSON.stringify(value))

@@ -14,5 +14,5 @@ export interface RootState {
     themeCurrentNavItem:SwitchColor,
     themeCurrentMenuItem:SwitchColor,
     isFull:boolean,//true 全屏
-
+    themeColor:string[]
 }

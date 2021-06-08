@@ -9,7 +9,6 @@
 import {ref,defineProps,reactive,getCurrentInstance } from 'vue';
     const internalInstance = getCurrentInstance();//获取当前实例
     const route = internalInstance?.appContext.config.globalProperties.$route;
-import HelloWorld from '/@/components/HelloWorld.vue'
 import LltMenu from '/@/layouts/components/menu.vue'
 /*
 基本数据类型

@@ -9,6 +9,12 @@ export interface SwitchColor {
     ColorFont:string,
     ColorBg:string,
 }
+export const initThemeColor =()=>{
+    let themeColor:string[] =JSON.parse(localStorage.getItem("themeColor")|| JSON.stringify(store.state.themeColor))  
+    document.documentElement.style.setProperty("--color-red",themeColor[0]);
+    document.documentElement.style.setProperty("--color-green",themeColor[1]);
+    document.documentElement.style.setProperty("--color-blue", themeColor[2]);
+}
 export const switchColorNav = (dataColor:SwitchColor) => {
     store.commit("setThemeCurrentNavItem",dataColor)
     navColorFont.value =dataColor.ColorFont
@@ -26,7 +32,8 @@ const initTheme = ()=>{
     //获取本地存储的通栏状态
     let isFull:boolean =JSON.parse(localStorage.getItem("isFull")|| "false")  
     store.commit("setIsFull",isFull)
-    switchColorNav(themeNav)
-    switchColorMenu(themeMenu)
+    switchColorNav(themeNav)//初始化导航
+    switchColorMenu(themeMenu)//初始化菜单
+    initThemeColor()//初始化导航
 }
 export default initTheme

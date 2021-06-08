@@ -138,8 +138,10 @@
       </div>
          <el-divider content-position="center"><h4>主题颜色</h4></el-divider>
       <div class="mt30 ">
+        <!-- 颜色选择器 -->
           <el-color-picker
         popper-class="header-el-color-picker"
+        color-format="rgb"
            v-model="state.colors.primary" @change='changeThemeColor'></el-color-picker>
            
       </div>
@@ -167,7 +169,11 @@
          <i v-if="currentMenuIndex==index" class="el-icon-check"></i>
         </div>
      </div>
-      
+      <div class="mt30">
+  <el-button type="primary" class="w100 "
+    
+     @click="handleInitThemeColor">初始化配色方案</el-button>
+      </div>
   </div>
 </el-drawer>
   </div>
@@ -179,30 +185,32 @@ import {
   reactive,
   getCurrentInstance,
   useContext,
-  watch,watchEffect, onMounted
+  watch,
+  watchEffect,
+  onMounted,
 } from "vue";
-import {
-  useFullscreen,
-} from "@vueuse/core";
-import {store} from '/@ts/store';
-import LltTags from '/@/layouts/components/llt-tags.vue';
-import Search from '/@/components/search/search.vue';
-import type{ AppRouteModule } from '/@ts/router/types';
-import {useRouter } from "vue-router";
+import { useFullscreen } from "@vueuse/core";
+import { store } from "/@ts/store";
+import LltTags from "/@/layouts/components/llt-tags.vue";
+import Search from "/@/components/search/search.vue";
+import type { AppRouteModule } from "/@ts/router/types";
+import { useRouter } from "vue-router";
 import { switchColorMenu, switchColorNav } from "/@ts/hooks/theme";
+import { ElLoading } from "element-plus";
+import {themeColor, theme} from '/@ts/store';
 const { isFullscreen, toggle } = useFullscreen();
-const router = useRouter()
+const router = useRouter();
 const internalInstance = getCurrentInstance(); //获取当前实例
 const globalProperties = internalInstance?.appContext.config.globalProperties;
 const context = useContext();
 interface HeaderColors {
- [key: string]: string,
+  [key: string]: string;
 }
 interface StateHeader {
-  colors: HeaderColors 
+  colors: HeaderColors;
 }
-const state:StateHeader = reactive({
-  colors: {  primary: '#409eff'},
+const state: StateHeader = reactive({
+  colors: { primary: "#409eff" },
 });
 const props = defineProps({
   isCollapse: {
@@ -210,75 +218,96 @@ const props = defineProps({
     required: true,
   },
 });
-let searchBool = ref(false)
-let drawerBool = ref(false)
+let searchBool = ref(false);
+let drawerBool = ref(false);
 /**
  * 颜色选择索引值
  */
-let currentMenuIndex = ref(Number(JSON.parse(localStorage.getItem("currentMenuIndex")||"0")))
-let currentNavIndex = ref(Number(JSON.parse(localStorage.getItem("currentNavIndex")||"0")))
+let currentMenuIndex = ref(
+  Number(JSON.parse(localStorage.getItem("currentMenuIndex") || "0"))
+);
+let currentNavIndex = ref(
+  Number(JSON.parse(localStorage.getItem("currentNavIndex") || "0"))
+);
 //当前导航主题配色索引值
-const handleCurrentNavIndex = (e:number) =>{
-  localStorage.setItem("currentNavIndex",String(e))
- currentNavIndex.value = e;
- switchColorNav(store.state.theme.themeNav[e])
-}
-//更换主题颜色
-const changeThemeColor = (e:string) =>{
-    
-     document.documentElement.style.setProperty('--theme-bg', e)
-}
-onMounted(() => {
-     let adat=  document.getElementsByClassName("header-el-color-picker")
-      console.log('document.querySelector(".header-el-color-picker").style :>> ',adat);
-})
-const handleCurrentMenuIndex = (e:number) =>{
-  localStorage.setItem("currentMenuIndex",String(e))
- currentMenuIndex.value = e;
- switchColorMenu(store.state.theme.themeMenu[e])
-}
-//消息 tabs start
-let activeName = ref("first")
-const handleTagMessageClick = (e:any) =>{
- activeName.value = e.paneName
-}
-//是否通栏
-const changeIsFull = (e:boolean) =>{
- store.commit("setIsFull",e)
-}
+const handleCurrentNavIndex = (e: number) => {
+  localStorage.setItem("currentNavIndex", String(e));
+  currentNavIndex.value = e;
+  switchColorNav(store.state.theme.themeNav[e]);
+};
+//初始化配色方案
+const handleInitThemeColor = () => {
+    let loadingInstance = ElLoading.service({
+          lock: true,
+          text: 'Loading',
+          spinner: 'el-icon-loading',
+          background: 'rgba(0, 0, 0, 0.7)'
+        });
+      store.commit("setThemeColor",themeColor)
+            switchColorNav(store.state.theme.themeNav[0]);
+        switchColorMenu(store.state.theme.themeMenu[1]);
+        store.commit("setIsFull",false)
+      setTimeout(() => {
+         loadingInstance.close();
+      }, 1000);
+};
 
-const openSetting = () =>{
- drawerBool.value =true
-}
-const handleHide = () =>{
-  searchBool.value = false
-}
-const handleRefresh = () => {
- store.commit('setRefresh');
+//更换主题颜色
+const changeThemeColor = (e: string) => {
+  let numArr: string[] = [];
+  e.match(/\d+/g)?.forEach((res: string) => {
+    numArr.push(res);
+  });
+ store.commit("setThemeColor",numArr)
 
 };
-const handleSearch = () =>{
-  searchBool.value = true
-}
+
+const handleCurrentMenuIndex = (e: number) => {
+  localStorage.setItem("currentMenuIndex", String(e));
+  currentMenuIndex.value = e;
+  switchColorMenu(store.state.theme.themeMenu[e]);
+};
+//消息 tabs start
+let activeName = ref("first");
+const handleTagMessageClick = (e: any) => {
+  activeName.value = e.paneName;
+};
+//是否通栏
+const changeIsFull = (e: boolean) => {
+  store.commit("setIsFull", e);
+};
+
+const openSetting = () => {
+  drawerBool.value = true;
+};
+const handleHide = (e: boolean) => {
+  searchBool.value = !e;
+};
+const handleRefresh = () => {
+  store.commit("setRefresh");
+};
+const handleSearch = () => {
+  searchBool.value = true;
+};
 const handleCollapse = () => {
   context.emit("handleCollapse", props.isCollapse);
 };
-const handleClose = (e:number) => {
-  store.commit('setCloseTagPages',e)
+const handleClose = (e: number) => {
+  store.commit("setCloseTagPages", e);
 };
 interface LltTags {
-  index:number,
-  routerItem:AppRouteModule
-} 
-const handleOpen = (e:LltTags) => {
+  index: number;
+  routerItem: AppRouteModule;
+}
+const handleOpen = (e: LltTags) => {
   /**
    * 1. 获取数据 对比是否是当前激活 标签
    * 2. 如果是激活就不处理 不是激活标签就处理激活内容
    */
-  store.commit('setMenuActiveName',e.routerItem.name)
-  if(store.state.currentTag==e.index)return
-  else store.commit('setCurrentTag',e.index);router.push({name:e.routerItem.name});
-  
+  store.commit("setMenuActiveName", e.routerItem.name);
+  if (store.state.currentTag == e.index) return;
+  else store.commit("setCurrentTag", e.index);
+  router.push({ name: e.routerItem.name });
 };
 
 /*
@@ -290,31 +319,31 @@ const handleSelect = () => {};
 </script>
 
 <style   lang="scss" >
-.header-setting-drawer{
+.header-setting-drawer {
   border-top: 1px solid #e6e6e6;
   padding: 10px 30px;
 }
-.el-overlay{
-  z-index: 3!important;
+.el-overlay {
+  z-index: 3 !important;
 }
-.header-message-tabs  .el-tabs__active-bar{
-  width: 44px  !important;
+.header-message-tabs .el-tabs__active-bar {
+  width: 44px !important;
 }
 
 .llt-header {
-  .top{
+  .top {
     position: relative;
     // z-index: 10000;
     z-index: 3;
-  border-top: solid 1px rgba(0, 0, 0, 0.1);//#e6e6e6
-  border-bottom: solid 1px rgba(0, 0, 0, 0.1);
-  box-sizing: border-box;
-  height: 54px;
+    border-top: solid 1px rgba(0, 0, 0, 0.1); //#e6e6e6
+    border-bottom: solid 1px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+    height: 54px;
   }
-  .bottom{
- border-bottom: solid 1px rgba(0, 0, 0, 0.1);
+  .bottom {
+    border-bottom: solid 1px rgba(0, 0, 0, 0.1);
   }
-} 
+}
 
 .llt-badge {
   position: absolute;
@@ -325,27 +354,30 @@ const handleSelect = () => {};
   border-radius: 100%;
   background-color: red;
 }
-.header-message-tabs{
+.header-message-tabs {
   padding-top: 0;
   width: 400px;
 
-  .item{
-        color: rgba(0, 0, 0, 0.9);
-          border-bottom:  1px solid rgba(0, 0, 0, 0.1);
-font-size: 14px;line-height: 2rem;
+  .item {
+    color: rgba(0, 0, 0, 0.9);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    font-size: 14px;
+    line-height: 2rem;
   }
-  .time{
+  .time {
     color: rgba(0, 0, 0, 0.45);
-font-size: 14px;
-line-height: 2rem;
+    font-size: 14px;
+    line-height: 2rem;
   }
 }
-.header-theme-color-item{
-  width: 20px; height: 20px;
+.header-theme-color-item {
+  width: 20px;
+  height: 20px;
   border: 1px solid #ddd;
-  color: #fff;margin-left: 10px;
+  color: #fff;
+  margin-left: 10px;
 }
-#el-popper-3198{
+#el-popper-3198 {
   z-index: 1000012 !important;
 }
 </style>

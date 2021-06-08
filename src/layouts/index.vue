@@ -1,5 +1,5 @@
 <template>
-  <div class="w100 h100" ref="el">
+  <div class="w100 h100" >
     <div class="aic  h100">
       <div class="h100">
         <LltMenu :isCollapse="isCollapse" />
