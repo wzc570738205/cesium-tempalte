@@ -3,18 +3,21 @@
     <div class="aic jcb top w100" style="background:var(--navColorBg);">
       <!-- 一级导航左边 start -->
       <div class="aic">
-        <div class=""  @click="handleCollapse">
+        <!-- 大屏按钮 start -->
+        <div class="hidden-md-and-down "  @click="handleCollapse" >
           <i v-show="!isCollapse"
           style="color: var(--navColorFont)"
            class="el-icon-s-fold llt-icon-size p10"></i>
           <i
           style="color: var(--navColorFont)"
-          @mouseenter="enterBg($event)"
-          @mouseout="outBg($event)"
             v-show="isCollapse"
             class="el-icon-s-unfold llt-icon-size p10"
           ></i>
         </div>
+           <!-- 大屏按钮 end -->
+           <div class="hidden-md-and-up1 " @click="handleshowMenu">
+        <i style="color: var(--navColorFont)" class="el-icon-s-operation llt-icon-size p10 "/>
+           </div>
         <div class="mx15 aic">
           <div style="color: var(--navColorFont)"
             v-for="(item,index) in $store.state.BreadcrumbList" :key="index">
@@ -124,6 +127,7 @@
           
     </div>
     <Search @handleHide="handleHide" :show="searchBool" />
+    <!-- 系统配置 end -->
    <el-drawer
   title="项目配置"
   v-model="drawerBool"
@@ -176,6 +180,23 @@
       </div>
   </div>
 </el-drawer>
+<!-- 系统配置 end -->
+<!-- 菜单导航 start -->
+<div  class="llt-drawaer">
+   <el-drawer
+ 
+    direction="ltr"
+   :with-header="false"
+  v-model="showMenuBool"
+ >
+    
+
+   <Menu />
+   
+</el-drawer>
+</div>
+
+<!-- 菜单导航 start -->
   </div>
 </template>
 <script setup lang="ts">
@@ -191,7 +212,9 @@ import {
 } from "vue";
 import { useFullscreen } from "@vueuse/core";
 import { store } from "/@ts/store";
+import routeMenuList from '/@ts/router/routes/menu';
 import LltTags from "/@/layouts/components/llt-tags.vue";
+import Menu from "/@/layouts/components/menu.vue";
 import Search from "/@/components/search/search.vue";
 import type { AppRouteModule } from "/@ts/router/types";
 import { useRouter } from "vue-router";
@@ -220,6 +243,8 @@ const props = defineProps({
 });
 let searchBool = ref(false);
 let drawerBool = ref(false);
+let showMenuBool = ref(false);
+
 /**
  * 颜色选择索引值
  */
@@ -245,7 +270,7 @@ const handleInitThemeColor = () => {
         });
       store.commit("setThemeColor",themeColor)
             switchColorNav(store.state.theme.themeNav[0]);
-        switchColorMenu(store.state.theme.themeMenu[1]);
+        switchColorMenu(store.state.theme.themeMenu[0]);
         store.commit("setIsFull",false)
       setTimeout(() => {
          loadingInstance.close();
@@ -275,6 +300,12 @@ const handleTagMessageClick = (e: any) => {
 //是否通栏
 const changeIsFull = (e: boolean) => {
   store.commit("setIsFull", e);
+};
+/**
+ * 打开菜单 低于 md显示
+ */
+const handleshowMenu = () => {
+ showMenuBool.value = true
 };
 
 const openSetting = () => {
@@ -319,6 +350,9 @@ const handleSelect = () => {};
 </script>
 
 <style   lang="scss" >
+.llt-drawaer .el-drawer{
+  width: 200px !important;
+}
 .header-setting-drawer {
   border-top: 1px solid #e6e6e6;
   padding: 10px 30px;

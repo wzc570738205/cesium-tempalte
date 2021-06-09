@@ -7,14 +7,15 @@ import 'element-plus/lib/theme-chalk/index.css'
 import 'element-plus/lib/theme-chalk/display.css';
 import 'animate.css/animate.min.css';
 import './init.scss';
-
+// 国际化
+import locale from 'element-plus/lib/locale/lang/zh-cn'
+import 'dayjs/locale/zh-cn'
 
 
 // Mount when the route is ready
     // https://next.router.vuejs.org/api/#isready
 const app =createApp(App)
-console.log('ElementPlus :>> ', ElementPlus);
-app.use(ElementPlus)//element-plus挂载
+app.use(ElementPlus, { locale })//element-plus挂载
 setupStore(app)
 setupRouter(app)
 app.mount('#app')

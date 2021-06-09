@@ -10,7 +10,7 @@
 import {ref,defineProps,reactive,getCurrentInstance, } from 'vue';
     const internalInstance = getCurrentInstance();//获取当前实例
     const route = internalInstance?.appContext.config.globalProperties.$route;
-import loginForm from "/@/views/sys/login/login-form.vue";
+import loginForm from "/@/views/login/login-form.vue";
 
 /*
 基本数据类型

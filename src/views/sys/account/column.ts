@@ -9,6 +9,11 @@ export default [
         prop:"name",
         show:true
     },
+    {
+        label:"地址",
+        prop:"address",
+        show:true
+    },
 ]
 
 export interface LltColumn {

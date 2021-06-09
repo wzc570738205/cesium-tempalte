@@ -1,14 +1,23 @@
 <template>
-  <div class="account white-bg">
-   <Table :tableData="state.tableData" :column="columnData">
+  <div class="account white-bg ">
+    <div>adas</div>
+   <Table :tableData="state.tableData" :column="column"
+   @getCurrentColumns="getCurrentColumns"
+       @size-change="handleSizeChange"
+      @current-change="handleCurrentChange"
+   :pagination="{
+      currentPage:1,
+      total:20,
+      pageSize:10,
+      pageSizes:[10, 15, 20]
+   }"
+   >
        <template #tableColumn>
-        
-          <!-- <el-table-column
-            type="selection"
-          ></el-table-column> -->
    <el-table-column
-   v-for="item,index in columnData"
+   v-for="(item,index) in state.columnData"
+   class="animate__animated animate__fadeInUp"
    :key="index"
+    width="120"
       :label="item.label"
       :prop="item.prop">
     </el-table-column>
@@ -32,9 +41,10 @@
 </template>
 
 <script setup lang="ts">
-import {ref,reactive,getCurrentInstance,onMounted} from 'vue';
+import {ref,reactive,getCurrentInstance,onMounted, watch} from 'vue';
 import {useRouter,useRoute} from 'vue-router'
 import Table from '/@/components/table/table.vue';
+import type { LltColumn } from './column'
 import column from './column'
     const internalInstance = getCurrentInstance();//获取当前实例
     // const route = internalInstance?.appContext.config.globalProperties.$route;
@@ -49,8 +59,13 @@ ref 和 reactive 本质我们可以简单的理解为ref是对reactive的二次�
 ref定义的数据访问的时候要多一个.value
 */
  const count =ref(0);
-  const columnData =ref(column);
+// computed(()=>{
+
+//     return keys;
+// });
+
  const state = reactive({
+   columnData:column,
     tableData: [{
           date: '2016-05-02',
           name: '王小虎',
@@ -67,10 +82,48 @@ ref定义的数据访问的时候要多一个.value
           date: '2016-05-03',
           name: '王小虎',
           address: '上海市普陀区金沙江路 1516 弄'
+        },{
+          date: '2016-05-02',
+          name: '王小虎',
+          address: '上海市普陀区金沙江路 1518 弄'
+        }, {
+          date: '2016-05-04',
+          name: '王小虎',
+          address: '上海市普陀区金沙江路 1517 弄'
+        }, {
+          date: '2016-05-01',
+          name: '王小虎',
+          address: '上海市普陀区金沙江路 1519 弄'
+        },{
+          date: '2016-05-02',
+          name: '王小虎',
+          address: '上海市普陀区金沙江路 1518 弄'
+        }, {
+          date: '2016-05-04',
+          name: '王小虎',
+          address: '上海市普陀区金沙江路 1517 弄'
+        }, {
+          date: '2016-05-01',
+          name: '王小虎',
+          address: '上海市普陀区金沙江路 1519 弄'
         }],
  })
+
 const handleEdit = (index:number,e:any)=>{
-console.log('index,e :>> ', index,e);
+}
+const handleCurrentChange = (num:number)=>{
+   state.tableData = [ {
+       date: '2016-05-04',
+          name: '王小虎',
+          address: '上海市普陀区金沙江路 1517 弄'
+   }];
+}
+const handleSizeChange = (size:number)=>{
+}
+const getCurrentColumns = (data:LltColumn[])=>{
+  console.log('data :>> ', data);
+    state.columnData = data;
+    
 }
 
 </script>

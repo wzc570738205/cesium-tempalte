@@ -29,8 +29,8 @@ import { ref, reactive, getCurrentInstance, onMounted } from "vue";
 import { key } from "/@ts/store/index";
 import { useStore } from "vuex";
 import { useRouter, useRoute } from "vue-router";
-import loginLeft from "/@/views/sys/login/login-left.vue";
-import loginRight from "/@/views/sys/login//login-right.vue";
+import loginLeft from "/@/views/login/login-left.vue";
+import loginRight from "/@/views/login//login-right.vue";
 const internalInstance = getCurrentInstance(); //获取当前实例
 // const route = internalInstance?.appContext.config.globalProperties.$route;
 const router = useRouter();

@@ -1,12 +1,11 @@
 <template>
-
-      <RouterView  />
-
-  
+     <div class="w100 h100"  v-loading="false">
+        <RouterView  />
+     </div>
 </template>
 
 <script setup lang="ts">
-
+console.log('object :>>刷新了 ');
 // store
 </script>
 

@@ -82,7 +82,6 @@ const props = defineProps({
   },
 });
 defineEmit(['handleHide'])
-console.log('context :>> ', context);
 const handleHide = () => {
   context.emit("handleHide",props.show);
 };

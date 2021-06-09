@@ -1,23 +1,32 @@
 <template>
-  <div class="w100 h100" >
-    <div class="aic  h100">
-      <div class="h100">
+  <div class="w100 h100 layouts" >
+    <div class="aic w100  h100">
+      <div class="h100 hidden-md-and-down layouts-left"
+      :style="{
+        width:isCollapse?'64px':'200px'
+      }"
+      >
         <LltMenu :isCollapse="isCollapse" />
       </div>
       <div
-        :class="
-          isCollapse ? 'menu-logo-collapse-true' : 'menu-logo-collapse-false'
-        "
-        class="aic fdc w100 h100"
+        class="aic  w100 h100  flex1  layouts-right"
       >
-        <LltHeader @handleCollapse="handleCollapse"  :isCollapse="isCollapse"/>
-        <div class="llt-layouts-body">
+      <div   :class="
+          isCollapse ? 'menu-logo-collapse-true' :'menu-logo-collapse-false'
+        " class="hidden-md-and-down w100">
+
+      </div>
+      <div class="aic fdc w100 h100 white-bg">
+          <LltHeader @handleCollapse="handleCollapse"  :isCollapse="isCollapse"/>
+        <div class="llt-layouts-body layouts-body">
           <router-view v-slot="{ Component }">
           <transition v-if="!$store.state.refresh" name="list" mode="out-in">
             <component :is="Component" />
           </transition>
         </router-view>
         </div>
+      </div>
+      
       </div>
     </div>
    
@@ -33,14 +42,16 @@ import {store} from '/@ts/store';
 import initTheme from '/@ts/hooks/theme';
 
  onBeforeMount(()=>{
-  console.log('"object" :>> ', "页面刷新了");
   initTheme()
  })
 const internalInstance = getCurrentInstance(); //获取当前实例
 // const route = internalInstance?.appContext.config.globalProperties.$route;
 const router = useRouter();
 const route = useRoute();
-onMounted(() => {});
+
+onMounted(() => {
+
+});
 /*
 基本数据类型
 引用数据类型（复杂类型） 个人建议 ref初始化变量 
@@ -57,14 +68,24 @@ const handleCollapse = (e:boolean)=>{
 </script>
 
 <style  scoped lang="scss" >
-.menu-logo-collapse-true,.menu-logo-collapse-false {
-  min-width: 691px;
+.layouts{
 }
+.layouts-right{
+position: fixed;
+top: 0;right: 0;
+}
+.layouts-left{
+  width: 200px;left: 0;top: 0;
+  z-index: 1;
+}
+
 .menu-logo-collapse-true {
-  margin-left: 64px;
+  min-width: 64px;
+  max-width: 64px;
 }
 .menu-logo-collapse-false {
-  margin-left: 200px;
+    min-width: 200px;
+  max-width: 200px;
 }
 
 .llt-layouts-body{

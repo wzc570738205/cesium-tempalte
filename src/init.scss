@@ -209,5 +209,7 @@ background-color: rgba(0,0,0,.2);
     border-color: rgba(var(--color-red), var(--color-green), var(--color-blue), .3);
     color:rgba(var(--color-red), var(--color-green), var(--color-blue), 1) ;
   }
-
+  .el-checkbox__input.is-checked + .el-checkbox__label{
+    color: rgba(var(--color-red), var(--color-green), var(--color-blue), 1) ;
+  }
 // 初始化 element-plus css end
