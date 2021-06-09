@@ -18,7 +18,7 @@
       </div>
       <div class="aic fdc w100 h100 white-bg">
           <LltHeader @handleCollapse="handleCollapse"  :isCollapse="isCollapse"/>
-        <div class="llt-layouts-body layouts-body">
+        <div class="llt-layouts-body">
           <router-view v-slot="{ Component }">
           <transition v-if="!$store.state.refresh" name="list" mode="out-in">
             <component :is="Component" />

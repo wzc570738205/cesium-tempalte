@@ -1,7 +1,7 @@
 <template>
-  <div class="account white-bg ">
-    <div>adas</div>
-   <Table :tableData="state.tableData" :column="column"
+  <div class="account white-bg">
+    
+   <Table class="account-table" :tableData="state.tableData" :column="column"
    @getCurrentColumns="getCurrentColumns"
        @size-change="handleSizeChange"
       @current-change="handleCurrentChange"
@@ -17,12 +17,13 @@
    v-for="(item,index) in state.columnData"
    class="animate__animated animate__fadeInUp"
    :key="index"
-    width="120"
+    width="320"
       :label="item.label"
       :prop="item.prop">
     </el-table-column>
     <el-table-column
     label="操作"
+        width="320"
       align="right">
       <template #default="scope">
         <el-button
@@ -129,6 +130,10 @@ const getCurrentColumns = (data:LltColumn[])=>{
 </script>
 
 <style  scoped lang="scss" >
+.account-table{
+  width: 800px;
+  // height: 100%;
+}
 .account{
   padding: 20px;
   margin: 10px;
