@@ -137,7 +137,7 @@ const props = defineProps({
   border: {
     //列数据
     type: Boolean,
-    default: false,
+    default: true,
   },
 });
 interface TableState {
@@ -238,6 +238,8 @@ const allowDrag = (draggingNode: any) => {
 </script>
 
 <style   lang="scss" >
+.llt-table{
+}
 .llt-table-header {
   border-top: 1px solid #eee;
   border-left: 1px solid #eee;

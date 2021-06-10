@@ -1,6 +1,6 @@
 <template>
-  <div class="account white-bg">
-    
+  <div class="account white-bg jcb">
+    <AccountFiliter class="account-filiter-box" />
    <Table class="account-table" :tableData="state.tableData" :column="column"
    @getCurrentColumns="getCurrentColumns"
        @size-change="handleSizeChange"
@@ -17,13 +17,13 @@
    v-for="(item,index) in state.columnData"
    class="animate__animated animate__fadeInUp"
    :key="index"
-    width="320"
+   
       :label="item.label"
       :prop="item.prop">
     </el-table-column>
     <el-table-column
     label="操作"
-        width="320"
+       
       align="right">
       <template #default="scope">
         <el-button
@@ -45,6 +45,8 @@
 import {ref,reactive,getCurrentInstance,onMounted, watch} from 'vue';
 import {useRouter,useRoute} from 'vue-router'
 import Table from '/@/components/table/table.vue';
+import AccountFiliter from '/@/views/sys/account/accountFiliter.vue';
+
 import type { LltColumn } from './column'
 import column from './column'
     const internalInstance = getCurrentInstance();//获取当前实例
@@ -130,12 +132,19 @@ const getCurrentColumns = (data:LltColumn[])=>{
 </script>
 
 <style  scoped lang="scss" >
-.account-table{
-  width: 800px;
-  // height: 100%;
-}
+
 .account{
   padding: 20px;
   margin: 10px;
+  .account-filiter-box{
+    margin-right: 20px;
+   min-width: 300px;
+  max-width: 400px;
+}
+  .account-table{
+    width: 10px;
+   min-width: calc(100% - 300px);
+  max-width: calc(100% - 400px);
+}
 }
 </style>
