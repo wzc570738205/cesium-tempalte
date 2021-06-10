@@ -8,6 +8,12 @@ export default [
         prop:"name",
     },
     {
+        label:"状态",
+        prop:"name",
+        render:true
+    },
+    
+    {
         label:"地址",
         prop:"address",
     },

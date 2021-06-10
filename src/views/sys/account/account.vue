@@ -36,7 +36,11 @@
       </template>
     </el-table-column>
   </template>
-       
+      <template #tableRight>
+         <el-button
+           type="primary"
+          @click="handleEdit(scope.$index, scope.row)">新增账户</el-button>
+      </template>
    </Table>
   </div>
 </template>
@@ -158,6 +162,7 @@ const getCurrentColumns = (data:LltColumn[])=>{
 @media only screen and (min-width:1200px)
 {.account-table{
  width: 1px;
+ padding-right: 20px;
    min-width: calc(100% - 300px);
   max-width: calc(100% - 400px);
 }

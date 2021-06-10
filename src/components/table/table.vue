@@ -1,9 +1,11 @@
 <template>
   <div class="llt-table w100">
     <div class="aic jcb w100" :class="border ? 'llt-table-header' : ''">
-      <div class="llt-table-left">
-        <slot name="tableLeft">
-          <div class="aic">
+      <div class="llt-table-left aic">
+        <slot name="tableLeft" >
+          
+        </slot>
+        <div class="aic" v-if="searchBool">
             <el-input
               v-model="search"
               class="mx15"
@@ -14,7 +16,6 @@
               >搜索</el-button
             >
           </div>
-        </slot>
       </div>
 
       <div class="llt-table-right">
@@ -116,6 +117,10 @@ const search = ref("");
 let drawerBool = ref(false);
 
 const props = defineProps({
+  searchBool:{
+    type: Boolean,
+    default: true,
+  },
   pagination:{
     type: Object,
     default: {
@@ -156,9 +161,10 @@ const state: TableState = reactive({
 });
 // 执行一次 start
 props.column.forEach((element: any) => {
-  if (element.show) {
-    state.checkedCities.push(element.prop);
-  }
+  // if (element.show) {
+   
+  // }
+  state.checkedCities.push(element.prop);
 });
 // 执行一次 end
 /**

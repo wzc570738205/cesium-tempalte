@@ -55,7 +55,7 @@ const routeMenuList: AppRouteRecordRaw[] = [
                     title:"角色管理",
                    
                 },
-                component: () => import('/@/views/sys/account/account.vue'),
+                component: () => import('/@/views/sys/role/role.vue'),
             },
             {
                 path:"/system/menu",
