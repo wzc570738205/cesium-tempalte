@@ -91,8 +91,7 @@ top: 0;right: 0;
 .llt-layouts-body{
   width: 100%;
    height: 100%;
-  overflow-y: auto;
-  overflow-x: hidden;
+  overflow: auto;
   background-color: #F0F2F5;
 }
 // 路由切换动画

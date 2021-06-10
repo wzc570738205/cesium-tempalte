@@ -1,6 +1,6 @@
 <template>
-  <div class="account white-bg jcb">
-    <AccountFiliter class="account-filiter-box" />
+  <div class="account white-bg jcb container">
+    <AccountFiliter class="account-filiter-box hidden-md-and-down" />
    <Table class="account-table" :tableData="state.tableData" :column="column"
    @getCurrentColumns="getCurrentColumns"
        @size-change="handleSizeChange"
@@ -136,13 +136,28 @@ const getCurrentColumns = (data:LltColumn[])=>{
 .account{
   padding: 20px;
   margin: 10px;
+
   .account-filiter-box{
     margin-right: 20px;
    min-width: 300px;
   max-width: 400px;
 }
-  .account-table{
-    width: 10px;
+
+
+  
+
+}
+// .account-table{
+  
+// }
+@media only screen and (max-width:1200px)
+{.account-table{
+   max-width: 100% ;
+}
+}
+@media only screen and (min-width:1200px)
+{.account-table{
+ width: 1px;
    min-width: calc(100% - 300px);
   max-width: calc(100% - 400px);
 }
