@@ -57,6 +57,13 @@ align-items: center;
     color: #111;
     cursor: pointer;
 }
+.llt-edit-icon{
+    font-size:17px; 
+    cursor: pointer;   color:rgba(var(--color-red), var(--color-green), var(--color-blue), 1) ;
+}
+.red{
+    color:red;
+}
 .cP{
     cursor: pointer;
 }
@@ -187,12 +194,15 @@ background-color: rgba(0,0,0,.2);
     background-color:rgba(var(--color-red), var(--color-green), var(--color-blue), 1) ;
   }
 
-  .el-link.el-link--primary{
+  .el-link.el-link--primary,
+  .el-switch__label.is-active
+  {
     color:  rgba(var(--color-red), var(--color-green), var(--color-blue), 1) ;
 
   }
 
   .el-button--primary,
+  .el-switch.is-checked .el-switch__core,
   .el-checkbox__input.is-checked .el-checkbox__inner, .el-checkbox__input.is-indeterminate .el-checkbox__inner
   {
     border-color:rgba(var(--color-red), var(--color-green), var(--color-blue), 1);
@@ -215,5 +225,10 @@ background-color: rgba(0,0,0,.2);
     color: rgba(var(--color-red), var(--color-green), var(--color-blue), 1) ;
   }
 
- 
+  .el-tree-node__expand-icon {
+    color: #333;
+  }
+  .el-tree-node__expand-icon.is-leaf {
+    color: #fff !important;
+  }
 // 初始化 element-plus css end

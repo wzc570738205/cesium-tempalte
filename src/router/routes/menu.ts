@@ -64,7 +64,7 @@ const routeMenuList: AppRouteRecordRaw[] = [
                     title:"菜单管理",
                    
                 },
-                component: () => import('/@/views/sys/account/account.vue'),
+                component: () => import('/@/views/sys/menu/menu.vue'),
             },
             {
                 path:"/system/dept",

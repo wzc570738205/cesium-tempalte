@@ -28,7 +28,9 @@
     </div>
     <el-table
       type="index"
+      :row-key="rowKey"
       :border="border"
+       :tree-props="{children: 'children', hasChildren: 'hasChildren'}"
       :data="tableData"
       style="width: 100%"
     >
@@ -144,6 +146,12 @@ const props = defineProps({
     type: Boolean,
     default: true,
   },
+   rowKey: {
+    //列数据
+    type: String,
+    default: "",
+  },
+  
 });
 interface TableState {
   cities: LltColumn[];//上部勾选check数据

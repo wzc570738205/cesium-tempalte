@@ -1,15 +1,15 @@
 <template>
   <div class="">
       <!-- 搜索 start -->
-      <div class="  searchRoleBox white-bg">
-        <RoleSearch />
+      <div class="  searchMenuBox white-bg">
+        <MenuSearch />
       </div>
       <!-- 搜索 end-->
-      <!-- 角色表格 start-->
-      <div class="tableRoleBox ">
-          <RoleTable />
+      <!-- 菜单表格 start-->
+      <div class="tableMenuBox ">
+          <MenuTable />
       </div>
-      <!-- 角色表格 end-->
+      <!-- 菜单表格 end-->
 
   </div>
 </template>
@@ -17,8 +17,8 @@
 <script setup lang="ts">
 import {ref,reactive,getCurrentInstance,onMounted} from 'vue';
 import {useRouter,useRoute} from 'vue-router';
-import RoleSearch from '/@/views/sys/role/roleSearch.vue';
-import RoleTable from '/@/views/sys/role/roleTable.vue';
+import MenuSearch from '/@/views/sys/menu/menuSearch.vue';
+import MenuTable from '/@/views/sys/menu/menuTable.vue';
 import type { LltColumn } from './column'
 import column from './column'
     const internalInstance = getCurrentInstance();//获取当前实例
@@ -44,18 +44,18 @@ ref定义的数据访问的时候要多一个.value
  /**
   * 搜索关键词
   */
-const searchRole = () =>{
+const searchMenu = () =>{
     console.log('state.formSearch :>> ', state.formSearch);
 }
 
 </script>
 
 <style  scoped lang="scss" >
-.searchRoleBox{
+.searchMenuBox{
   margin: 20px;
   padding-top: 20px;
 }
-.tableRoleBox{
+.tableMenuBox{
   padding: 20px;
  width: 100px;
    min-width: calc(100% - 0px);

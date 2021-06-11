@@ -100,10 +100,5 @@ console.log('e,c,b :>> ', e,c,b);
 </script>
 
 <style    lang="scss" >
-.el-tree-node__expand-icon {
-  color: #333;
-}
-.el-tree-node__expand-icon.is-leaf {
-  color: #fff;
-}
+
 </style>
