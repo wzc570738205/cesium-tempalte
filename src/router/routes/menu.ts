@@ -73,7 +73,7 @@ const routeMenuList: AppRouteRecordRaw[] = [
                     title:"部门管理",
                    
                 },
-                component: () => import('/@/views/sys/account/account.vue'),
+                component: () => import('/@/views/sys/dept/dept.vue'),
             },
             {
                 path:"/system/changePassword",
@@ -82,7 +82,7 @@ const routeMenuList: AppRouteRecordRaw[] = [
                     title:"修改密码",
                    
                 },
-                component: () => import('/@/views/sys/account/account.vue'),
+                component: () => import('/@/views/sys/changePassword/changePassword.vue'),
             }
         ]
     },

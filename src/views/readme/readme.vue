@@ -46,6 +46,7 @@
         <el-descriptions class="margin-top" :column="3" border>
           <el-descriptions-item
           v-for="(item,index) in state.dependencies"
+          :key="index"
           >
          <template #label> {{index}} </template>
               {{item}}
