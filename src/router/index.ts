@@ -45,16 +45,16 @@ router.afterEach((to,from)=>{
     }
   });
 })
-// router.beforeEach((to,from,next)=>{
-//   store.commit('loginModule/isLogin')
-//   const isloginPage:boolean = getFilterRouterName((to.name as string));
-//   let  state:any = store.state
-//   if(isloginPage||state.loginModule.isLogin){
-//     next()
-//   }else{
-//     next({name:LOGIN})
-//   }
-// })
+router.beforeEach((to,from,next)=>{
+  store.commit('loginModule/isLogin')
+  const isloginPage:boolean = getFilterRouterName((to.name as string));
+  let  state:any = store.state
+  if(isloginPage||state.loginModule.isLogin){
+    next()
+  }else{
+    next({name:LOGIN})
+  }
+})
 /**
  * 挂载到vue实例函数
  * @param app vue实例

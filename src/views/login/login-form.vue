@@ -35,7 +35,7 @@
         <el-link type="primary" href="#/btn" target="_blank">忘记密码</el-link>
       </div>
       <el-form-item class="mt30">
-        <el-button type="primary" class="w100" :loading="true" @click="submitForm"
+        <el-button type="primary" class="w100" :loading="loading" @click="submitForm"
           >登录</el-button
         >
       </el-form-item>
@@ -45,8 +45,10 @@
 
 <script setup lang="ts">
 import { ref, defineProps, reactive, getCurrentInstance, defineComponent } from "vue";
+import http from '/@ts/axios'
 const internalInstance = getCurrentInstance(); //获取当前实例
 const refs = internalInstance?.appContext.config.globalProperties;
+
 
 /*
 基本数据类型
@@ -54,7 +56,8 @@ const refs = internalInstance?.appContext.config.globalProperties;
 ref 和 reactive 本质我们可以简单的理解为ref是对reactive的二次包装, 
 ref定义的数据访问的时候要多一个.value
 */
-const count = ref(0);
+console.log('http :>> ', http);
+let loading = ref(false);
 const state = reactive({
   loginValidateForm: {
     username: "",
@@ -63,12 +66,14 @@ const state = reactive({
 });
 let FormRef: any = "";
 const loginValidateFormRef = (el: any) => (FormRef = el);
+/**
+ * 用户登录
+ */
 const submitForm = () => {
   FormRef.validate((valid: boolean) => {
     if (valid) {
-      alert("submit!");
+      //通过数据校验
     } else {
-      console.log("error submit!!");
       return false;
     }
   });
