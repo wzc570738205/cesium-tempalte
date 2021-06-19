@@ -1,5 +1,5 @@
 Arguments: 
-  D:\webSystem\nodejs\node.exe C:\Users\admin\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js add axios
+  D:\webSystem\nodejs\node.exe C:\Users\admin\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js add md5 -S
 
 PATH: 
   C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;D:\webSystem\Microsoft VS Code\bin;D:\webSystem\nodejs\;D:\webSystem\Git\cmd;C:\Program Files\Java\jdk1.8.0_271\bin;C:\Program Files\Java\jdk1.8.0_271\jre\bin;D:\webSystem\flutter\bin;C:\Users\admin\AppData\Local\Microsoft\WindowsApps;C:\Users\admin\AppData\Roaming\npm;D:\webSystem\idea_java\IntelliJ IDEA 2020.1.1\bin;
@@ -29,6 +29,7 @@ npm manifest:
       "@vitejs/plugin-legacy": "^1.4.0",
       "@vueuse/core": "^4.11.2",
       "animate.css": "^4.1.1",
+      "axios": "^0.21.1",
       "element-plus": "^1.0.2-beta.46",
       "vue": "^3.0.5",
       "vue-router": "4.0.6",
@@ -518,6 +519,13 @@ Lockfile:
     resolved "https://registry.nlark.com/async-validator/download/async-validator-3.5.2.tgz#68e866a96824e8b2694ff7a831c1a25c44d5e500"
     integrity sha1-aOhmqWgk6LJpT/eoMcGiXETV5QA=
   
+  axios@^0.21.1:
+    version "0.21.1"
+    resolved "https://registry.nlark.com/axios/download/axios-0.21.1.tgz#22563481962f4d6bde9a76d516ef0e5d3c09b2b8"
+    integrity sha1-IlY0gZYvTWvemnbVFu8OXTwJsrg=
+    dependencies:
+      follow-redirects "^1.10.0"
+  
   babel-walk@3.0.0-canary-5:
     version "3.0.0-canary-5"
     resolved "https://registry.npm.taobao.org/babel-walk/download/babel-walk-3.0.0-canary-5.tgz#f66ecd7298357aee44955f235a6ef54219104b11"
@@ -655,6 +663,11 @@ Lockfile:
     dependencies:
       is-regex "^1.0.3"
   
+  charenc@0.0.2:
+    version "0.0.2"
+    resolved "https://registry.nlark.com/charenc/download/charenc-0.0.2.tgz#c0a1d2f3a7092e03774bfa83f14c0fc5790a8667"
+    integrity sha1-wKHS86cJLgN3S/qD8UwPxXkKhmc=
+  
   "chokidar@>=3.0.0 <4.0.0":
     version "3.5.1"
     resolved "https://registry.npm.taobao.org/chokidar/download/chokidar-3.5.1.tgz?cache=0&sync_timestamp=1610719375974&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fchokidar%2Fdownload%2Fchokidar-3.5.1.tgz#ee9ce7bbebd2b79f49f304799d5468e31e14e68a"
@@ -774,6 +787,11 @@ Lockfile:
       lru-cache "^4.0.1"
       shebang-command "^1.2.0"
       which "^1.2.9"
+  
+  crypt@0.0.2:
+    version "0.0.2"
+    resolved "https://registry.npm.taobao.org/crypt/download/crypt-0.0.2.tgz#88d7ff7ec0dfb86f713dc87bbb42d044d3e6c41b"
+    integrity sha1-iNf/fsDfuG9xPch7u0LQRNPmxBs=
   
   crypto-random-string@^1.0.0:
     version "1.0.0"
@@ -1005,6 +1023,11 @@ Lockfile:
     version "2.0.1"
     resolved "https://registry.npm.taobao.org/fn-name/download/fn-name-2.0.1.tgz#5214d7537a4d06a4a301c0cc262feb84188002e7"
     integrity sha1-UhTXU3pNBqSjAcDMJi/rhBiAAuc=
+  
+  follow-redirects@^1.10.0:
+    version "1.14.1"
+    resolved "https://registry.nlark.com/follow-redirects/download/follow-redirects-1.14.1.tgz?cache=0&sync_timestamp=1620555246888&other_urls=https%3A%2F%2Fregistry.nlark.com%2Ffollow-redirects%2Fdownload%2Ffollow-redirects-1.14.1.tgz#d9114ded0a1cfdd334e164e6662ad02bfd91ff43"
+    integrity sha1-2RFN7Qoc/dM04WTmZirQK/2R/0M=
   
   format@^0.2.0:
     version "0.2.2"
@@ -1284,6 +1307,11 @@ Lockfile:
     resolved "https://registry.npm.taobao.org/is-buffer/download/is-buffer-2.0.5.tgz?cache=0&sync_timestamp=1604432327227&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fis-buffer%2Fdownload%2Fis-buffer-2.0.5.tgz#ebc252e400d22ff8d77fa09888821a24a658c191"
     integrity sha1-68JS5ADSL/jXf6CYiIIaJKZYwZE=
   
+  is-buffer@~1.1.6:
+    version "1.1.6"
+    resolved "https://registry.npm.taobao.org/is-buffer/download/is-buffer-1.1.6.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fis-buffer%2Fdownload%2Fis-buffer-1.1.6.tgz#efaa2ea9daa0d7ab2ea13a97b2b8ad51fefbe8be"
+    integrity sha1-76ouqdqg16suoTqXsritUf776L4=
+  
   is-ci@^2.0.0:
     version "2.0.0"
     resolved "https://registry.npm.taobao.org/is-ci/download/is-ci-2.0.0.tgz?cache=0&sync_timestamp=1613632097993&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fis-ci%2Fdownload%2Fis-ci-2.0.0.tgz#6bc6334181810e04b5c22b3d589fdca55026404c"
@@ -1420,11 +1448,6 @@ Lockfile:
     version "2.0.0"
     resolved "https://registry.npm.taobao.org/isexe/download/isexe-2.0.0.tgz#e8fbf374dc556ff8947a10dcb0572d633f2cfa10"
     integrity sha1-6PvzdNxVb/iUehDcsFctYz8s+hA=
-  
-  js-cookie@^2.2.1:
-    version "2.2.1"
-    resolved "https://registry.npm.taobao.org/js-cookie/download/js-cookie-2.2.1.tgz#69e106dc5d5806894562902aa5baec3744e9b2b8"
-    integrity sha1-aeEG3F1YBolFYpAqpbrsN0Tpsrg=
   
   js-stringify@^1.0.2:
     version "1.0.2"
@@ -1594,6 +1617,15 @@ Lockfile:
     version "2.0.0"
     resolved "https://registry.npm.taobao.org/map-obj/download/map-obj-2.0.0.tgz?cache=0&sync_timestamp=1617771296262&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fmap-obj%2Fdownload%2Fmap-obj-2.0.0.tgz#a65cd29087a92598b8791257a523e021222ac1f9"
     integrity sha1-plzSkIepJZi4eRJXpSPgISIqwfk=
+  
+  md5@^2.3.0:
+    version "2.3.0"
+    resolved "https://registry.npm.taobao.org/md5/download/md5-2.3.0.tgz#c3da9a6aae3a30b46b7b0c349b87b110dc3bda4f"
+    integrity sha1-w9qaaq46MLRreww0m4exENw72k8=
+    dependencies:
+      charenc "0.0.2"
+      crypt "0.0.2"
+      is-buffer "~1.1.6"
   
   meow@^5.0.0:
     version "5.0.0"

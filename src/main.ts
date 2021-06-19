@@ -10,8 +10,6 @@ import './init.scss';
 // 国际化
 import locale from 'element-plus/lib/locale/lang/zh-cn'
 import 'dayjs/locale/zh-cn'
-
-
 // Mount when the route is ready
     // https://next.router.vuejs.org/api/#isready
 const app =createApp(App)

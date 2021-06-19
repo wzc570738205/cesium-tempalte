@@ -27,7 +27,9 @@ const root: AppRouteModule = {
     title: "首页",
   },
   component: () => import('/@/layouts/index.vue'),
+  redirect:"/dashboard/workbench",
   children:formatRouteMenuList
 };
+
 // routeModuleList.push(root)
 export const basicRoutes:AppRouteModule[] =[root,LoginRoute];

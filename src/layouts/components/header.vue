@@ -80,7 +80,9 @@
             <i  style="color: var(--navColorFont)" @click="toggle" v-else class="el-icon-rank llt-icon-size p10"></i>
           </el-tooltip>
         </div>
-        <el-dropdown trigger="hover" :show-timeout="0" class="mx15 cP">
+        <el-dropdown trigger="hover"
+        @command="hanldeUserCenter"
+         :show-timeout="0" class="mx15 cP">
           <span class="el-dropdown-link">
             <div class="aic">
               <el-avatar
@@ -92,8 +94,8 @@
           </span>
           <template #dropdown>
             <el-dropdown-menu>
-              <el-dropdown-item icon="el-icon-s-custom">个人中心</el-dropdown-item>
-              <el-dropdown-item icon="el-icon-s-release" divided>退出系统</el-dropdown-item>
+              <el-dropdown-item command="1" icon="el-icon-s-custom">个人中心</el-dropdown-item>
+              <el-dropdown-item command="2" icon="el-icon-s-release" divided>退出系统</el-dropdown-item>
             </el-dropdown-menu>
           </template>
         </el-dropdown>
@@ -245,6 +247,22 @@ let searchBool = ref(false);
 let drawerBool = ref(false);
 let showMenuBool = ref(false);
 
+
+//用户头像菜单
+const hanldeUserCenter = (e: string) => {
+ console.log('e :>> ', e);
+ switch (e) {
+   case "1":
+     //个人中心
+     break;
+ 
+   default:
+      //退出
+      localStorage.clear()
+      router.push("/login")
+     break;
+ }
+};
 /**
  * 颜色选择索引值
  */

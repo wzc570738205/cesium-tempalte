@@ -16,9 +16,8 @@ export const loginModule:Module<LoginState,RootState>= {
         state.permissionList.push(value)
       },
       isLogin(state:LoginState){
-        let md1:string=  ( localStorage.getItem('md1') as string)
-        let jmd1 = window.atob(md1)
-        if(jmd1==="zhongyuan"){
+        let token:string=  ( localStorage.getItem((import.meta.env.VITE_TOKEN_NAME as string)) as string)
+        if(token){
           state.isLogin=true
         }
       }
@@ -30,9 +29,6 @@ export const loginModule:Module<LoginState,RootState>= {
         increment (context:ActionContext<LoginState,RootState>) {
           context.commit('increment')
         },
-        isLogin (context:ActionContext<LoginState,RootState>) {
-          setTimeout(()=>  context.commit('isLogin'),10)
-        }
       }
   }
   
