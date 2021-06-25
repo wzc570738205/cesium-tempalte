@@ -89,7 +89,9 @@
                 size="small"
                 src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"
               ></el-avatar>
-              <div  style="color: var(--navColorFont)" class="llt-default-font-color mx15">刘蓝天</div>
+              <div  style="color: var(--navColorFont)" class="llt-default-font-color mx15">{{
+                 state.userInfo.username
+                 }}</div>
             </div>
           </span>
           <template #dropdown>
@@ -223,6 +225,8 @@ import { useRouter } from "vue-router";
 import { switchColorMenu, switchColorNav } from "/@ts/hooks/theme";
 import { ElLoading } from "element-plus";
 import {themeColor, theme} from '/@ts/store';
+import { useStorageCode } from "/@ts/plugins/localStorageCode";
+const {getStorage,setStorage} =  useStorageCode();
 const { isFullscreen, toggle } = useFullscreen();
 const router = useRouter();
 const internalInstance = getCurrentInstance(); //获取当前实例
@@ -233,9 +237,11 @@ interface HeaderColors {
 }
 interface StateHeader {
   colors: HeaderColors;
+  userInfo:Object
 }
 const state: StateHeader = reactive({
   colors: { primary: "#409eff" },
+  userInfo:{}
 });
 const props = defineProps({
   isCollapse: {
@@ -246,11 +252,16 @@ const props = defineProps({
 let searchBool = ref(false);
 let drawerBool = ref(false);
 let showMenuBool = ref(false);
-
+onMounted(()=>{
+  getUserInfo()
+})
+const getUserInfo = ()=>{
+ let data:string =  (getStorage(import.meta.env.VITE_USER_INFO_KEY as string) as string)
+ state.userInfo = JSON.parse(data)
+}
 
 //用户头像菜单
 const hanldeUserCenter = (e: string) => {
- console.log('e :>> ', e);
  switch (e) {
    case "1":
      //个人中心

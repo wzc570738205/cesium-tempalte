@@ -87,6 +87,7 @@ const loginValidateFormRef = (el: any) => (FormRef = el);
 /**
  * 用户登录
  */
+console.log('getStorage() :>> ', getStorage(import.meta.env.VITE_TOKEN_NAME as string));
 const submitForm = () => {
   FormRef.validate((valid: boolean) => {
     if (valid) {

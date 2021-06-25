@@ -15,7 +15,7 @@ export const useStorageCode = ()=>{
             console.error("所取keys为空")
             return
         }
-        return JSON.parse(window.atob(value)) ; 
+        return window.atob(value) ; 
     }
     const setStorage = (key:string,value:string)=>{
         if(!key){
@@ -26,7 +26,7 @@ export const useStorageCode = ()=>{
             console.error("请设置value")
             return
         }
-        localStorage.setItem(window.btoa(key),JSON.stringify(window.btoa(key)))
+        localStorage.setItem(window.btoa(key),window.btoa(value))
     }
     return {
         getStorage  ,setStorage
