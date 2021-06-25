@@ -5,8 +5,7 @@
 </template>
 
 <script setup lang="ts">
-console.log('object :>>刷新了 ');
-// store
+import { handleError } from "vue-demi";
 </script>
 
 <style>
