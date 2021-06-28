@@ -3,4 +3,5 @@ const getmd5 = (value:string) =>{
 return Md5.hashStr(value)
 }
 
+
 export default getmd5

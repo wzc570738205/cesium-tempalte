@@ -1,11 +1,9 @@
 import {Store,Module, ActionContext} from 'vuex';
 import { RootState } from '../root-types';
-import { useStorageCode } from '/@ts/plugins/localStorageCode';
 export interface LoginState {
     permissionList:Array<number>;
     isLogin:boolean
 } 
-const {getStorage,setStorage} =  useStorageCode();
 export const loginModule:Module<LoginState,RootState>= {
     namespaced: true,//namespaced: true 的方式使其成为带命名空间的模块。保证在变量名一样的时候，添加一个父级名拼接。
     state: ():LoginState => ({
@@ -18,7 +16,7 @@ export const loginModule:Module<LoginState,RootState>= {
         state.permissionList.push(value)
       },
       isLogin(state:LoginState){
-        let token:string= (getStorage(import.meta.env.VITE_TOKEN_NAME as string)  as string)
+        let token:string=  localStorage.getItem(import.meta.env.VITE_TOKEN_NAME as string)  as string 
         if(token){
           state.isLogin=true
         }

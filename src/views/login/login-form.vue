@@ -50,7 +50,6 @@ import {
 } from "vue";
 import http from "/@ts/axios";
 import getmd5 from "/@ts/plugins/md5";
-import {useStorageCode} from "/@ts/plugins/localStorageCode";
 import axios from "axios";
 import { useRouter } from "vue-router";
 
@@ -67,7 +66,6 @@ const rules = {
     { min: 5, max: 16, message: "长度在 5 到 16 个字符", trigger: "blur" },
   ],
 };
-const {getStorage,setStorage} =  useStorageCode();
 /*
 基本数据类型
 引用数据类型（复杂类型） 个人建议 ref初始化变量 
@@ -87,7 +85,6 @@ const loginValidateFormRef = (el: any) => (FormRef = el);
 /**
  * 用户登录
  */
-console.log('getStorage() :>> ', getStorage(import.meta.env.VITE_TOKEN_NAME as string));
 const submitForm = () => {
   FormRef.validate((valid: boolean) => {
     if (valid) {
@@ -100,8 +97,8 @@ const submitForm = () => {
         })
         .then((result: any) => {
           if (result.status == 2000) {
-            setStorage( import.meta.env.VITE_TOKEN_NAME as string, result.token)
-            setStorage( import.meta.env.VITE_USER_INFO_KEY as string, JSON.stringify(result.data))
+            localStorage.setItem(import.meta.env.VITE_TOKEN_NAME as string, result.token)
+            localStorage.setItem(import.meta.env.VITE_USER_INFO_KEY as string, JSON.stringify(result.data))
             router.push("/");
           }
           loading.value = false;

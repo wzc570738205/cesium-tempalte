@@ -225,8 +225,7 @@ import { useRouter } from "vue-router";
 import { switchColorMenu, switchColorNav } from "/@ts/hooks/theme";
 import { ElLoading } from "element-plus";
 import {themeColor, theme} from '/@ts/store';
-import { useStorageCode } from "/@ts/plugins/localStorageCode";
-const {getStorage,setStorage} =  useStorageCode();
+
 const { isFullscreen, toggle } = useFullscreen();
 const router = useRouter();
 const internalInstance = getCurrentInstance(); //获取当前实例
@@ -256,7 +255,7 @@ onMounted(()=>{
   getUserInfo()
 })
 const getUserInfo = ()=>{
- let data:string =  (getStorage(import.meta.env.VITE_USER_INFO_KEY as string) as string)
+ let data:string = localStorage.getItem(import.meta.env.VITE_USER_INFO_KEY as string)  as string
  state.userInfo = JSON.parse(data)
 }
 
