@@ -15,9 +15,10 @@
     "types": [
       "vite/client"
     ],
+    "baseUrl": "src",
     "paths": {
       "/@ts/*": [
-        "./src/*"
+        "*"
       ]
     },
   },
@@ -25,6 +26,8 @@
     "src/**/*.ts",
     "src/**/*.d.ts",
     "src/**/*.tsx",
-    "src/**/*.vue"
-, "src/router/routes/modules/menuts", "src/hooks/color.js"]
+    "src/**/*.vue",
+    "src/router/routes/modules/menuts",
+    "src/hooks/color.js"
+  ]
 }
