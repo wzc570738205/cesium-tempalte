@@ -1,25 +1,8 @@
 <template>
   <div class="h100 llt-menu-box">
-    <!-- 缩小 -->
-    <div v-show="isCollapse"  class="menu-logo-box-icon  aic jcc">
-      <img src="/src/assets/svg/login-box-bg.svg" alt="">
-    </div>
-    <!-- 缩小 -->
-    <div v-show="!isCollapse" class="menu-logo-box  aic jcc"
-    :style="{
-          background:$store.state.isFull?'var(--navColorBg)':$store.state.themeCurrentMenuItem.ColorBg
-          }"
-    >
-        <img src="/src/assets/svg/login-box-bg.svg" alt="">
-        <div class=""  :style="{
-          color:$store.state.isFull?'var(--navColorFont)':$store.state.themeCurrentMenuItem.ColorFont
-          }">
-          {{$store.state.projectName}}
-        </div>
-    </div>
-    <div v-show="!isCollapse" class="menu-logo-hidden-box " ></div>
+
     <el-menu
-      :collapse-transition="false"
+      :collapse-transition="true"
       class="el-menu-vertical-demo"
       @open="handleOpen"
       :default-active="$store.state.menuActiveName"
@@ -28,6 +11,31 @@
       :background-color="$store.state.themeCurrentMenuItem.ColorBg"
       :collapse="isCollapse"
     >
+        <!-- 缩小 -->
+    <div v-show="isCollapse" 
+      :style="{
+          background:$store.state.isFull?'var(--navColorBg)':$store.state.themeCurrentMenuItem.ColorBg
+          }"
+     class="menu-logo-box-icon  aic jcc">
+      <img src="/src/assets/svg/login-box-bg.svg" alt="">
+    </div>
+    <!--放大 -->
+    <div v-show="!isCollapse"
+     class="menu-logo-box  aic jcc"
+    :style="{
+          background:$store.state.isFull?'var(--navColorBg)':$store.state.themeCurrentMenuItem.ColorBg
+          }"
+    >
+        <img src="/src/assets/svg/login-box-bg.svg" alt="">
+        <div class=""
+     
+          :style="{
+          color:$store.state.isFull?'var(--navColorFont)':$store.state.themeCurrentMenuItem.ColorFont
+          }">
+          {{$store.state.projectName}}
+        </div>
+    </div>
+    <div v-show="isCollapse" class="menu-logo-hidden-box " ></div>
     <div
      v-for="(item,index) in routeMenuList"
      :key="index"
@@ -99,11 +107,14 @@ defineProps({
 </script>
 
 <style   lang="scss" >
-.menu-logo-box-icon {
+.menu-logo-hidden-box{
+  height: 54px;
+}
+.menu-logo-box-icon,.menu-logo-box {
+  position: fixed;
+top: 0;left: 0;z-index: 2;
   width: 64px;
-  height: 64px;
-  background-color: #001529;
-  color: #fff;
+  height: 54px;
    img{
     width: 45px;
   }
@@ -111,6 +122,7 @@ defineProps({
 
 .menu-logo-box {
   height: 54px;
+  width: 200px;
   background-color: #001529;
  
   img{
@@ -134,10 +146,12 @@ defineProps({
 .el-menu-vertical-demo {
   height: 100%;
   overflow-y: auto;
+  position: relative;
+
   overflow-x: hidden;
 }
   .el-menu-vertical-demo:not(.el-menu--collapse) {
-    width: 200px;
+    width: 200px; 
     min-height: 400px;
   }
 // 选中菜单
