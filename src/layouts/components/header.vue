@@ -392,15 +392,16 @@ const handleSelect = () => {};
 
 .llt-header {
   .top {
-    position: relative;
+    // position: relative;
     // z-index: 10000;
-    z-index: 3;
+    // z-index: 3;
     border-top: solid 1px rgba(0, 0, 0, 0.1); //#e6e6e6
     border-bottom: solid 1px rgba(0, 0, 0, 0.1);
     box-sizing: border-box;
     height: 54px;
   }
   .bottom {
+     box-sizing: border-box;
     border-bottom: solid 1px rgba(0, 0, 0, 0.1);
   }
 }

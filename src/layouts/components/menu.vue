@@ -1,6 +1,22 @@
 <template>
   <div class="h100 llt-menu-box">
-
+  <div 
+     class="menu-logo-box  aic jcc"
+    :style="{
+          background:$store.state.isFull?'var(--navColorBg)':$store.state.themeCurrentMenuItem.ColorBg
+          }"
+    >
+        <img src="/src/assets/svg/login-box-bg.svg" alt="">
+        <div class=""
+     v-show="!isCollapse"
+          :style="{
+          color:$store.state.isFull?'var(--navColorFont)':$store.state.themeCurrentMenuItem.ColorFont
+          }">
+          {{$store.state.projectName}}
+        </div>
+    </div>
+    <div 
+    class="menu-logo-hidden-box " ></div>
     <el-menu
       :collapse-transition="true"
       class="el-menu-vertical-demo"
@@ -12,30 +28,15 @@
       :collapse="isCollapse"
     >
         <!-- 缩小 -->
-    <div v-show="isCollapse" 
+    <!-- <div v-show="isCollapse" 
       :style="{
           background:$store.state.isFull?'var(--navColorBg)':$store.state.themeCurrentMenuItem.ColorBg
           }"
      class="menu-logo-box-icon  aic jcc">
       <img src="/src/assets/svg/login-box-bg.svg" alt="">
-    </div>
+    </div> -->
     <!--放大 -->
-    <div v-show="!isCollapse"
-     class="menu-logo-box  aic jcc"
-    :style="{
-          background:$store.state.isFull?'var(--navColorBg)':$store.state.themeCurrentMenuItem.ColorBg
-          }"
-    >
-        <img src="/src/assets/svg/login-box-bg.svg" alt="">
-        <div class=""
-     
-          :style="{
-          color:$store.state.isFull?'var(--navColorFont)':$store.state.themeCurrentMenuItem.ColorFont
-          }">
-          {{$store.state.projectName}}
-        </div>
-    </div>
-    <div v-show="isCollapse" class="menu-logo-hidden-box " ></div>
+  
     <div
      v-for="(item,index) in routeMenuList"
      :key="index"
@@ -110,19 +111,14 @@ defineProps({
 .menu-logo-hidden-box{
   height: 54px;
 }
-.menu-logo-box-icon,.menu-logo-box {
-  position: fixed;
-top: 0;left: 0;z-index: 2;
-  width: 64px;
-  height: 54px;
-   img{
-    width: 45px;
-  }
-}
+
 
 .menu-logo-box {
+  position: absolute;
   height: 54px;
-  width: 200px;
+  width: 100%;
+top: 0;left: 0;z-index: 2;
+  height: 54px;
   background-color: #001529;
  
   img{
@@ -139,20 +135,21 @@ top: 0;left: 0;z-index: 2;
   border: none;
 }
 .llt-menu-box {
-  position: fixed;
-  left: 0;
-  top: 0;
+position: relative;
+top: 0;
+left: 0;
 }
 .el-menu-vertical-demo {
-  height: 100%;
-  overflow-y: auto;
+ height: 100%;
+  height:calc(100% - 59px);
+  overflow: auto;
+  overflow-x:hidden;
   position: relative;
-
-  overflow-x: hidden;
 }
   .el-menu-vertical-demo:not(.el-menu--collapse) {
     width: 200px; 
-    min-height: 400px;
+
+    // min-height: 400px;
   }
 // 选中菜单
 .el-submenu__title {
