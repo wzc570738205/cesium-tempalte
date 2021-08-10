@@ -26,5 +26,4 @@ const  enumStatus:StatusCode={
    
    
 }
-
 export {enumStatus}

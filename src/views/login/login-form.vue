@@ -87,23 +87,24 @@ const loginValidateFormRef = (el: any) => (FormRef = el);
  */
 const submitForm = () => {
   FormRef.validate((valid: boolean) => {
+    console.log('valid :>> ', valid);
     if (valid) {
       //通过数据校验
-      loading.value = true;
-      http
-        .post("/login/admin", {
-          username: state.loginValidateForm.username,
-          password: getmd5(state.loginValidateForm.password),
-        })
-        .then((result: any) => {
-          if (result.status == 2000) {
-            localStorage.setItem(import.meta.env.VITE_TOKEN_NAME as string, result.token)
-            localStorage.setItem(import.meta.env.VITE_USER_INFO_KEY as string, JSON.stringify(result.data))
-            router.push("/");
-          }
-          loading.value = false;
-        })
-        .catch((err: any) => {});
+       router.push("/");
+      // http
+      //   .post("/login/admin", {
+      //     username: state.loginValidateForm.username,
+      //     password: getmd5(state.loginValidateForm.password),
+      //   })
+      //   .then((result: any) => {
+      //     if (result.status == 2000) {
+      //       localStorage.setItem(import.meta.env.VITE_TOKEN_NAME as string, result.token)
+      //       localStorage.setItem(import.meta.env.VITE_USER_INFO_KEY as string, JSON.stringify(result.data))
+      //       router.push("/");
+      //     }
+      //     loading.value = false;
+      //   })
+      //   .catch((err: any) => {});
     } else {
       return false;
     }

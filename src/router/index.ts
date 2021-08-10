@@ -46,21 +46,21 @@ router.afterEach((to, from) => {
     }
   });
 })
-router.beforeEach((to, from, next) => {
-  store.commit('loginModule/isLogin')
-  const isloginPage: boolean = getFilterRouterName((to.name as string));
-  let state: any = store.state
-  if (to.matched.length === 0) {
-    ElMessage.warning("当前路由不存在");
-    next({ name: ROOT_PAGE_NAME })
-  }
-  if (isloginPage || state.loginModule.isLogin) {
-    next()
-  }
-  else {
-    next({ name: LOGIN })
-  }
-})
+// router.beforeEach((to, from, next) => {
+//   store.commit('loginModule/isLogin')
+//   const isloginPage: boolean = getFilterRouterName((to.name as string));
+//   let state: any = store.state
+//   if (to.matched.length === 0) {
+//     ElMessage.warning("当前路由不存在");
+//     next({ name: ROOT_PAGE_NAME })
+//   }
+//   if (isloginPage || state.loginModule.isLogin) {
+//     next()
+//   }
+//   else {
+//     next({ name: LOGIN })
+//   }
+// })
 /**
  * 挂载到vue实例函数
  * @param app vue实例

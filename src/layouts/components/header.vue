@@ -89,8 +89,9 @@
                 size="small"
                 src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"
               ></el-avatar>
-              <div  style="color: var(--navColorFont)" class="llt-default-font-color mx15">{{
-                 state.userInfo.username
+              <div  style="color: var(--navColorFont)" class="llt-default-font-color mx15">
+                {{
+                 state.userInfo?state.userInfo.username:"未登录"
                  }}</div>
             </div>
           </span>
