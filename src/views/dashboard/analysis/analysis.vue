@@ -1,5 +1,6 @@
 <template>
-  <div class="analysis">
+  <div class="analysis ">
+    <div class="tablecommon"></div>
     <router-link to="/login" class="mx15">
         <el-button type="success">登录页</el-button>
     </router-link>

@@ -31,8 +31,17 @@ align-items: center;
 .fdc{
     flex-direction: column;
 }
+.flexWrap{
+    flex-wrap: wrap;
+}
 .flex1{
     flex: 1;
+}
+.flex5{
+    flex: 5;
+}
+.flex7{
+    flex: 7;
 }
 .mx30{
     margin: 0 30px;
@@ -40,17 +49,42 @@ align-items: center;
 .mx15{
     margin: 0 15px;
 }
+.ml15{
+    margin-left: 15px;
+}
 .mx5{
     margin: 0 5px;
 }
 .mt30{
     margin-top:30px ;
 }
+.mt10{
+    margin-top: 10px;
+}
+.ml30{
+   margin-left: 30px;
+}
+.m20{
+    margin: 20px;
+}
+.w80{
+    width: 80px;
+}
+.mt20{
+    margin-top: 20px;
+    
+}
 .p10{
     padding: 10px;
 }
 .p20{
     padding: 20px;
+}
+.w400{
+    width: 400px;
+}
+.displayInlineBlock{
+    display: inline-block;
 }
 .llt-icon-size{
     font-size: 20px;
@@ -74,6 +108,10 @@ background-color: rgba(0,0,0,.2);
     font-size: 20px;
     color: #333;
     cursor: pointer;
+}
+.fontSize16{
+    font-size: 16px;
+    font-weight: 400;
 }
 .w100{
     width: 100%;
@@ -110,6 +148,16 @@ background-color: rgba(0,0,0,.2);
 }
 .text-center{
     text-align: center;
+}
+.commonBoxmp{
+    margin: 15px;
+  padding: 15px;
+}
+
+.tablecommon{
+    width: 100px;
+    min-width: calc(100% - 0px);
+    max-width: calc(100% - 0px);
 }
 *{
     margin: 0;
@@ -231,4 +279,5 @@ background-color: rgba(0,0,0,.2);
   .el-tree-node__expand-icon.is-leaf {
     color: #fff !important;
   }
+
 // 初始化 element-plus css end

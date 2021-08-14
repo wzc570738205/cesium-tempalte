@@ -1,6 +1,9 @@
 # 效果图 由于服务器维护无法提供在线地址
 ![me](public/me.png) 
-
+# css
+## 布局css class类
+* commonBoxmp 解决 布局展示
+* tablecommon 解决表格过长导致挤压左侧导航栏
 # vite目前在国内还无法商用 经过测试国内的浏览器均无法使用
 > /@ts/ 是src下面的文件 引入ts使用
 > /@/ 是src下面的文件 引入.vue使用
