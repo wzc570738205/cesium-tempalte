@@ -1,6 +1,8 @@
 <template>
   <div class="analysis ">
-    <div class="tablecommon"></div>
+    <div class="tablecommon">
+      <div class="maxbox"></div>
+    </div>
     <router-link to="/login" class="mx15">
         <el-button type="success">登录页</el-button>
     </router-link>
@@ -34,5 +36,10 @@ ref定义的数据访问的时候要多一个.value
 <style  scoped lang="scss" >
 .analysis{
   margin: 20px;
+}
+.maxbox{
+  width: 1600px;
+  height: 300px;
+  background-color: #fff000;
 }
 </style>
