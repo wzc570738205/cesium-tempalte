@@ -21,7 +21,7 @@
 </template>
 
 <script setup lang="ts">
-import {ref,defineProps,reactive,getCurrentInstance } from 'vue';
+import {ref,reactive,getCurrentInstance } from 'vue';
     const internalInstance = getCurrentInstance();//获取当前实例
     const route = internalInstance?.appContext.config.globalProperties.$route;
 

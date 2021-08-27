@@ -46,15 +46,13 @@
 import { store } from "/@ts/store";
 import {
   ref,
-  defineProps,
   reactive,
   getCurrentInstance,
-  useContext,
 } from "vue";
 import type { AppRouteModule } from "/@ts/router/types";
 const internalInstance = getCurrentInstance(); //获取当前实例
 const route = internalInstance?.appContext.config.globalProperties.$route;
-const context = useContext();
+const emit = defineEmits(['handleOpen','handleClose']);
 const props = defineProps({
   currentTag: {
     type: Number,
@@ -97,12 +95,12 @@ const state: State = reactive({
 });
 const handleOpen = (index: number, routerItem: AppRouteModule) => {
   // 删除数组指定索引后返回数据
-  context.emit("handleOpen", { index, routerItem });
+  emit("handleOpen", { index, routerItem });
 };
 //tagpagetool 工具函数
 const handleClose = (index: Number) => {
   // 删除数组指定索引后返回数据
-  context.emit("handleClose", index);
+  emit("handleClose", index);
 };
 /**
  * 关闭左边

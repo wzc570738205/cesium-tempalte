@@ -2,7 +2,7 @@
   <div class="w100">
     <div class="aic w100">
       <el-input
-        v-model="search"
+        v-model="state.search"
         class="mx15"
         size="mini"
         placeholder="搜索部门名称返回结果"
@@ -34,6 +34,7 @@ ref定义的数据访问的时候要多一个.value
 */
 const count = ref(0);
 const state = reactive({
+   search:"",
   props: {
     label: "name",
     children: "zones",
@@ -42,6 +43,7 @@ const state = reactive({
 });
 
 const props = defineProps({
+ 
   treeData: {
     type: Array,
     default: [

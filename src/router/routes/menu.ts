@@ -28,9 +28,41 @@ export const dashboard =  {
         }
     ]
 };
+const routeComponents : AppRouteRecordRaw[] = [
+    {
+        path:"/components",
+        name:"components",
+            
+        meta:{
+            title:"组件库",
+            icon:"el-icon-s-grid"
+        },
+        children:[
+            {
+                path:"/components/bingMaps",
+                name:"bingMapsComponents",
+                meta:{
+                    title:"bingMaps地图",
+                   
+                },
+                component: () => import('/@/views/component/map/bingMaps.vue'),
+            },
+            {
+                path:"/components/AutoNaviMap",
+                name:"AutoNaviMapComponents",
+                meta:{
+                    title:"高德地图",
+                   
+                },
+                component: () => import('/@/views/component/map/AutoNaviMap.vue'),
+            },
+        ]
+    }
+]
 const routeMenuList: AppRouteRecordRaw[] = [
-    dashboard,
    
+    dashboard,
+    ...routeComponents,
     {
         path:"/system",
         name:"system",

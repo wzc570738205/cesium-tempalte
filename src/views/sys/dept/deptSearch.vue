@@ -29,15 +29,14 @@ import {
   reactive,
   getCurrentInstance,
   onMounted,
-  defineEmit,
-  useContext,
+
 } from "vue";
 import { useRouter, useRoute } from "vue-router";
 const internalInstance = getCurrentInstance(); //获取当前实例
 // const route = internalInstance?.appContext.config.globalProperties.$route;
 const router = useRouter();
 const route = useRoute();
-const context = useContext();
+const emit = defineEmits(['searchMenu']);
 onMounted(() => {});
 /*
 基本数据类型
@@ -52,9 +51,8 @@ const state = reactive({
     user: "",
   },
 });
-defineEmit(["searchMenu"]);
 const searchMenu = () => {
-  context.emit("searchMenu", state.formSearch);
+  emit("searchMenu", state.formSearch);
 };
 </script>
 

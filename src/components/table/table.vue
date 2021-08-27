@@ -97,15 +97,12 @@
 import {
   ref,
   reactive,
-  defineProps,
   onMounted,
-  computed,
-  useContext,
 } from "vue";
 import { useRouter, useRoute } from "vue-router";
 import type { LltColumn } from "/@ts/views/sys/account/column";
 const router = useRouter();
-const context = useContext();
+const emit = defineEmits(['getCurrentColumns','current-change','size-change']);
 const route = useRoute();
 onMounted(() => {});
 /*
@@ -202,7 +199,7 @@ const handleCheckedCitiesChange = (value: string[]) => {
     }
   }
   state.treeCties = (keys as any)
-   context.emit("getCurrentColumns", keys);
+   emit("getCurrentColumns", keys);
   state.checkAll = checkedCount === state.cities.length;
   state.isIndeterminate =
     checkedCount > 0 && checkedCount < state.cities.length;
@@ -213,11 +210,11 @@ const handleDrawerBool = () => {
 };
 // 分页 start
 const handleCurrentChange = (num:number)=>{
-   context.emit("current-change", num);
+   emit("current-change", num);
 }
 const handleSizeChange = (size:number)=>{
 
-   context.emit("size-change", size);
+   emit("size-change", size);
 }
 
 //、分页 end
@@ -234,7 +231,7 @@ const handleDragEnd = (
   ev: any
 ) => {
   //拖拽结束最新顺序返回 treeCtise是响应式数据所以与tree是同一个数据所以拖拽后自动更新
-  context.emit("getCurrentColumns", state.treeCties);
+  emit("getCurrentColumns", state.treeCties);
 };
 const handleDrop = (
   draggingNode: any,

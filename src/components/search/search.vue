@@ -16,7 +16,7 @@
     </template>
   </el-input>
   <el-scrollbar height="220px" class="scrollbar" v-if="state.routeMenuListdata.length>0">
-  <p class="item aic jcb cP " v-for="item,index in state.routeMenuListdata" :key="index"
+  <div class="item aic jcb cP " v-for="item,index in state.routeMenuListdata" :key="index"
   @click="openUrl(item)"
   >
       <div v-if="item.children" class="aic">
@@ -36,7 +36,7 @@
                 </el-breadcrumb>
       </div>
     <div class="el-icon-s-promotion searchPromotion"></div>
-  </p>
+  </div>
 </el-scrollbar>
 <el-empty v-else description="请搜索菜单关键字，获取菜单导航"></el-empty>
   </div>
@@ -48,17 +48,14 @@
 <script setup lang="ts">
 import {
   ref,
-  defineProps,
   reactive,
-  useContext,
-  defineEmit
+
 } from "vue";
 import routeMenuList from "/@ts/router/routes/menu";
 import { useSearchTool } from "/@ts/components/search/data";
 import type { AppRouteRecordRaw } from "/@ts/router/types";
 import { useRouter } from "vue-router";
-
-const context = useContext();
+const emit = defineEmits(['handleHide']);
 const router = useRouter();
 const { searchChange } = useSearchTool(routeMenuList);
 /*
@@ -81,9 +78,10 @@ const props = defineProps({
     required: true,
   },
 });
-defineEmit(['handleHide'])
+
+
 const handleHide = () => {
-  context.emit("handleHide",props.show);
+  emit("handleHide",props.show);
 };
 const openUrl = (item: AppRouteRecordRaw) => {
   if (item.children !== undefined) {

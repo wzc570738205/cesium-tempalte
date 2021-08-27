@@ -1,14 +1,13 @@
 <template>
-  <div>
+<!-- tablecommon -->
+  <div class="commonBoxmp white-bg">
    123
   </div>
 </template>
 
 <script setup lang="ts">
-import {ref,reactive,getCurrentInstance,onMounted} from 'vue';
+import {ref,reactive,onMounted} from 'vue';
 import {useRouter,useRoute} from 'vue-router'
-    const internalInstance = getCurrentInstance();//获取当前实例
-    // const route = internalInstance?.appContext.config.globalProperties.$route;
    const router = useRouter()
    const route = useRoute()
     onMounted(()=>{

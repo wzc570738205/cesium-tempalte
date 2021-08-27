@@ -210,7 +210,6 @@ import {
   defineProps,
   reactive,
   getCurrentInstance,
-  useContext,
   watch,
   watchEffect,
   onMounted,
@@ -231,7 +230,7 @@ const { isFullscreen, toggle } = useFullscreen();
 const router = useRouter();
 const internalInstance = getCurrentInstance(); //获取当前实例
 const globalProperties = internalInstance?.appContext.config.globalProperties;
-const context = useContext();
+const emit = defineEmits(['handleCollapse']);
 interface HeaderColors {
   [key: string]: string;
 }
@@ -350,7 +349,7 @@ const handleSearch = () => {
   searchBool.value = true;
 };
 const handleCollapse = () => {
-  context.emit("handleCollapse", props.isCollapse);
+  emit("handleCollapse", props.isCollapse);
 };
 const handleClose = (e: number) => {
   store.commit("setCloseTagPages", e);
