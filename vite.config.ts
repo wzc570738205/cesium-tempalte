@@ -8,6 +8,7 @@ function pathResolve(dir: string) {
   return resolve(process.cwd(), '.', dir);
 }
 export default defineConfig({
+  base:"llt-admin-preview",
   server:{
    
   },
