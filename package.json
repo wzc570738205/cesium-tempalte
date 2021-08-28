@@ -11,13 +11,11 @@
   },
   "dependencies": {
     "@vitejs/plugin-legacy": "^1.4.0",
-    "@vitejs/plugin-vue-jsx": "^1.1.7",
     "@vue/server-renderer": "^3.2.6",
     "@vueuse/core": "^4.11.2",
     "animate.css": "^4.1.1",
     "axios": "^0.21.1",
     "element-plus": "^1.0.2-beta.46",
-    "express": "^4.17.1",
     "ts-md5": "^1.2.8",
     "vue": "^3.2.6",
     "vue-router": "4.0.6",

@@ -3,13 +3,11 @@ import vue from '@vitejs/plugin-vue';//为打包后的文件提供传统浏览�
 import legacy from '@vitejs/plugin-legacy';
 import { resolve } from 'path';
 
-const vueJsx = require('@vitejs/plugin-vue-jsx')
 // https://vitejs.dev/config/
 function pathResolve(dir: string) {
   return resolve(process.cwd(), '.', dir);
 }
 export default defineConfig({
-  base:"llt-admin-preview",
   server:{
    
   },
@@ -34,7 +32,6 @@ export default defineConfig({
   },
   plugins: [
     vue(),
-    vueJsx(),
     legacy({
       targets: ['defaults', 'not IE 11']
     })
