@@ -24,7 +24,8 @@
   </div>
 </template>
 <script setup lang="ts">
-import { ref, reactive, onMounted, nextTick } from "vue";
+import { ref, reactive, onMounted, nextTick, onBeforeMount } from "vue";
+import remoteLoad from "/@ts/plugins/remoteLoad";
 // 高德地图 key
 const MapKey = "94ed616c43643f5cabe33ac924b61fa5";
 const Location = {
@@ -138,7 +139,18 @@ const initMapBing = () => {
 };
 onMounted(async () => {
   await nextTick();
-  initMapBing();
+    if (window.Microsoft) {
+    initMapBing(); 
+  } else {
+    await remoteLoad(
+      `http://www.bing.com/api/maps/mapcontrol?callback=GetMap&key=[${YOUR_BING_MAPS_KEY}]`,
+      null
+    );
+    initMapBing();
+  }
+});
+onBeforeMount(async () => {
+
 });
 </script>
 <style lang="scss" scoped>

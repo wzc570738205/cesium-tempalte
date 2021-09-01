@@ -56,7 +56,25 @@ const routeComponents : AppRouteRecordRaw[] = [
                 },
                 component: () => import('/@/views/component/map/AutoNaviMap.vue'),
             },
+            {
+                path:"/components/SelectsArea",
+                name:"SelectsAreaComponents",
+                meta:{
+                    title:"区域选择器",
+                },
+                component: () => import('/@/views/component/SelectsArea.vue'),
+            },
         ]
+    },
+    {
+        path:"/data",
+        name:"data",
+            
+        meta:{
+            title:"数据库",
+            icon:"el-icon-s-grid"
+        },
+        component: () => import('/@/views/component/datas.vue'),
     }
 ]
 const routeMenuList: AppRouteRecordRaw[] = [

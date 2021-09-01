@@ -120,7 +120,7 @@ const initMap = () => {
     positionPicker.start();
   });
 };
-onBeforeMount(async () => {
+onMounted(async () => {
   if (window.AMap && window.AMapUI) {
     initMap(); //高德 地图
     // 未载入高德地图API，则先载入API再初始化
