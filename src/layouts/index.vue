@@ -1,10 +1,7 @@
 <template>
-  <div class=" fd layouts">
-    <div
-      class="h100 hidden-md-and-down layouts-left"
-     
-    >
-      <LltMenu  :isCollapse="isCollapse" />
+  <div class="fd layouts">
+    <div class="h100 hidden-md-and-down layouts-left">
+      <LltMenu :isCollapse="isCollapse" />
     </div>
     <div class="layouts-right">
       <!-- <div
@@ -17,11 +14,25 @@
         
       </div> -->
       <LltHeader @handleCollapse="handleCollapse" :isCollapse="isCollapse" />
-        <div class="llt-layouts-body">
-           <transition v-if="!$store.state.refresh" name="list" mode="out-in">
+      <div class="llt-layouts-body">
+        <!-- <transition v-if="!$store.state.refresh" name="list" mode="out-in">
                <router-view />
+            </transition> -->
+        <router-view v-slot="{ Component }">
+          <template v-if="Component">
+            <transition name="list" mode="out-in">
+              <keep-alive>
+                <suspense>
+                  <component :is="Component"></component>
+                  <template #fallback>
+                    <div>Loading...</div>
+                  </template>
+                </suspense>
+              </keep-alive>
             </transition>
-        </div>
+          </template>
+        </router-view>
+      </div>
     </div>
   </div>
 </template>
@@ -69,7 +80,7 @@ const handleCollapse = (e: boolean) => {
 </script>
 
 <style scoped lang="scss">
-.layouts{
+.layouts {
   width: 100vw;
   height: 100vh;
   position: relative;
@@ -77,32 +88,31 @@ const handleCollapse = (e: boolean) => {
   left: 0;
 }
 .layouts-right {
-flex: 1; 
-height: 100%;
+  flex: 1;
+  height: 100%;
 }
 .layouts-left {
-// flex-basis: 200px;
-height: 100%;
- overflow-y: hidden;
-    overflow-x: hidden;
-max-width: 200px;
+  // flex-basis: 200px;
+  height: 100%;
+  overflow-y: hidden;
+  overflow-x: hidden;
+  max-width: 200px;
 }
 
 // .menu-logo-collapse-true {
-//   min-width: 64px; 
-//   max-width: 64px; 
-  
+//   min-width: 64px;
+//   max-width: 64px;
+
 // }
 // .menu-logo-collapse-false {
 //   min-width: 200px;
-//   max-width: 200px;  
+//   max-width: 200px;
 // }
 
 .llt-layouts-body {
- 
-height: calc(100% - 95px);
- overflow-y: auto;
-  background-color: #F0F2F5;
+  height: calc(100% - 95px);
+  overflow-y: auto;
+  background-color: #f0f2f5;
 }
 // 路由切换动画
 .list-enter-active,

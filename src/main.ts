@@ -5,6 +5,7 @@ import {setupStore} from '/@ts/store/index';
 import ElementPlus from 'element-plus'
 import 'element-plus/lib/theme-chalk/index.css'
 import 'element-plus/lib/theme-chalk/display.css';
+import 'vue-cropper/dist/index.css'//剪接
 import 'animate.css/animate.min.css';
 import './init.scss';
 // 国际化

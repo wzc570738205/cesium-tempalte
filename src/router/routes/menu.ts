@@ -64,6 +64,14 @@ const routeComponents : AppRouteRecordRaw[] = [
                 },
                 component: () => import('/@/views/component/SelectsArea.vue'),
             },
+            {
+                path:"/components/vueCropper",
+                name:"vueCropperComponents",
+                meta:{
+                    title:"图片裁剪",
+                },
+                component: () => import('/@/views/component/vueCropper.vue'),
+            },
         ]
     },
     {
