@@ -16,11 +16,11 @@
         <span
           class="tag-font"
           :style="{ paddingRight: tagToolIndex == 0 ? '8px' : '4px' }"
-          @click="handleOpen(tagToolIndex, item)"
+          @click.stop="handleOpen(tagToolIndex, item)"
         >
           {{ item.meta.title }}
           <i
-            @click="handleClose(tagToolIndex)"
+            @click.stop="handleClose(tagToolIndex)"
             v-show="tagToolIndex != 0"
             class="el-icon-close llt-tag-icon-close"
           ></i>
@@ -63,7 +63,7 @@ const props = defineProps({
     default: [],
   },
 });
-
+console.log('props :>> ', props.tagsData);
 interface TagPageTool {
   disabled: boolean;
   name: string;
