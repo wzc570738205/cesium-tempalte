@@ -1,3 +1,12 @@
+# 日志 
+```js
+vite-plugin-compression vite 开启gzip插件
+import viteCompression from 'vite-plugin-compression';
+plugins: [
+    viteCompression()
+  ],
+
+```
 # 效果图 由于服务器维护无法提供在线地址
 ![me](public/me.png) 
 # 注意事项

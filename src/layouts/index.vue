@@ -20,7 +20,7 @@
             </transition> -->
         <router-view v-slot="{ Component }">
           <template v-if="Component">
-            <transition name="list" mode="out-in">
+            <transition name="list" mode="out-in" v-if="!$store.state.refresh">
               <keep-alive>
                 <suspense>
                   <component :is="Component"></component>
