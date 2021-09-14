@@ -8,12 +8,15 @@
 import { ref, defineProps, reactive, defineEmits, onMounted } from "vue";
 import * as echarts from "echarts";
 import china from "/@ts/assets/data/100000_full.json";
+import {chinaformat} from "/@ts/assets/data/chinaformat";
+
 /*
 基本数据类型
 引用数据类型（复杂类型） 个人建议 ref初始化变量 
 ref 和 reactive 本质我们可以简单的理解为ref是对reactive的二次包装, 
 ref定义的数据访问的时候要多一个.value
 */
+
 let dataList = [
       {
           name: "南海诸岛",
@@ -173,8 +176,28 @@ let echartsMapel1: any = ref("");
 const echartsMap1 = (e: any) => (echartsMapel1.value = e);
 const init = () => {
   // 基于准备好的dom，初始化echarts实例
+
   echarts.registerMap("china", china as any);
   var myChart = echarts.init(echartsMapel1.value);
+  let mapdata:any = chinaformat
+  /**
+   * 返回 用户所在地点 
+   * name 区域名字 要求 于地图名字保持一直
+   * value 经纬度
+   */
+  var convertData:any =  (data:any)=> {
+    var res = [];
+    for (let index = 0; index <  china.features.length; index++) {
+      const element =  china.features[index];
+      res.push({
+                        name: element.properties.name,
+                value:  element.properties.center,
+
+      })
+    }
+    return res;
+};
+
   // 指定图表的配置项和数据
   var option:any = {
     backgroundColor: '#404a59',
@@ -277,14 +300,15 @@ const init = () => {
         axisLabel: {interval: 0, textStyle: {color: '#ddd'}},
         data: []
     },
+
     series:[
               {
             name: 'pm2.5',
             type: 'scatter',
             coordinateSystem: 'geo',
-            data:dataList,
-            symbolSize: function (val) {
-                return Math.max(val / 10, 8);
+            data:convertData(),
+            symbolSize: function (val:any) {
+                return Math.max(10 / 10, 8);
             },
             label: {
                 normal: {
@@ -302,13 +326,13 @@ const init = () => {
                 }
             }
         },
-        {
+                {
             name: 'Top 5',
             type: 'effectScatter',
             coordinateSystem: 'geo',
-            data: dataList,
+            data: convertData(),
             symbolSize: function (val) {
-                return Math.max(val / 10, 8);
+                return Math.max(10 / 10, 8);
             },
             showEffectOn: 'emphasis',
             rippleEffect: {
@@ -322,7 +346,6 @@ const init = () => {
                     show: true
                 }
             },
-            
             itemStyle: {
                 normal: {
                     color: '#f4e925',
@@ -345,11 +368,84 @@ const init = () => {
             data: []
         }
 
-    ]
+    ],
+      //左侧小导航图标
+    visualMap: {
+      show: true,
+      x: 'left',
+      y: 'bottom',
+      splitList: [
+        {
+          start: 40
+        }, {
+          start: 30,
+          end: 40
+        },
+        {
+          start: 20,
+          end: 30
+        }, {
+          start: 10,
+          end: 20
+        },
+        {
+          start: 5,
+          end: 10
+        }, {
+          start: 0,
+          end: 5
+        },
+                    ],
+      color: ['#FF0000', '#FF34B3', '#FF7256', '#FF8C69', '#FFAEB9', '#FFD39B']
+    },
+    
 };
+myChart.on('brushselected', renderBrushed);
+function renderBrushed(params:any) {
+  console.log('params :>> ', params);
+   var mainSeries = params.batch[0].selected[0];//获取当前选取的 区域
+       var sum = 0;
+    var count = 0;
+     var maxBar = 30;
+  var selectedItems = [];
+      var categoryData = [];
+    var barData = [];
+
+    for (var i = 0; i < mainSeries.dataIndex.length; i++) {
+        var rawIndex = mainSeries.dataIndex[i];
+        var dataItem = dataList[rawIndex];
+        var pmValue = dataItem.value;
+        sum += pmValue;
+        count++;
+
+        selectedItems.push(dataItem);
+    }
+        for (var i = 0; i < Math.min(selectedItems.length, maxBar); i++) {
+        categoryData.push(selectedItems[i].name);
+        barData.push(selectedItems[i].value/10);
+    }
+      myChart.setOption({
+        yAxis: {
+            data: categoryData
+        },
+        xAxis: {
+            axisLabel: {show: !!count}
+        },
+        title: {
+            id: 'statistic',
+            text: count ? '平均: ' + (sum / count).toFixed(4) : ''
+        },
+        series: {
+            id: 'bar',
+            data: barData
+        }
+    });
 
 
-setTimeout(function () {
+}
+// option.series[0]['data'] = dataList;
+  // 使用刚指定的配置项和数据显示图表。
+  setTimeout(function () {
     myChart.dispatchAction({
         type: 'brush',
         areas: [
@@ -361,8 +457,7 @@ setTimeout(function () {
         ]
     });
 }, 0);
-// option.series[0]['data'] = dataList;
-  // 使用刚指定的配置项和数据显示图表。
+
   myChart.setOption(option);
 };
 const state = reactive({});
