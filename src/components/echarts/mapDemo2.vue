@@ -322,6 +322,7 @@ const init = () => {
                     show: true
                 }
             },
+            
             itemStyle: {
                 normal: {
                     color: '#f4e925',
