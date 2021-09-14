@@ -41,7 +41,7 @@
      v-for="(item,index) in routeMenuList"
      :key="index"
     >
-       <el-submenu :index="item.name"
+       <el-sub-menu :index="item.name"
        v-if="item.children"
        >
         <template #title>
@@ -54,7 +54,7 @@
      :key="childrenIndex"
          :index="childrenItem.name">{{childrenItem.meta.title}}</el-menu-item>
        
-      </el-submenu>
+      </el-sub-menu>
         <el-menu-item v-else
          
          :index="item.name">
@@ -152,7 +152,7 @@ left: 0;
     // min-height: 400px;
   }
 // 选中菜单
-.el-submenu__title {
+.el-sub-menu__title {
   color: #fff !important;
      
 }
@@ -161,7 +161,7 @@ left: 0;
 }
 
 
- .el-menu--collapse .el-submenu .el-submenu__title span{
+ .el-menu--collapse .el-sub-menu .el-sub-menu__title span{
  height: 0  ;
     width: 0  ;
     overflow: hidden  ;

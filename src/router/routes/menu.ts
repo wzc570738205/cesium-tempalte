@@ -30,6 +30,34 @@ export const dashboard =  {
 };
 const routeComponents : AppRouteRecordRaw[] = [
     {
+        path:"/demo",
+        name:"demo",
+            
+        meta:{
+            title:"案例演示",
+            icon:"el-icon-s-grid"
+        },
+        children:[
+            {
+                path:"/demo/mapDemo1",
+                name:"mapDemo1",
+                meta:{
+                    title:"中国地图事件统计",
+                   
+                },
+                component: () => import('/@/components/echarts/mapDemo1.vue'),
+            },
+            {
+                path:"/demo/mapDemo2",
+                name:"mapDemo2",
+                meta:{
+                    title:"中国地图市场统计图",
+                },
+                component: () => import('/@/components/echarts/mapDemo2.vue'),
+            }
+        ]
+    },
+    {
         path:"/components",
         name:"components",
             

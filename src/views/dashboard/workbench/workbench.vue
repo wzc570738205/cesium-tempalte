@@ -1,16 +1,13 @@
 <template>
   <div>
-  asdasa
-  asdasdasd
-  sadasd
+    <!-- <echartsMap /> -->
   </div>
 </template>
 
 <script setup lang="ts">
-import {ref,reactive,getCurrentInstance,onMounted} from 'vue';
-import {useRouter,useRoute} from 'vue-router'
-    const internalInstance = getCurrentInstance();//获取当前实例
-    // const route = internalInstance?.appContext.config.globalProperties.$route;
+import {ref,reactive,onMounted} from 'vue';
+import {useRouter,useRoute} from 'vue-router';
+import echartsMap from '/@/components/echarts/mapDemo1.vue';
    const router = useRouter()
    const route = useRoute()
     onMounted(()=>{

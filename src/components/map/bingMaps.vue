@@ -98,9 +98,9 @@ const initMapBing = () => {
     showSearchBar: false, //官方搜索
     // center: new Microsoft.Maps.Location(),
     // center: new Microsoft.Maps.Location(47.606209, -122.332071),
-    mapTypeId: Microsoft.Maps.MapTypeId.road,
     zoom: 12,
   });
+  console.log('map :>> ', map);
   var center = map.getCenter();
   //初始化拖拽模块
   var redPin = new Microsoft.Maps.Pushpin(

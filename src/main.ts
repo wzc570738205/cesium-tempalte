@@ -3,8 +3,8 @@ import App from './App.vue'
 import router, { setupRouter } from '/@ts/router'
 import {setupStore} from '/@ts/store/index';
 import ElementPlus from 'element-plus'
-import 'element-plus/lib/theme-chalk/index.css'
-import 'element-plus/lib/theme-chalk/display.css';
+import 'element-plus/theme-chalk/display.css';//1.1.0-beta.10 版本
+import 'element-plus/dist/index.css'//1.1.0-beta.10 版本
 import 'vue-cropper/dist/index.css'//剪接
 import 'animate.css/animate.min.css';
 import './init.scss';

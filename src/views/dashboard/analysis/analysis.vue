@@ -6,7 +6,23 @@
     <router-link to="/login" class="mx15">
         <el-button type="success">登录页</el-button>
     </router-link>
-   
+        <el-button @click="dialogVisible = true" type="success">滚动 dialog</el-button>
+   <el-dialog
+  title="提示"
+  v-model="dialogVisible"
+  width="30%"
+  :before-close="handleClose"
+>
+    <el-scrollbar height="400px">
+    <p class="item" v-for="item in 20" :key="item">{{ item }}</p>
+  </el-scrollbar>
+  <template #footer>
+    <span class="dialog-footer">
+      <el-button @click="dialogVisible = false">取 消</el-button>
+      <el-button type="primary" @click="dialogVisible = false">确 定</el-button>
+    </span>
+  </template>
+</el-dialog>
   </div>
 </template>
 
@@ -25,7 +41,7 @@ import {useRouter,useRoute} from 'vue-router'
 ref 和 reactive 本质我们可以简单的理解为ref是对reactive的二次包装, 
 ref定义的数据访问的时候要多一个.value
 */
- const count =ref(0);
+ const dialogVisible =ref(true);
  const state = reactive({
    data:{a:1}
  })
@@ -41,5 +57,12 @@ ref定义的数据访问的时候要多一个.value
   width: 1600px;
   height: 300px;
   background-color: #fff000;
+}
+.item{
+  height: 50px;
+  background-color: #fff000;
+  color: red;
+  text-align: center;
+  margin: 15px 0;
 }
 </style>

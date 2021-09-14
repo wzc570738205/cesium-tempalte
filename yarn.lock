@@ -49,10 +49,10 @@
   resolved "https://registry.nlark.com/@emmetio/scanner/download/@emmetio/scanner-1.0.0.tgz#065b2af6233fe7474d44823e3deb89724af42b5f"
   integrity sha1-Blsq9iM/50dNRII+PeuJckr0K18=
 
-"@popperjs/core@^2.4.4":
-  version "2.9.3"
-  resolved "https://registry.nlark.com/@popperjs/core/download/@popperjs/core-2.9.3.tgz#8b68da1ebd7fc603999cf6ebee34a4899a14b88e"
-  integrity sha1-i2jaHr1/xgOZnPbr7jSkiZoUuI4=
+"@popperjs/core@^2.10.1":
+  version "2.10.1"
+  resolved "https://registry.nlark.com/@popperjs/core/download/@popperjs/core-2.10.1.tgz?cache=0&sync_timestamp=1630646793367&other_urls=https%3A%2F%2Fregistry.nlark.com%2F%40popperjs%2Fcore%2Fdownload%2F%40popperjs%2Fcore-2.10.1.tgz#728ecd95ab207aab8a9a4e421f0422db329232be"
+  integrity sha1-co7NlasgequKmk5CHwQi2zKSMr4=
 
 "@sindresorhus/is@^0.14.0":
   version "0.14.0"
@@ -389,10 +389,25 @@
     "@vueuse/shared" "4.11.2"
     vue-demi "*"
 
+"@vueuse/core@^6.2.0":
+  version "6.3.3"
+  resolved "https://registry.nlark.com/@vueuse/core/download/@vueuse/core-6.3.3.tgz?cache=0&sync_timestamp=1631485707301&other_urls=https%3A%2F%2Fregistry.nlark.com%2F%40vueuse%2Fcore%2Fdownload%2F%40vueuse%2Fcore-6.3.3.tgz#0682c01b50d28e91d3d76f27278600ee1692fa24"
+  integrity sha1-BoLAG1DSjpHT128nJ4YA7haS+iQ=
+  dependencies:
+    "@vueuse/shared" "6.3.3"
+    vue-demi "*"
+
 "@vueuse/shared@4.11.2":
   version "4.11.2"
   resolved "https://registry.nlark.com/@vueuse/shared/download/@vueuse/shared-4.11.2.tgz#1d56e08937600e3e65abf76f27cb4a1bc182adfd"
   integrity sha1-HVbgiTdgDj5lq/dvJ8tKG8GCrf0=
+  dependencies:
+    vue-demi "*"
+
+"@vueuse/shared@6.3.3":
+  version "6.3.3"
+  resolved "https://registry.nlark.com/@vueuse/shared/download/@vueuse/shared-6.3.3.tgz?cache=0&sync_timestamp=1631485700955&other_urls=https%3A%2F%2Fregistry.nlark.com%2F%40vueuse%2Fshared%2Fdownload%2F%40vueuse%2Fshared-6.3.3.tgz#4e5c600ad1ed5bf2a8630ad0bd38edb1f4269f37"
+  integrity sha1-TlxgCtHtW/KoYwrQvTjtsfQmnzc=
   dependencies:
     vue-demi "*"
 
@@ -903,16 +918,25 @@ duplexer3@^0.1.4:
   resolved "https://registry.nlark.com/duplexer3/download/duplexer3-0.1.4.tgz#ee01dd1cac0ed3cbc7fdbea37dc0a8f1ce002ce2"
   integrity sha1-7gHdHKwO08vH/b6jfcCo8c4ALOI=
 
-element-plus@^1.0.2-beta.46:
-  version "1.0.2-beta.71"
-  resolved "https://registry.nlark.com/element-plus/download/element-plus-1.0.2-beta.71.tgz#148f16d5a0a800549989f7869bbf4d656c652d36"
-  integrity sha1-FI8W1aCoAFSZifeGm79NZWxlLTY=
+echarts@^5.2.0:
+  version "5.2.0"
+  resolved "https://registry.nlark.com/echarts/download/echarts-5.2.0.tgz?cache=0&sync_timestamp=1630472437863&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fecharts%2Fdownload%2Fecharts-5.2.0.tgz#9f1fbfbf048c15ab630bf0a74525c4c534d6cebc"
+  integrity sha1-nx+/vwSMFatjC/CnRSXExTTWzrw=
+  dependencies:
+    tslib "2.3.0"
+    zrender "5.2.0"
+
+element-plus@^1.1.0-beta.10:
+  version "1.1.0-beta.10"
+  resolved "https://registry.nlark.com/element-plus/download/element-plus-1.1.0-beta.10.tgz#6336d95d2ec9560cde026ded09676c59aff9b3bf"
+  integrity sha1-YzbZXS7JVgzeAm3tCWdsWa/5s78=
   dependencies:
     "@element-plus/icons" "^0.0.11"
-    "@popperjs/core" "^2.4.4"
+    "@popperjs/core" "^2.10.1"
+    "@vueuse/core" "^6.2.0"
     async-validator "^3.4.0"
     dayjs "1.x"
-    lodash "^4.17.20"
+    lodash "^4.17.21"
     mitt "^2.1.0"
     normalize-wheel "^1.0.1"
     resize-observer-polyfill "^1.5.1"
@@ -1608,9 +1632,9 @@ lodash.iteratee@^4.5.0:
   resolved "https://registry.nlark.com/lodash.iteratee/download/lodash.iteratee-4.7.0.tgz#be4177db289a8ccc3c0990f1db26b5b22fc1554c"
   integrity sha1-vkF32yiajMw8CZDx2ya1si/BVUw=
 
-lodash@^4.17.20:
+lodash@^4.17.21:
   version "4.17.21"
-  resolved "https://registry.nlark.com/lodash/download/lodash-4.17.21.tgz?cache=0&sync_timestamp=1622685830565&other_urls=https%3A%2F%2Fregistry.nlark.com%2Flodash%2Fdownload%2Flodash-4.17.21.tgz#679591c564c3bffaae8454cf0b3df370c3d6911c"
+  resolved "https://registry.npm.taobao.org/lodash/download/lodash-4.17.21.tgz#679591c564c3bffaae8454cf0b3df370c3d6911c"
   integrity sha1-Z5WRxWTDv/quhFTPCz3zcMPWkRw=
 
 loud-rejection@^1.0.0:
@@ -2520,6 +2544,11 @@ ts-md5@^1.2.8:
   resolved "https://registry.nlark.com/ts-md5/download/ts-md5-1.2.9.tgz#22c9fd2baafdfdebee1068ff4d2dc215ff51df77"
   integrity sha1-Isn9K6r9/evuEGj/TS3CFf9R33c=
 
+tslib@2.3.0:
+  version "2.3.0"
+  resolved "https://registry.nlark.com/tslib/download/tslib-2.3.0.tgz?cache=0&sync_timestamp=1628722580350&other_urls=https%3A%2F%2Fregistry.nlark.com%2Ftslib%2Fdownload%2Ftslib-2.3.0.tgz#803b8cdab3e12ba581a4ca41c8839bbb0dacb09e"
+  integrity sha1-gDuM2rPhK6WBpMpByIObuw2ssJ4=
+
 type-fest@^0.3.0:
   version "0.3.1"
   resolved "https://registry.nlark.com/type-fest/download/type-fest-0.3.1.tgz#63d00d204e059474fe5e1b7c011112bbd1dc29e1"
@@ -3072,3 +3101,10 @@ yargs-parser@^10.0.0:
   integrity sha1-cgImW4n36eny5XZeD+c1qQXtuqg=
   dependencies:
     camelcase "^4.1.0"
+
+zrender@5.2.0:
+  version "5.2.0"
+  resolved "https://registry.nlark.com/zrender/download/zrender-5.2.0.tgz?cache=0&sync_timestamp=1630140927144&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fzrender%2Fdownload%2Fzrender-5.2.0.tgz#f8abc484ac4a8a51b04c3ccd37beabe1def342cd"
+  integrity sha1-+KvEhKxKilGwTDzNN76r4d7zQs0=
+  dependencies:
+    tslib "2.3.0"
