@@ -5,7 +5,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, defineProps, reactive, defineEmits, onMounted } from "vue";
+import { ref, defineProps, reactive, defineEmits, onMounted, nextTick } from "vue";
 import * as echarts from "echarts";
 import china from "/@ts/assets/data/100000_full.json";
 import {chinaformat} from "/@ts/assets/data/chinaformat";
@@ -179,7 +179,6 @@ const init = () => {
 
   echarts.registerMap("china", china as any);
   var myChart = echarts.init(echartsMapel1.value);
-  let mapdata:any = chinaformat
   /**
    * 返回 用户所在地点 
    * name 区域名字 要求 于地图名字保持一直
@@ -402,7 +401,6 @@ const init = () => {
 };
 myChart.on('brushselected', renderBrushed);
 function renderBrushed(params:any) {
-  console.log('params :>> ', params);
    var mainSeries = params.batch[0].selected[0];//获取当前选取的 区域
        var sum = 0;
     var count = 0;
@@ -462,13 +460,12 @@ function renderBrushed(params:any) {
 };
 const state = reactive({});
 onMounted(() => {
-  init();
+   setTimeout(() => {
+     init();
+  }, 0);
 });
 defineProps({
-  msg: {
-    type: String,
-    required: true,
-  },
+
 });
 </script>
 

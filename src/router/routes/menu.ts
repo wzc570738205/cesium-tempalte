@@ -39,6 +39,24 @@ const routeComponents : AppRouteRecordRaw[] = [
         },
         children:[
             {
+                path:"/demo/gaode3D",
+                name:"gaode3D",
+                meta:{
+                    title:"3D 高德 地球",
+                   
+                },
+                component: () => import('/@/components/cesium/gaodeMaps.vue'),
+            },
+            {
+                path:"/demo/BingMaps",
+                name:"BingMaps",
+                meta:{
+                    title:"3D BingMaps 地球",
+                   
+                },
+                component: () => import('/@/components/cesium/BingMaps.vue'),
+            },
+            {
                 path:"/demo/mapDemo1",
                 name:"mapDemo1",
                 meta:{

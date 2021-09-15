@@ -1,5 +1,5 @@
 Arguments: 
-  D:\nodejs\node.exe C:\Users\Administrator\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js add @types/echarts
+  D:\nodejs\node.exe C:\Users\Administrator\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js add cesium
 
 PATH: 
   件安装\;%S;stemRoot%\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\Git\cmd;C:\Windows\system32;D:\nodejs\;C:\Users\Administrator\AppData\Local\Microsoft\WindowsApps;C:\Users\Administrator\AppData\Roaming\npm
@@ -34,7 +34,8 @@ npm manifest:
       "@vueuse/core": "^4.11.2",
       "animate.css": "^4.1.1",
       "axios": "^0.21.1",
-      "element-plus": "^1.0.2-beta.46",
+      "echarts": "^5.2.0",
+      "element-plus": "^1.1.0-beta.10",
       "ts-md5": "^1.2.8",
       "vite-plugin-compression": "^0.3.5",
       "vue": "^3.2.6",
@@ -108,10 +109,10 @@ Lockfile:
     resolved "https://registry.nlark.com/@emmetio/scanner/download/@emmetio/scanner-1.0.0.tgz#065b2af6233fe7474d44823e3deb89724af42b5f"
     integrity sha1-Blsq9iM/50dNRII+PeuJckr0K18=
   
-  "@popperjs/core@^2.4.4":
-    version "2.9.3"
-    resolved "https://registry.nlark.com/@popperjs/core/download/@popperjs/core-2.9.3.tgz#8b68da1ebd7fc603999cf6ebee34a4899a14b88e"
-    integrity sha1-i2jaHr1/xgOZnPbr7jSkiZoUuI4=
+  "@popperjs/core@^2.10.1":
+    version "2.10.1"
+    resolved "https://registry.nlark.com/@popperjs/core/download/@popperjs/core-2.10.1.tgz?cache=0&sync_timestamp=1630646793367&other_urls=https%3A%2F%2Fregistry.nlark.com%2F%40popperjs%2Fcore%2Fdownload%2F%40popperjs%2Fcore-2.10.1.tgz#728ecd95ab207aab8a9a4e421f0422db329232be"
+    integrity sha1-co7NlasgequKmk5CHwQi2zKSMr4=
   
   "@sindresorhus/is@^0.14.0":
     version "0.14.0"
@@ -448,10 +449,25 @@ Lockfile:
       "@vueuse/shared" "4.11.2"
       vue-demi "*"
   
+  "@vueuse/core@^6.2.0":
+    version "6.3.3"
+    resolved "https://registry.nlark.com/@vueuse/core/download/@vueuse/core-6.3.3.tgz?cache=0&sync_timestamp=1631485707301&other_urls=https%3A%2F%2Fregistry.nlark.com%2F%40vueuse%2Fcore%2Fdownload%2F%40vueuse%2Fcore-6.3.3.tgz#0682c01b50d28e91d3d76f27278600ee1692fa24"
+    integrity sha1-BoLAG1DSjpHT128nJ4YA7haS+iQ=
+    dependencies:
+      "@vueuse/shared" "6.3.3"
+      vue-demi "*"
+  
   "@vueuse/shared@4.11.2":
     version "4.11.2"
     resolved "https://registry.nlark.com/@vueuse/shared/download/@vueuse/shared-4.11.2.tgz#1d56e08937600e3e65abf76f27cb4a1bc182adfd"
     integrity sha1-HVbgiTdgDj5lq/dvJ8tKG8GCrf0=
+    dependencies:
+      vue-demi "*"
+  
+  "@vueuse/shared@6.3.3":
+    version "6.3.3"
+    resolved "https://registry.nlark.com/@vueuse/shared/download/@vueuse/shared-6.3.3.tgz?cache=0&sync_timestamp=1631485700955&other_urls=https%3A%2F%2Fregistry.nlark.com%2F%40vueuse%2Fshared%2Fdownload%2F%40vueuse%2Fshared-6.3.3.tgz#4e5c600ad1ed5bf2a8630ad0bd38edb1f4269f37"
+    integrity sha1-TlxgCtHtW/KoYwrQvTjtsfQmnzc=
     dependencies:
       vue-demi "*"
   
@@ -670,6 +686,11 @@ Lockfile:
     version "1.1.0"
     resolved "https://registry.nlark.com/ccount/download/ccount-1.1.0.tgz#246687debb6014735131be8abab2d93898f8d043"
     integrity sha1-JGaH3rtgFHNRMb6KurLZOJj40EM=
+  
+  cesium@^1.85.0:
+    version "1.85.0"
+    resolved "https://registry.nlark.com/cesium/download/cesium-1.85.0.tgz#00d983648710f13a925c20504548879eac38e902"
+    integrity sha1-ANmDZIcQ8TqSXCBQRUiHnqw46QI=
   
   chalk@^2.0.1, chalk@^2.4.2:
     version "2.4.2"
@@ -970,16 +991,17 @@ Lockfile:
       tslib "2.3.0"
       zrender "5.2.0"
   
-  element-plus@^1.0.2-beta.46:
-    version "1.0.2-beta.71"
-    resolved "https://registry.nlark.com/element-plus/download/element-plus-1.0.2-beta.71.tgz#148f16d5a0a800549989f7869bbf4d656c652d36"
-    integrity sha1-FI8W1aCoAFSZifeGm79NZWxlLTY=
+  element-plus@^1.1.0-beta.10:
+    version "1.1.0-beta.10"
+    resolved "https://registry.nlark.com/element-plus/download/element-plus-1.1.0-beta.10.tgz#6336d95d2ec9560cde026ded09676c59aff9b3bf"
+    integrity sha1-YzbZXS7JVgzeAm3tCWdsWa/5s78=
     dependencies:
       "@element-plus/icons" "^0.0.11"
-      "@popperjs/core" "^2.4.4"
+      "@popperjs/core" "^2.10.1"
+      "@vueuse/core" "^6.2.0"
       async-validator "^3.4.0"
       dayjs "1.x"
-      lodash "^4.17.20"
+      lodash "^4.17.21"
       mitt "^2.1.0"
       normalize-wheel "^1.0.1"
       resize-observer-polyfill "^1.5.1"
@@ -1675,9 +1697,9 @@ Lockfile:
     resolved "https://registry.nlark.com/lodash.iteratee/download/lodash.iteratee-4.7.0.tgz#be4177db289a8ccc3c0990f1db26b5b22fc1554c"
     integrity sha1-vkF32yiajMw8CZDx2ya1si/BVUw=
   
-  lodash@^4.17.20:
+  lodash@^4.17.21:
     version "4.17.21"
-    resolved "https://registry.nlark.com/lodash/download/lodash-4.17.21.tgz?cache=0&sync_timestamp=1622685830565&other_urls=https%3A%2F%2Fregistry.nlark.com%2Flodash%2Fdownload%2Flodash-4.17.21.tgz#679591c564c3bffaae8454cf0b3df370c3d6911c"
+    resolved "https://registry.npm.taobao.org/lodash/download/lodash-4.17.21.tgz#679591c564c3bffaae8454cf0b3df370c3d6911c"
     integrity sha1-Z5WRxWTDv/quhFTPCz3zcMPWkRw=
   
   loud-rejection@^1.0.0:

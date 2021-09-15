@@ -5,7 +5,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, defineProps, reactive, defineEmits, onMounted } from "vue";
+import { ref, defineProps, reactive, nextTick, onMounted } from "vue";
 import * as echarts from "echarts";
 import china from "/@ts/assets/data/100000_full.json";
 /*
@@ -172,7 +172,6 @@ let dataList = [
 let echartsMapel: any = ref("");
 const echartsMap = (e: any) => (echartsMapel.value = e);
 const init = () => {
-  console.log("echartsMap :>> ", china);
   // 基于准备好的dom，初始化echarts实例
   echarts.registerMap("china", china as any);
   var myChart = echarts.init(echartsMapel.value);
@@ -278,14 +277,12 @@ options.series[0]['data'] = dataList;
 };
 const state = reactive({});
 onMounted(() => {
-  init();
+  
+  setTimeout(() => {
+     init();
+  }, 0);
 });
-defineProps({
-  msg: {
-    type: String,
-    required: true,
-  },
-});
+
 </script>
 
 <style  scoped lang="scss" >
